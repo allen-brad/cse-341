@@ -143,7 +143,7 @@ switch ($action) {
         </div>
     </div>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'].'common/sripts.php';?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/scripts.php';?>
 
 </body>
 
