@@ -21,11 +21,11 @@
       </li>
     </ul>
     <?php
-      if(getcwd()=="/w03"){
+      if(getcwd()=="/web/w03"){
         echo '<div class="btn-group" role="group" aria-label="Cart Buttons">';
         //echo '<form class="form-inline mt-2 mt-md-0">';
-        echo '<button type="button" onclick="document.location = \'w03/cart.php\'" class="btn btn-secondary">Cart: ' . itemCountInCart() . '</button>';
-        echo '<button type="button" onclick="document.location = \'w03/checkout.php\'" class="btn btn-secondary"';
+        echo '<button type="button" onclick="document.location = \'/w03/cart.php\'" class="btn btn-secondary">Cart: ' . itemCountInCart() . '</button>';
+        echo '<button type="button" onclick="document.location = \'/w03/checkout.php\'" class="btn btn-secondary"';
         if(itemCountInCart() == 0) {
           echo 'disabled';
         }
