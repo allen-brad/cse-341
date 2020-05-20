@@ -93,9 +93,7 @@ switch ($action) {
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-  <?php include $_SERVER['DOCUMENT_ROOT'].'/common/nav.php';
-  echo getcwd();
-  ?>
+  <?php include $_SERVER['DOCUMENT_ROOT'].'/common/nav.php';?>
 
   <div class="pricing-header px-3 py-3 pt-md-3 pb-md-4 mx-auto text-center">
       <h1 class="display-4">Friuty Fresh</h1>
@@ -135,13 +133,8 @@ switch ($action) {
 
     </div>
 
-<!-- scripts -->
-  <script src="../js/vendor/modernizr-3.8.0.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="../js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
-  <script src="../js/plugins.js"></script>
-  <script src="../js/main.js"></script>
-  <script src="../js/bootstrap.bundle.min.js"></script>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/sripts.php';?>
+
 
 </body>
 
