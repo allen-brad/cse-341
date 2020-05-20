@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 
 include $_SERVER['DOCUMENT_ROOT'].'/library/friut_functions.php';
 
-include $_SERVER['DOCUMENT_ROOT'].'/librar/friuts.php';
+include $_SERVER['DOCUMENT_ROOT'].'/library/friuts.php';
 
 
 /*_____________________ actions _____________________*/
