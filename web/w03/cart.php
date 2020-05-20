@@ -135,7 +135,7 @@ switch ($action) {
             </div>
         </div>
         <div class="col-md-12">
-            <a class="btn btn-secondary btn-lg float-left" href="/assignmentW03.php">Coontinue Shopping</a>
+            <a class="btn btn-secondary btn-lg float-left" href="/w03/">Coontinue Shopping</a>
             <a class="btn btn-secondary btn-lg float-right mr-2
             <?php if(itemCountInCart() == 0) {
                 echo 'disabled';
@@ -143,7 +143,7 @@ switch ($action) {
         </div>
     </div>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/common/sripts.php';?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'common/sripts.php';?>
 
 </body>
 
