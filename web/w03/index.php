@@ -82,9 +82,9 @@ switch ($action) {
   <link rel="apple-touch-icon" href="cropped-ba-192x192.png">
 
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/w03.css">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/w03.css">
 
 </head>
 
