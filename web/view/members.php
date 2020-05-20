@@ -23,24 +23,21 @@
 </header>
 <div class="container">
     <main role="main" class="pb-3">
-        <h1>Index</h1>
+        <h1>WCSAR Member Directory</h1>
         <p>
-            <a href="/Movies/Create">Create New</a>
+            <a href="/Members/?action=create">Create New</a>
         </p>
         <table class="table">
             <thead>
                 <tr>
                     <th>
-                        Title
+                        Name
                     </th>
                     <th>
-                        ReleaseDate
+                        Call Sign
                     </th>
                     <th>
-                        Genre
-                    </th>
-                    <th>
-                        Price
+                        Phone
                     </th>
                     <th></th>
                 </tr>
@@ -48,21 +45,18 @@
             <tbody>
                 <tr>
                     <td>
-                        Test Movie
+                        Brad R. Allen
                     </td>
                     <td>
-                        1/21/2020
+                        L86
                     </td>
                     <td>
-                        Drama
+                        (435) 503-1887
                     </td>
                     <td>
-                        2.99
-                    </td>
-                    <td>
-                        <a href="/Movies/Edit?id=2">Edit</a> |
-                        <a href="/Movies/Details?id=2">Details</a> |
-                        <a href="/Movies/Delete?id=2">Delete</a>
+                        <a href="/Members/?action=create&id=2">Edit</a> |
+                        <a href="/Members/?action=details&id=2">Details</a> |
+                        <a href="/Members/?action=delete&id=2">Delete</a>
                     </td>
                 </tr>
             </tbody>
@@ -72,7 +66,7 @@
 
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2020 - RazorPagesMovie - <a href="/Privacy">Privacy</a>
+        &copy; 2020 - Brad R. Allen - <a href="/Privacy">Privacy</a>
     </div>
 </footer>
 
