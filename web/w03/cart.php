@@ -15,9 +15,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-include $_SERVER['DOCUMENT_ROOT'].'/app/web/library/friut_functions.php';
+include $_SERVER['DOCUMENT_ROOT'].'/library/friut_functions.php';
 
-include $_SERVER['DOCUMENT_ROOT'].'/app/web/library/friuts.php';
+include $_SERVER['DOCUMENT_ROOT'].'/library/friuts.php';
 
 
 /*_____________________ actions _____________________*/
