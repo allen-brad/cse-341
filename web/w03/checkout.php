@@ -15,9 +15,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-include $_SERVER['DOCUMENT_ROOT'].'/includes/friut_functions.php';
+include $_SERVER['DOCUMENT_ROOT'].'/library/friut_functions.php';
 
-include $_SERVER['DOCUMENT_ROOT'].'/includes/friuts.php';
+include $_SERVER['DOCUMENT_ROOT'].'/library/friuts.php';
 
 
 /*_____________________ actions _____________________*/
@@ -95,8 +95,8 @@ switch ($action) {
 
   <title>CS341 W03 Assignment | Check Out</title>
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="cropped-ba-192x192.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="apple-touch-icon" href="../cropped-ba-192x192.png">
 
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -110,7 +110,7 @@ switch ($action) {
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-  <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'; ?>
+  <?php include $_SERVER['DOCUMENT_ROOT'].'../common/nav.php'; ?>
 
   <div class="container">
     <div class="py-5 text-center">
@@ -229,20 +229,15 @@ switch ($action) {
             <hr class="mb-4">
             <input type="hidden" name="action" value="completeOrder">
             <button class="btn btn-primary btn-lg btn-block" type="submit">Complete Order</button>
-            <a class="btn btn-secondary btn-lg btn-block" href="/assignmentW03.php">Coontinue Shopping</a>
+            <a class="btn btn-secondary btn-lg btn-block" href="../w03/">Coontinue Shopping</a>
           </form>
           <hr class="mb-4">
         </div>
       </div>
   </div>
 
-<!-- scripts -->
-  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
+  <?php include $_SERVER['DOCUMENT_ROOT'].'../common/sripts.php';?>
+
   <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
