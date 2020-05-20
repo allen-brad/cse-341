@@ -135,7 +135,6 @@ switch ($action) {
 
     <?php include $_SERVER['DOCUMENT_ROOT'].'/common/scripts.php';?>
 
-
 </body>
 
 </html>
