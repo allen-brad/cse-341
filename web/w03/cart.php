@@ -115,7 +115,7 @@ switch ($action) {
                                 echo '<input type="hidden" name="action" value="uptateQuantity">';
                                 echo '<input type="hidden" name="item" value="'. $item['product']. '">';
                                 echo '<button class="btn btn-outline-secondary" type="sumbit">Update</button>';
-                                echo '<button class="btn btn-outline-secondary" type="button" onclick="document.location = \'\w03\cart.php?action=removeFromCart&item='.$item['product']. ' \'">Remove</button> ';
+                                echo '<button class="btn btn-outline-secondary" type="button" onclick="document.location = \'\cart.php?action=removeFromCart&item='.$item['product']. ' \'">Remove</button> ';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</form>';
@@ -139,7 +139,7 @@ switch ($action) {
             <a class="btn btn-secondary btn-lg float-right mr-2
             <?php if(itemCountInCart() == 0) {
                 echo 'disabled';
-             }?>" href="../w03/checkout.php">Check Out</a>
+             }?>" href="/w03/checkout.php">Check Out</a>
         </div>
     </div>
 
