@@ -113,7 +113,7 @@ switch ($action) {
 
   <div class="container">
     <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="img/ba.svg" alt="" width="72" height="72">
+        <img class="d-block mx-auto mb-4" src="/img/ba.svg" alt="" width="72" height="72">
         <h2>Checkout</h2>
       </div>
 
