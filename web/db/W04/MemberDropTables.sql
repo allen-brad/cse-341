@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS MemberTenure;
+DROP TABLE IF EXISTS MemberPhone;
+DROP TABLE IF EXISTS MemberEmergencyContact;
+DROP TABLE IF EXISTS MemberAddress;
+DROP TABLE IF EXISTS Member;
+DROP TABLE IF EXISTS MemberStatus;
