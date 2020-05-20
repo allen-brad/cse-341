@@ -22,7 +22,7 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-  <?php include $_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'; ?>
+  <?php include $_SERVER['DOCUMENT_ROOT'].'/commonb/nav.php'; ?>
 
   <div id="about-me-carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
