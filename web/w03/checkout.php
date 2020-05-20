@@ -52,10 +52,10 @@ switch ($action) {
             } else {
                 //cart exists so check and see if the item is already in the cart and increase the quantity to it
                 if ( searchCartByItem($item) ) {
-                    echo "$item found in cart... increment. <br>";
+                    //echo "$item found in cart... increment. <br>";
                     updateQuantityInCart($item, $quantity);
                 } else {
-                    echo "$item not found in cart... adding to cart. <br>";
+                    //echo "$item not found in cart... adding to cart. <br>";
                     $_SESSION["cart"][] = array(
                         'product' => $item,
                         'quantity' => $quantity,
@@ -63,7 +63,6 @@ switch ($action) {
                 }
             }
         }
-        // PGR to redirect to this page to prevent page refresh resubmiting form post
     break;
 
     case 'checkForLemons':
@@ -95,13 +94,13 @@ switch ($action) {
 
   <title>CS341 W03 Assignment | Check Out</title>
 
-  <link rel="manifest" href="../site.webmanifest">
-  <link rel="apple-touch-icon" href="../cropped-ba-192x192.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/cropped-ba-192x192.png">
 
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/w03.css">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/w03.css">
 
 </head>
 
@@ -110,7 +109,7 @@ switch ($action) {
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-  <?php include $_SERVER['DOCUMENT_ROOT'].'../common/nav.php'; ?>
+  <?php include $_SERVER['DOCUMENT_ROOT'].'/common/nav.php'; ?>
 
   <div class="container">
     <div class="py-5 text-center">
@@ -236,7 +235,7 @@ switch ($action) {
       </div>
   </div>
 
-  <?php include $_SERVER['DOCUMENT_ROOT'].'../common/sripts.php';?>
+  <?php include $_SERVER['DOCUMENT_ROOT'].'/common/scripts.php';?>
 
   <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
