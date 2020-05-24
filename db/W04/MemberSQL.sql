@@ -1,7 +1,13 @@
 --Create tables for Member Database
+--DROP TABLE IF EXISTS MemberPhone;
+--DROP TABLE IF EXISTS MemberEmergencyContact;
+--DROP TABLE IF EXISTS MemberAddress;
+--DROP TABLE IF EXISTS MemberTenure;
+--DROP TABLE IF EXISTS Member;
+--DROP TABLE IF EXISTS MemberStatus;
+
+
 -- ************************************** MemberStatus
---for clean up
-DROP TABLE IF EXISTS MemberStatus;
 
 CREATE TABLE MemberStatus
 (
@@ -12,25 +18,24 @@ CREATE TABLE MemberStatus
 
 
 -- ************************************** Member
---for clean up
-DROP TABLE IF EXISTS Member;
+
 CREATE TABLE Member
 (
  memberID       integer NOT NULL GENERATED ALWAYS AS IDENTITY (
  start 1000
  ),
  lastName       varchar(50) NOT NULL,
- fisrtName      varchar(50) NOT NULL,
+ firstName      varchar(50) NOT NULL,
  middleName     varchar(50) NULL,
  preferredName  varchar(25) NOT NULL,
  callSign       varchar(10) NOT NULL,
  dob            date NOT NULL,
  sarEmail       varchar(50) NOT NULL,
  personalEmail  varchar(50) NOT NULL,
- dlNuber        varchar(20) NOT NULL,
+ dlNumber        varchar(20) NOT NULL,
  dlState        varchar(2) NOT NULL,
  ssnLastFour    integer NOT NULL,
- createdDate    timestamp default current_timestamp,
+ createdDate    timestamp with time zone default current_timestamp,
  lastUpdate     timestamp with time zone NOT NULL,
  memberStatusID integer NOT NULL,
  CONSTRAINT PK_Member PRIMARY KEY ( memberID ),
@@ -43,14 +48,11 @@ CREATE INDEX ON Member
 );
 
 -- ************************************** MemberTenure
---for clean up
-DROP TABLE IF EXISTS MemberTenure;
-
 CREATE TABLE MemberTenure
 (
  memberTenureID integer NOT NULL GENERATED ALWAYS AS IDENTITY,
  startDate      date NOT NULL,
- endDate        date NOT NULL,
+ endDate        date,
  createdDate    time with time zone NOT NULL,
  lastUpdate     time with time zone NOT NULL,
  memberID       integer NOT NULL,
@@ -78,9 +80,6 @@ CREATE INDEX ON MemberTenure
 );
 
 -- ************************************** MemberAddress
---for clean up
-DROP TABLE IF EXISTS MemberAddress;
-
 CREATE TABLE MemberAddress
 (
  memberAddressID integer NOT NULL GENERATED ALWAYS AS IDENTITY (
@@ -119,9 +118,6 @@ CREATE INDEX ON MemberAddress
 );
 
 -- ************************************** MemberEmergencyContact
---for clean up
-DROP TABLE IF EXISTS MemberEmergencyContact;
-
 CREATE TABLE MemberEmergencyContact
 (
  memberEmergencyContactID integer NOT NULL GENERATED ALWAYS AS IDENTITY (
@@ -157,9 +153,6 @@ CREATE INDEX ON MemberEmergencyContact
 );
 
 -- ************************************** MemberPhone
---for cleanup
-DROP TABLE IF EXISTS MemberPhone;
-
 CREATE TABLE MemberPhone
 (
  memberPhoneID integer NOT NULL GENERATED ALWAYS AS IDENTITY (
