@@ -30,8 +30,8 @@ CREATE TABLE Member
  dlNuber        varchar(20) NOT NULL,
  dlState        varchar(2) NOT NULL,
  ssnLastFour    integer NOT NULL,
- createdDate    time with time zone NOT NULL,
- lastUpdate     time with time zone NOT NULL,
+ createdDate    timestamp default current_timestamp,
+ lastUpdate     timestamp with time zone NOT NULL,
  memberStatusID integer NOT NULL,
  CONSTRAINT PK_Member PRIMARY KEY ( memberID ),
  CONSTRAINT FK_236 FOREIGN KEY ( memberStatusID ) REFERENCES MemberStatus ( memberStatusID )
