@@ -5,13 +5,15 @@
 
  function getMemberDirectory(){
     $db = dbConnection();
-    $sql = 'SELECT * FROM Scriptures WHERE id = :id';
+    $sql = "SELECT m.memberid , m.preferredname || ' ' || m.lastname AS fullname, m.callsign, p.phonenumber
+            FROM Member m JOIN MemberPhone p ON m.memberid = p.memberid
+            WHERE p.isprimary = true
+            ORDER BY m.lastname, m.firstname DESC;";
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':id', $scriptureId, PDO::PARAM_INT);
     $stmt->execute();
-    $scripture = $stmt->fetch(PDO::FETCH_ASSOC);
+    $memberData = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-    return $scripture;
+    return $memberData; 
   }
 
 /* //check for existing client first

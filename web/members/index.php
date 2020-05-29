@@ -1,5 +1,11 @@
 <?php
 //Member Controller
+
+//error logging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Create or access a Session
 session_start();
 
@@ -18,7 +24,7 @@ switch ($action) {
     default:
 
     // future check if logged in and role
-        //$memberDirectory = getMemberDirectory();
+    $memberDirectory = getMemberDirectory();
    
-      include $_SERVER['DOCUMENT_ROOT'].'/view/members.php';;
+    include $_SERVER['DOCUMENT_ROOT'].'/view/members.php';;
 }
