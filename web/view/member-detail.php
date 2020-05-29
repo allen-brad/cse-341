@@ -101,7 +101,7 @@
                                 Drivers License
                             </dt>
                             <dd class=\"col-sm-10\">
-                            State: $dlState #: $dlNumber  
+                            State: $dlState Number: $dlNumber  
                             </dd>
                             <dt class=\"col-sm-2\">
                                 SSN Last Four
@@ -131,7 +131,55 @@
                                 }
                                 echo '</dl>';
                             }
-
+                            if (!empty($memberAddresses)){
+                                echo "<h4 class=\"text-muted\">Addresses</h4><dl class=\"row\">";
+                                foreach($memberAddresses as $address){
+                                    $street1 = $address['street1'];
+                                    $street2 = $address['street2'];
+                                    $street3 = $address['street3'];
+                                    $city = $address['city'];
+                                    $state = $address['state'];
+                                    $zip = $address['zip'];
+                                    echo "  <dt class=\"col-sm-2\">
+                                                Street 1
+                                            </dt>
+                                            <dd class=\"col-sm-10\">
+                                                $street1
+                                            </dd>
+                                            <dt class=\"col-sm-2\">
+                                                Street 2
+                                            </dt>
+                                            <dd class=\"col-sm-10\">
+                                                $street2
+                                            </dd>
+                                            <dt class=\"col-sm-2\">
+                                                Street 3
+                                            </dt>
+                                            <dd class=\"col-sm-10\">
+                                                $street3
+                                            </dd>
+                                            <dt class=\"col-sm-2\">
+                                                City
+                                            </dt>
+                                            <dd class=\"col-sm-10\">
+                                                $city
+                                            </dd>
+                                            <dt class=\"col-sm-2\">
+                                                State
+                                            </dt>
+                                            <dd class=\"col-sm-10\">
+                                                $state
+                                            </dd>
+                                            <dt class=\"col-sm-2\">
+                                                Zip
+                                            </dt>
+                                            <dd class=\"col-sm-10\">
+                                                $zip
+                                            </dd>
+                                            ";
+                                }
+                                echo '</dl>';
+                            }
 
                             echo "<h4 class=\"text-muted\">Emergency Contact</h4>
                             <dl class=\"row\">
