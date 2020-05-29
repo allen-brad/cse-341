@@ -39,7 +39,20 @@ switch ($action) {
     break;
 
     case 'edit':
+        $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+        $message = "<div class=\"alert alert-warning\" role=\"alert\">Editing of Member ID $memberID not allowed at this time!</div>";
+
         include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
+        
+    break;
+
+    case 'delete':
+        $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+        $message = "<div class=\"alert alert-warning\" role=\"alert\">Deleting of Member ID $memberID not allowed at this time!</div>";
+
+        include $_SERVER['DOCUMENT_ROOT'].'/view/member-delete.php';
         
     break;
 
