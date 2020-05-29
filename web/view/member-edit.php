@@ -14,6 +14,8 @@
   <!-- Bootstrap core CSS -->
   <link href="/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/member.css">
+
   
 </head>
 
@@ -23,11 +25,11 @@
 </header>
 <div class="container">
     <main role="main" class="pb-3">
-        <h1>Edit</h1>
-
-        <h4>Movie</h4>
+        <h1>Edit Member</h1>
+        <?php echo "<h4>Member ID: $memberID</h4>";?>
         <hr />
-        <div class="row">
+        <?php if (isset($message)) { echo $message;}?>
+        <!-- <div class="row">
             <div class="col-md-4">
                 <form method="post">
                     <input type="hidden" data-val="true" data-val-required="The ID field is required." id="Movie_ID" name="Movie.ID" value="2" />
@@ -58,8 +60,8 @@
             </div>
         </div>
         <div>
-            <a href="/Movies">Back to List</a>
-        </div>
+            <a href="/members">Back to List</a>
+        </div> -->
     </main>
 </div>
 
