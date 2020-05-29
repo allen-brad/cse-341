@@ -36,10 +36,10 @@ CREATE TABLE Member
  dlState        varchar(2) NOT NULL,
  ssnLastFour    integer NOT NULL,
  createdDate    timestamp with time zone default current_timestamp,
- lastUpdate     timestamp with time zone NOT NULL,
+ lastUpdate     timestamp with time zone default current_timestamp,
  memberStatusID integer NOT NULL,
  CONSTRAINT PK_Member PRIMARY KEY ( memberID ),
- CONSTRAINT FK_236 FOREIGN KEY ( memberStatusID ) REFERENCES MemberStatus ( memberStatusID )
+ CONSTRAINT FK_Member_MemberStatus FOREIGN KEY ( memberStatusID ) REFERENCES MemberStatus ( memberStatusID )
 );
 
 CREATE INDEX ON Member
@@ -53,15 +53,15 @@ CREATE TABLE MemberTenure
  memberTenureID integer NOT NULL GENERATED ALWAYS AS IDENTITY,
  startDate      date NOT NULL,
  endDate        date,
- createdDate    time with time zone NOT NULL,
- lastUpdate     time with time zone NOT NULL,
  memberID       integer NOT NULL,
  createdBy      integer NOT NULL,
  lastUpdateBy   integer NOT NULL,
+ createdDate    timestamp with time zone default current_timestamp,
+ lastUpdate     timestamp with time zone default current_timestamp,
  CONSTRAINT PK_MemberTenure PRIMARY KEY ( memberTenureID ),
- CONSTRAINT FK_283 FOREIGN KEY ( memberID ) REFERENCES Member ( memberID ),
- CONSTRAINT FK_286 FOREIGN KEY ( createdBy ) REFERENCES Member ( memberID ),
- CONSTRAINT FK_289 FOREIGN KEY ( lastUpdateBy ) REFERENCES Member ( memberID )
+ CONSTRAINT FK_MemberTenure_Member_1 FOREIGN KEY ( memberID ) REFERENCES Member ( memberID ),
+ CONSTRAINT FK_MemberTenure_Member_2 FOREIGN KEY ( createdBy ) REFERENCES Member ( memberID ),
+ CONSTRAINT FK_MemberTenure_Member_3 FOREIGN KEY ( lastUpdateBy ) REFERENCES Member ( memberID )
 );
 
 CREATE INDEX ON MemberTenure
@@ -91,15 +91,15 @@ CREATE TABLE MemberAddress
  city            varchar(50) NOT NULL,
  state           varchar(50) NOT NULL,
  zip             varchar(10) NOT NULL,
- createdDate     time with time zone NOT NULL,
- lastUpdate      time with time zone NOT NULL,
  memberID        integer NOT NULL,
  createdBy       integer NOT NULL,
  lastUpdateBy    integer NOT NULL,
+ createdDate     timestamp with time zone default current_timestamp,
+ lastUpdate      timestamp with time zone default current_timestamp,
  CONSTRAINT PK_MemberAddress PRIMARY KEY ( memberAddressID ),
- CONSTRAINT FK_249 FOREIGN KEY ( memberID ) REFERENCES Member ( memberID ),
- CONSTRAINT FK_252 FOREIGN KEY ( createdBy ) REFERENCES Member ( memberID ),
- CONSTRAINT FK_255 FOREIGN KEY ( lastUpdateBy ) REFERENCES Member ( memberID )
+ CONSTRAINT FK_MemberAddress_Member_1 FOREIGN KEY ( memberID ) REFERENCES Member ( memberID ),
+ CONSTRAINT FK_MemberAddress_Member_2 FOREIGN KEY ( createdBy ) REFERENCES Member ( memberID ),
+ CONSTRAINT FK_MemberAddress_Member_3 FOREIGN KEY ( lastUpdateBy ) REFERENCES Member ( memberID )
 );
 
 CREATE INDEX ON MemberAddress
@@ -126,15 +126,15 @@ CREATE TABLE MemberEmergencyContact
  contactFullName          varchar(100) NOT NULL,
  contactCellPhone         varchar(50) NOT NULL,
  contactHomePhone         varchar(50) NOT NULL,
- createdDate              time with time zone NOT NULL,
- lastUpdate               time with time zone NOT NULL,
  memberID                 integer NOT NULL,
  createdBy                integer NOT NULL,
  lastUpdateBy             integer NOT NULL,
+ createdDate              timestamp with time zone default current_timestamp,
+ lastUpdate               timestamp with time zone default current_timestamp,
  CONSTRAINT PK_MemberEmergencyContact PRIMARY KEY ( memberEmergencyContactID ),
- CONSTRAINT FK_267 FOREIGN KEY ( memberID ) REFERENCES Member ( memberID ),
- CONSTRAINT FK_270 FOREIGN KEY ( createdBy ) REFERENCES Member ( memberID ),
- CONSTRAINT FK_273 FOREIGN KEY ( lastUpdateBy ) REFERENCES Member ( memberID )
+ CONSTRAINT FK_MemberEmergencyContatct_Member_1 FOREIGN KEY ( memberID ) REFERENCES Member ( memberID ),
+ CONSTRAINT FK_MemberEmergencyContatct_Member_2 FOREIGN KEY ( createdBy ) REFERENCES Member ( memberID ),
+ CONSTRAINT FK_MemberEmergencyContatct_Member_3 FOREIGN KEY ( lastUpdateBy ) REFERENCES Member ( memberID )
 );
 
 CREATE INDEX ON MemberEmergencyContact
@@ -158,18 +158,19 @@ CREATE TABLE MemberPhone
  memberPhoneID integer NOT NULL GENERATED ALWAYS AS IDENTITY (
  start 1000
  ),
+ memberID      integer NOT NULL,
  phoneType     varchar(50) NOT NULL,
  phoneNumber   varchar(50) NOT NULL,
  isPrimary     boolean NOT NULL,
- createdDate   time with time zone NOT NULL,
- lastUpdate    time with time zone NOT NULL,
- memberID      integer NOT NULL,
  createdBy     integer NOT NULL,
  lastUpdateBy  integer NOT NULL,
+ createdDate   timestamp with time zone default current_timestamp,
+ lastUpdate    timestamp with time zone default current_timestamp,
  CONSTRAINT PK_MemberPhone PRIMARY KEY ( memberPhoneID ),
- CONSTRAINT FK_223 FOREIGN KEY ( memberID ) REFERENCES Member ( memberID ),
- CONSTRAINT FK_230 FOREIGN KEY ( createdBy ) REFERENCES Member ( memberID ),
- CONSTRAINT FK_233 FOREIGN KEY ( lastUpdateBy ) REFERENCES Member ( memberID )
+ CONSTRAINT FK_MemberPhone_Member_1 FOREIGN KEY ( memberID ) REFERENCES Member ( memberID ),
+ CONSTRAINT FK_MemberPhone_Member_2 FOREIGN KEY ( createdBy ) REFERENCES Member ( memberID ),
+ CONSTRAINT FK_MemberPhone_Member_3 FOREIGN KEY ( lastUpdateBy ) REFERENCES Member ( memberID ),
+ CONSTRAINT UK_PrimaryPhone UNIQUE (memberID, isPrimary)
 );
 
 CREATE INDEX  ON MemberPhone
