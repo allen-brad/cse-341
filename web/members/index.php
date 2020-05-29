@@ -25,7 +25,8 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/library/functions.php';
 switch ($action) {
     case 'details':
         $memberId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-        $memberDetail = getMemberDetail($memberId);
+        echo $memberId;
+        //$memberDetail = getMemberDetail($memberId);
 
         if(!count($memberDetail)){
             $message = "<div class=\"alert alert-warning\" role=\"alert\">Member ID $memberId was not found!</div>";
@@ -33,7 +34,7 @@ switch ($action) {
             $memberPhoneNumbers = getMemberPhone($memberId);
             $memberAddresses = getMemberAddress($memberId);
         }
-        
+
         include $_SERVER['DOCUMENT_ROOT'].'/view/member-detail.php';
 
     break;
