@@ -78,8 +78,8 @@
                     // <a href=\"/Members/?action=delete&id=$memberID\">Delete</a>
                     // </td>
                     // </tr>";
-                }
-                ?>
+                //}
+            ?>
     </main>
 </div>
 
