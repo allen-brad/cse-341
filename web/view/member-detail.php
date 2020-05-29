@@ -31,7 +31,7 @@
             }else{
                 //var_dump ($memberDetail);
                 if (!empty($memberDetail)) {
-                    echo  "<div><h4>Member ID: $memberID</h4><hr /><dl class=\"row\">";
+                    echo  "<div><h4>Member ID: $memberID</h4><hr />";
                     $firstName = $memberDetail['firstname'];
                     $middleName = $memberDetail['middlename'];
                     $lastName = $memberDetail['lastname'];
@@ -48,7 +48,8 @@
                     $eContactCell = format_phone_us($memberDetail['contactcellphone']);
                     $eContactHome = format_phone_us($memberDetail['contacthomephone']);
 
-                    echo "  <dt class=\"col-sm-2\">
+                    echo "  <dl class=\"row\">
+                            <dt class=\"col-sm-2\">
                                 First Name
                             </dt>
                             <dd class=\"col-sm-10\">
@@ -114,7 +115,8 @@
                             <dd class=\"col-sm-10\">
                                 $memberStatus
                             </dd>
-                            <hr />
+                            </dl>
+                            <dl class=\"row\">
                             <dt class=\"col-sm-2\">
                                 Emergency Contact
                             </dt>
@@ -132,11 +134,12 @@
                             </dt>
                             <dd class=\"col-sm-10\">
                                 $eContactHome
-                            </dd>                           
+                            </dd> 
+                            </dl>                          
                             ";
                     
-                    echo "</dl></div><div>
-                            <a href=\"/members/?action=edit&id=$memberId\">Edit</a> |
+                    echo "</div><div>
+                            <a href=\"/members/?action=edit&id=$memberID\">Edit</a> |
                             <a href=\"/members\">Back to List</a>
                         </div>";
                 }
