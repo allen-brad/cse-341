@@ -44,27 +44,27 @@
             </thead>
             <tbody>
             <?php
-                $memberCount = count($memberDirectory);
-                $i = 0;
-                while ($i < $memberCount)
-                {
-                    $fullName = $memberDirectory[$i].['fullname'];
-                    $callSign = $memberDirectory[$i].['callsign'];
-                    $phoneNumber = $memberDirectory[$i].['phonenumber'];
-                    $memberID = $memberDirectory[$i].['memberid'];
-                    echo "<tr>
-                    <td>$fullName</td>
-                    <td>$callSign</td>
-                    <td>$phoneNumber</td>
-                    <td>
-                    <a href=\"/Members/?action=create&id=$memberID\">Edit</a> |
-                    <a href=\"/Members/?action=details&id=$memberID\">Details</a> |
-                    <a href=\"/Members/?action=delete&id=$memberID\">Delete</a>
-                    </td>
-                    </tr>";
-                }
+                // $memberCount = count($memberDirectory);
+                // $i = 0;
+                // while ($i < $memberCount)
+                // {
+                //     $fullName = $memberDirectory[$i].['fullname'];
+                //     $callSign = $memberDirectory[$i].['callsign'];
+                //     $phoneNumber = $memberDirectory[$i].['phonenumber'];
+                //     $memberID = $memberDirectory[$i].['memberid'];
+                //     echo "<tr>
+                //     <td>$fullName</td>
+                //     <td>$callSign</td>
+                //     <td>$phoneNumber</td>
+                //     <td>
+                //     <a href=\"/Members/?action=create&id=$memberID\">Edit</a> |
+                //     <a href=\"/Members/?action=details&id=$memberID\">Details</a> |
+                //     <a href=\"/Members/?action=delete&id=$memberID\">Delete</a>
+                //     </td>
+                //     </tr>";
+                //}
                 ?>
-                <!-- <tr>
+                <tr>
                     <td>
                         Brad R. Allen
                     </td>
@@ -79,9 +79,10 @@
                         <a href="/Members/?action=details&id=2">Details</a> |
                         <a href="/Members/?action=delete&id=2">Delete</a>
                     </td>
-                </tr> -->
+                </tr>
             </tbody>
         </table>
+        <?php  var_dump($memberDirectory); ?>
     </main>
 </div>
 
