@@ -5,7 +5,7 @@
 
 function format_phone_us($phone) {
   // note: making sure we have something
-  if(!isset($phone{3})) { return ''; }
+  if(empty($phone)) { return ''; }
   // note: strip out everything but numbers 
   $phone = preg_replace("/[^0-9]/", "", $phone);
   $length = strlen($phone);
