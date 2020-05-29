@@ -24,8 +24,8 @@ function getMemberDirectory(){
             JOIN MemberStatus s ON m.memberstatusid = s.memberstatusid
             JOIN MemberEmergencyContact e ON m.memberid = e.memberid
             WHERE m.memberid = :memberID;";
-    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt = $db->prepare($sql);
+    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt->execute();
     $memberDetailData = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
@@ -39,8 +39,8 @@ function getMemberDirectory(){
             JOIN Member m ON p.memberid = m.memberid
             WHERE m.memberid = :memberID
             ORDER BY p.isprimary DESC;";
-    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt = $db->prepare($sql);
+    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt->execute();
     $memberPhoneData = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
