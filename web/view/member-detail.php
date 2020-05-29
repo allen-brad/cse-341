@@ -29,8 +29,9 @@
            if (isset($message)) {
                echo $message;
             }else{
-                if (isset($memberId)) {
-                    var_dump ($memberDetail);
+                var_dump ($memberDetail);
+
+                //if (isset($memberId)) {
                     // echo  "<div><h4>Member ID:$memberId</h4><hr /><dl class=\"row\">";}
 
                     // foreach($memberDetail as $detail){
