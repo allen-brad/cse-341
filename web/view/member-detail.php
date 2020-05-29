@@ -31,7 +31,7 @@
             }else{
                 //var_dump ($memberDetail);
                 if (!empty($memberDetail)) {
-                    echo  "<div><h4>Member ID:$memberId</h4><hr /><dl class=\"row\">";
+                    echo  "<div><h4>Member ID: $memberID</h4><hr /><dl class=\"row\">";
                     $firstName = $memberDetail['firstname'];
                     $middleName = $memberDetail['middlename'];
                     $lastName = $memberDetail['lastname'];
@@ -41,6 +41,7 @@
                     $sarEmail = $memberDetail['saremail'];
                     $personalEmail = $memberDetail['personalemail'];
                     $dlNumber = $memberDetail['dlnumber'];
+                    $dlState = $memberDetail['dlstate'];
                     $ssnLastFour = $memberDetail['ssnlastfour'];
                     $memberStatus = $memberDetail['memberstatustype'];
                     $eContactName = $memberDetail['contactfullname'];
@@ -95,10 +96,47 @@
                             <dd class=\"col-sm-10\">
                                 $personalEmail
                             </dd>
-                        ";
+                            <dt class=\"col-sm-2\">
+                                Drivers License
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                #:$dlNumber State:$dlState 
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                SSN Last Four
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $ssnLastFour
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Status
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $memberStatus
+                            </dd>
+                            <hr />
+                            <dt class=\"col-sm-2\">
+                                Emergency Contact
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $eContactName
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Emergency Cell #
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $eContactCell
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Emergency Home #
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $eContactHome
+                            </dd>                           
+                            ";
                     
                     echo "</dl></div><div>
-                            <a href=\"/members/?action=edit&id=$memberID\">Edit</a> |
+                            <a href=\"/members/?action=edit&id=$memberId\">Edit</a> |
                             <a href=\"/members\">Back to List</a>
                         </div>";
                 }
