@@ -18,6 +18,9 @@ $action = filter_input(INPUT_GET, 'action');
 require_once $_SERVER['DOCUMENT_ROOT'].'/library/connections.php';
 // Get the member model
 require_once $_SERVER['DOCUMENT_ROOT'].'/model/member-model.php';
+// Get helper functions
+require_once $_SERVER['DOCUMENT_ROOT'].'/library/functions.php';
+
 
 switch ($action) {
 

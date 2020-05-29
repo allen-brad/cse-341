@@ -43,7 +43,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <td>
                         Brad R. Allen
                     </td>
@@ -58,13 +58,12 @@
                         <a href="/Members/?action=details&id=2">Details</a> |
                         <a href="/Members/?action=delete&id=2">Delete</a>
                     </td>
-                </tr>
-                <?php var_dump($memberDirectory);
+                </tr> -->
+                <?php
                 foreach($memberDirectory as $member){
-                    //echo $member['memberid'].'<br>';
                     $fullName = $member['fullname'];
                     $callSign = $member['callsign'];
-                    $phoneNumber = $member['phonenumber'];
+                    $phoneNumber = format_phone_us($member['phonenumber']);
                     $memberID = $member['memberid'];
                     echo "<tr>
                     <td>$fullName</td>
