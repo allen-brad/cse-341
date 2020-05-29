@@ -26,7 +26,7 @@ switch ($action) {
     case 'details':
         $memberId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         echo $memberId;
-        //$memberDetail = getMemberDetail($memberId);
+        $memberDetail = getMemberDetail($memberId);
 
         if(!count($memberDetail)){
             $message = "<div class=\"alert alert-warning\" role=\"alert\">Member ID $memberId was not found!</div>";

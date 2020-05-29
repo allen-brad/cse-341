@@ -29,7 +29,7 @@ function getMemberDirectory(){
     $stmt->execute();
     $memberDetailData = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-    return $memberDetailData; 
+    return $memberDetailData;
   }
 
   function getMemberPhone($memberID){
