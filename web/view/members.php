@@ -43,24 +43,6 @@
                 </tr>
             </thead>
             <tbody>
-            <?php
-                foreach($memberDirectory as $member){
-                    $fullName = $member.['fullname'];
-                    $callSign = $member.['callsign'];
-                    $phoneNumber = $member.['phonenumber'];
-                    $memberID = $member.['memberid'];
-                    echo "<tr>
-                    <td>$fullName</td>
-                    <td>$callSign</td>
-                    <td>$phoneNumber</td>
-                    <td>
-                    <a href=\"/Members/?action=create&id=$memberID\">Edit</a> |
-                    <a href=\"/Members/?action=details&id=$memberID\">Details</a> |
-                    <a href=\"/Members/?action=delete&id=$memberID\">Delete</a>
-                    </td>
-                    </tr>";
-                }
-                ?>
                 <tr>
                     <td>
                         Brad R. Allen
@@ -79,6 +61,25 @@
                 </tr>
             </tbody>
         </table>
+        <?php
+                foreach($memberDirectory as $member){
+                    echo $member.['fullname'].'<br>';
+                    // $fullName = $member.['fullname'];
+                    // $callSign = $member.['callsign'];
+                    // $phoneNumber = $member.['phonenumber'];
+                    // $memberID = $member.['memberid'];
+                    // echo "<tr>
+                    // <td>$fullName</td>
+                    // <td>$callSign</td>
+                    // <td>$phoneNumber</td>
+                    // <td>
+                    // <a href=\"/Members/?action=create&id=$memberID\">Edit</a> |
+                    // <a href=\"/Members/?action=details&id=$memberID\">Details</a> |
+                    // <a href=\"/Members/?action=delete&id=$memberID\">Delete</a>
+                    // </td>
+                    // </tr>";
+                }
+                ?>
     </main>
 </div>
 
