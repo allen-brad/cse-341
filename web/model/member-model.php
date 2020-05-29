@@ -11,7 +11,7 @@
             ORDER BY m.lastname, m.firstname DESC;";
     $stmt = $db->prepare($sql);
     $stmt->execute();
-    $memberData = $stmt->fetch(PDO::FETCH_ASSOC);
+    $memberData = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
     return $memberData; 
   }
