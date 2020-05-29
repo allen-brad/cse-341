@@ -23,11 +23,20 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/library/functions.php';
 
 
 switch ($action) {
+    case 'details':
+        include $_SERVER['DOCUMENT_ROOT'].'/view/member-detail.php';
+
+    break;
+
+    case 'edit':
+        include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
+        
+    break;
 
     default:
 
     // future check if logged in and role
     $memberDirectory = getMemberDirectory();
    
-    include $_SERVER['DOCUMENT_ROOT'].'/view/members.php';;
+    include $_SERVER['DOCUMENT_ROOT'].'/view/members.php';
 }
