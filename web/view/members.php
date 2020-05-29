@@ -44,14 +44,11 @@
             </thead>
             <tbody>
             <?php
-                $memberCount = count($memberDirectory);
-                $i = 0;
-                while ($i < $memberCount)
-                {
-                    $fullName = $memberDirectory.[$i].['fullname'];
-                    $callSign = $memberDirectory.[$i].['callsign'];
-                    $phoneNumber = $memberDirectory.[$i].['phonenumber'];
-                    $memberID = $memberDirectory.[$i].['memberid'];
+                foreach($memberDirectory as $member){
+                    $fullName = $member.['fullname'];
+                    $callSign = $member.['callsign'];
+                    $phoneNumber = $member.['phonenumber'];
+                    $memberID = $member.['memberid'];
                     echo "<tr>
                     <td>$fullName</td>
                     <td>$callSign</td>
