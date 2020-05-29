@@ -116,6 +116,7 @@
                                 $memberStatus
                             </dd>
                             </dl>
+                            <h4 class=\"text-muted\">Emergency Contact</h4>
                             <dl class=\"row\">
                             <dt class=\"col-sm-2\">
                                 Emergency Contact
