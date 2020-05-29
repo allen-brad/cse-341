@@ -101,7 +101,7 @@
                                 Drivers License
                             </dt>
                             <dd class=\"col-sm-10\">
-                                #:$dlNumber State:$dlState 
+                            State: $dlState #: $dlNumber  
                             </dd>
                             <dt class=\"col-sm-2\">
                                 SSN Last Four
@@ -115,8 +115,25 @@
                             <dd class=\"col-sm-10\">
                                 $memberStatus
                             </dd>
-                            </dl>
-                            <h4 class=\"text-muted\">Emergency Contact</h4>
+                            </dl>";
+
+                            if (!empty($memberPhoneNumbers)){
+                                echo "<h4 class=\"text-muted\">Phone Numbers</h4><dl class=\"row\">";
+                                foreach($memberPhoneNumbers as $phone){
+                                    $phoneType = $phone['phonetype'];
+                                    $phoneNumber = format_phone_us($phone['phonenumber']);
+                                    echo "  <dt class=\"col-sm-2\">
+                                                $phoneType
+                                            </dt>
+                                            <dd class=\"col-sm-10\">
+                                                $phoneNumber
+                                            </dd>";
+                                }
+                                echo '</dl>';
+                            }
+
+
+                            echo "<h4 class=\"text-muted\">Emergency Contact</h4>
                             <dl class=\"row\">
                             <dt class=\"col-sm-2\">
                                 Name
