@@ -61,7 +61,7 @@
                 </tr>
             </tbody>
         </table>
-        <?php var_dump( $memberDirectory); ?>
+        <!-- <?php //var_dump( $memberDirectory); ?> -->
     </main>
 </div>
 
