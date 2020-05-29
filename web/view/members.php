@@ -48,10 +48,10 @@
                 $i = 0;
                 while ($i < $memberCount)
                 {
-                    $fullName = $memberDirectory[$i].['fullname'];
-                    $callSign = $memberDirectory[$i].['callsign'];
-                    $phoneNumber = $memberDirectory[$i].['phonenumber'];
-                    $memberID = $memberDirectory[$i].['memberid'];
+                    $fullName = $memberDirectory.[$i].['fullname'];
+                    $callSign = $memberDirectory.[$i].['callsign'];
+                    $phoneNumber = $memberDirectory.[$i].['phonenumber'];
+                    $memberID = $memberDirectory.[$i].['memberid'];
                     echo "<tr>
                     <td>$fullName</td>
                     <td>$callSign</td>
