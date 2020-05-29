@@ -59,9 +59,9 @@
                 <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ij_CcvMZaxChWQ7xxy43_rJ7E3ZwhN44GRc1FptRRCIHSi-5Mg_dOtFWUxvWOi61zgH3NUEzlyAhe7gtEZJmzYOA10Yt9a8WJbztNo21Zjd1I6Mf-4Nt_SU7FhHmxrdmJh-AfHi2fRAViZufCYHiVA" /></form>
             </div>
         </div>
-        <div>
+        <div>-->
             <a href="/members">Back to List</a>
-        </div> -->
+        </div> 
     </main>
 </div>
 
