@@ -23,12 +23,88 @@
 </header>
 <div class="container">
     <main role="main" class="pb-3">
-        <h1>Details</h1>
-        <div>
-            <h4>Member</h4>
-            <hr />
-            <?php if (isset($message)) { echo $message;} ?>
-            <dl class="row">
+        <h1>Member Details</h1>
+        
+           <?php
+           if (isset($message)) {
+               echo $message;
+            }else{
+                if (isset($memberId)) { echo  "<div><h4>Member ID:$memberId</h4><hr /><dl class=\"row\">";}
+
+                foreach($memberDetail as $detail){
+                    $firstName = $detail['firstName'];
+                    $middleName = $detail['middleName'];
+                    $lastName = $detail['lastName'];
+                    $preferredName = $detail['preferredName'];
+                    $callSign = $detail['callsign'];
+                    $memberDOB = $detail['dob'];
+                    $sarEmail = $detail['saremail'];
+                    $personalEmail = $detail['personalemail'];
+                    $dlNumber = $detail['dlNumber'];
+                    $ssnLastFour = $detail['ssnLastFour'];
+                    $memberStatus = $detail['memberstatustype'];
+                    $eContactName = $detail['contactFullName'];
+                    $eContactCell = format_phone_us($detail['contactcellphone']);
+                    $eContactHome = format_phone_us($detail['contacthomephone']);
+                    echo "  <dt class=\"col-sm-2\">
+                                First Name
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $firstName
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Middle Name
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $middleName
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Last Name
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $lastName
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Preferred Name
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $preferredName
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Call Sign
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $callSign
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                DOB
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $memberDOB
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                SAR eMail
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $sarEmail
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                 Personal eMail
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $personalEmail
+                            </dd>
+                    ";
+                }
+                echo "</dl></div><div>
+                        <a href=\"/members/?action=edit&id=$memberID\">Edit</a> |
+                         <a href=\"/members\">Back to List</a>
+                     </div>";
+
+            }  ?>
+
+                
+            <!-- <dl class="row">
                 <dt class="col-sm-2">
                     Title
                 </dt>
@@ -54,11 +130,11 @@
                     2.99
                 </dd>
             </dl>
-        </div>
-        <div>
+            </div>
+            <div>
             <a href="/members/?action=edit&id=$memberID">Edit</a> |
             <a href="/members">Back to List</a>
-        </div>
+            </div> -->
     </main>
 </div>
 

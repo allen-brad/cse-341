@@ -25,7 +25,7 @@
     <main role="main" class="pb-3">
         <h1>WCSAR Member Directory</h1>
         <p>
-            <a href="/Members/?action=create">Create New</a>
+            <a href="/members/?action=create">Create New</a>
         </p>
         <table class="table">
             <thead>
@@ -43,22 +43,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr>
-                    <td>
-                        Brad R. Allen
-                    </td>
-                    <td>
-                        L86
-                    </td>
-                    <td>
-                        (435) 503-1887
-                    </td>
-                    <td>
-                        <a href="/Members/?action=create&id=2">Edit</a> |
-                        <a href="/Members/?action=details&id=2">Details</a> |
-                        <a href="/Members/?action=delete&id=2">Delete</a>
-                    </td>
-                </tr> -->
                 <?php
                 foreach($memberDirectory as $member){
                     $fullName = $member['fullname'];

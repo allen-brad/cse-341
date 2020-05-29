@@ -28,7 +28,7 @@ switch ($action) {
         echo $memberId;
         $memberDetail = getMemberDetail($memberId);
 
-        if(!count($memberDetail)){
+        if(empty($memberDetail)){
             $message = "<div class=\"alert alert-warning\" role=\"alert\">Member ID $memberId was not found!</div>";
           } else {
             $memberPhoneNumbers = getMemberPhone($memberId);
