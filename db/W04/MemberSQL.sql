@@ -1,10 +1,10 @@
 --Create tables for Member Database
---DROP TABLE IF EXISTS MemberPhone;
---DROP TABLE IF EXISTS MemberEmergencyContact;
---DROP TABLE IF EXISTS MemberAddress;
---DROP TABLE IF EXISTS MemberTenure;
---DROP TABLE IF EXISTS Member;
---DROP TABLE IF EXISTS MemberStatus;
+DROP TABLE IF EXISTS MemberPhone;
+DROP TABLE IF EXISTS MemberEmergencyContact;
+DROP TABLE IF EXISTS MemberAddress;
+DROP TABLE IF EXISTS MemberTenure;
+DROP TABLE IF EXISTS Member;
+DROP TABLE IF EXISTS MemberStatus;
 
 
 -- ************************************** MemberStatus
@@ -51,9 +51,9 @@ CREATE INDEX ON Member
 CREATE TABLE MemberTenure
 (
  memberTenureID integer NOT NULL GENERATED ALWAYS AS IDENTITY,
+ memberID       integer NOT NULL,
  startDate      date NOT NULL,
  endDate        date,
- memberID       integer NOT NULL,
  createdBy      integer NOT NULL,
  lastUpdateBy   integer NOT NULL,
  createdDate    timestamp with time zone default current_timestamp,
@@ -85,13 +85,13 @@ CREATE TABLE MemberAddress
  memberAddressID integer NOT NULL GENERATED ALWAYS AS IDENTITY (
  start 1000
  ),
+ memberID        integer NOT NULL,
  street1         varchar(50) NOT NULL,
  street2         varchar(50) NULL,
  street3         varchar(50) NULL,
  city            varchar(50) NOT NULL,
  state           varchar(50) NOT NULL,
  zip             varchar(10) NOT NULL,
- memberID        integer NOT NULL,
  createdBy       integer NOT NULL,
  lastUpdateBy    integer NOT NULL,
  createdDate     timestamp with time zone default current_timestamp,
@@ -123,10 +123,10 @@ CREATE TABLE MemberEmergencyContact
  memberEmergencyContactID integer NOT NULL GENERATED ALWAYS AS IDENTITY (
  start 1000
  ),
+ memberID                 integer NOT NULL,
  contactFullName          varchar(100) NOT NULL,
  contactCellPhone         varchar(50) NOT NULL,
  contactHomePhone         varchar(50) NOT NULL,
- memberID                 integer NOT NULL,
  createdBy                integer NOT NULL,
  lastUpdateBy             integer NOT NULL,
  createdDate              timestamp with time zone default current_timestamp,

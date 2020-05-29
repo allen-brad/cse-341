@@ -3,18 +3,64 @@
  * Member model
  */
 
- function getMemberDirectory(){
+function getMemberDirectory(){
+  $db = dbConnection();
+  $sql = "SELECT m.memberid , m.preferredname || ' ' || m.lastname AS fullname, m.callsign, p.phonenumber
+          FROM Member m JOIN MemberPhone p ON m.memberid = p.memberid
+          WHERE p.isprimary = true
+          ORDER BY m.lastname, m.firstname DESC;";
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  $memberData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $stmt->closeCursor();
+  return $memberData; 
+}
+
+ function getMemberDetail($memberID){
     $db = dbConnection();
-    $sql = "SELECT m.memberid , m.preferredname || ' ' || m.lastname AS fullname, m.callsign, p.phonenumber
-            FROM Member m JOIN MemberPhone p ON m.memberid = p.memberid
-            WHERE p.isprimary = true
-            ORDER BY m.lastname, m.firstname DESC;";
+    $sql = "SELECT m.memberid , m.firstname, m.middlename, m.lastname, m.preferredname, m.callsign, m.dob,
+                   m.saremail, m.personalemail, m.dlnumber, m.dlstate, m.ssnlastfour, s.memberstatustype, e.contactfullname, e.contactcellphone, e.contacthomephone
+            FROM Member m
+            JOIN MemberStatus s ON m.memberstatusid = s.memberstatusid
+            JOIN MemberEmergencyContact e ON m.memberid = e.memberid
+            WHERE m.memberid = :memberID;";
+    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt = $db->prepare($sql);
     $stmt->execute();
-    $memberData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $memberDetailData = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-    return $memberData; 
+    return $memberDetailData; 
   }
+
+  function getMemberPhone($memberID){
+    $db = dbConnection();
+    $sql = "SELECT p.phonetype, p.phonenumber, p.isprimary
+            FROM MemberPhone p
+            JOIN Member m ON p.memberid = m.memberid
+            WHERE m.memberid = :memberID
+            ORDER BY p.isprimary DESC;";
+    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $memberPhoneData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $memberPhoneData; 
+  }
+
+  function getMemberAddress($memberID){
+    $db = dbConnection();
+    $sql = "SELECT a.street1, a.street2, a.street3, a.city, a.state, a.zip
+            FROM MemberAddress a 
+            JOIN Member m ON a.memberid = m.memberid
+            WHERE m.memberid = :memberID;";
+    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $memberAddressData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $memberAddressData; 
+  }
+
 
 /* //check for existing client first
 function checkExistingEmail($clientEmail){

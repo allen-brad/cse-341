@@ -25,8 +25,9 @@
     <main role="main" class="pb-3">
         <h1>Details</h1>
         <div>
-            <h4>Movie</h4>
+            <h4>Member</h4>
             <hr />
+            <?php if (isset($message)) { echo $message;} ?>
             <dl class="row">
                 <dt class="col-sm-2">
                     Title
@@ -55,8 +56,8 @@
             </dl>
         </div>
         <div>
-            <a href="/Movies/Edit?id=2">Edit</a> |
-            <a href="/Movies">Back to List</a>
+            <a href="/members/?action=edit&id=$memberID">Edit</a> |
+            <a href="/members">Back to List</a>
         </div>
     </main>
 </div>

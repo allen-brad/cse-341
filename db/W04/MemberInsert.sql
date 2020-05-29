@@ -1,9 +1,9 @@
 --Set up status types (like an enum)
 
---INSERT INTO memberstatus (memberStatusType) VALUES ('Active');
---INSERT INTO MemberStatus (memberStatusType) VALUES ('Probation');
---INSERT INTO MemberStatus (memberStatusType) VALUES ('Retired');
---INSERT INTO MemberStatus (memberStatusType) VALUES ('Training');
+INSERT INTO memberstatus (memberStatusType) VALUES ('Active');
+INSERT INTO MemberStatus (memberStatusType) VALUES ('Probation');
+INSERT INTO MemberStatus (memberStatusType) VALUES ('Retired');
+INSERT INTO MemberStatus (memberStatusType) VALUES ('Training');
 
 --Seed member
 INSERT INTO member (lastname, firstname, middlename, preferredname, callsign, dob, saremail, personalemail, dlnumber, dlstate, ssnlastfour, lastUpdate, memberStatusID )
@@ -29,13 +29,13 @@ INSERT INTO member (lastname, firstname, middlename, preferredname, callsign, do
 VALUES ('Potter', 'Sherman', 'T', 'Colonel', 'L99', '1901-07-04', 'sherman.potter@wasatchsar.org','colonel.potter@mash.com','123456789', 'MO', 1234,current_timestamp,3);
 
 INSERT INTO memberTenure (startDate, endDate, createdDate, lastUpdate, memberID, createdBy, lastUpdateBy)
-VALUES ('1930-01-01', '1960-01-01',current_timestamp, current_timestamp,1000, 1000, 1000);
+VALUES ('1930-01-01', '1960-01-01',current_timestamp, current_timestamp,1001, 1000, 1000);
 
 INSERT INTO memberAddress (street1, street2, city, "state", zip, createdDate, lastUpdate, memberID, createdBy, lastUpdateBy )
-VALUES ('791 S 200 W', NULL, 'Hannibal', 'MO', '63401', current_timestamp,current_timestamp, 1000, 1000, 1000);
+VALUES ('791 S 200 W', NULL, 'Hannibal', 'MO', '63401', current_timestamp,current_timestamp, 1001, 1000, 1000);
 
 INSERT INTO memberEmergencyContact (contactFullName, contactCellPhone, contactHomePhone, createdDate, lastUpdate, memberID, createdBy, lastUpdateBy)
-VALUES ('Mildred Potter', '4356549876', '4356579876', current_timestamp, current_timestamp, 1000, 1000, 1000);
+VALUES ('Mildred Potter', '4356549876', '4356579876', current_timestamp, current_timestamp, 1001, 1000, 1000);
 
 INSERT INTO memberPhone (phoneType, phoneNumber, isPrimary, memberID, createdDate, lastUpdate, createdBy, lastUpdateBy)
 VALUES ('mobile', '4355039876', true, 1001, current_timestamp, current_timestamp, 1000, 1000);
