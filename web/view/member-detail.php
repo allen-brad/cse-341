@@ -145,20 +145,24 @@
                                             </dt>
                                             <dd class=\"col-sm-10\">
                                                 $street1
-                                            </dd>
-                                            <dt class=\"col-sm-2\">
-                                                Street 2
-                                            </dt>
-                                            <dd class=\"col-sm-10\">
-                                                $street2
-                                            </dd>
-                                            <dt class=\"col-sm-2\">
-                                                Street 3
-                                            </dt>
-                                            <dd class=\"col-sm-10\">
-                                                $street3
-                                            </dd>
-                                            <dt class=\"col-sm-2\">
+                                            </dd>";
+                                            if (!empty($street2)){
+                                                echo "  <dt class=\"col-sm-2\">
+                                                             Street 2
+                                                        </dt>
+                                                        <dd class=\"col-sm-10\">
+                                                            $street2
+                                                        </dd>";
+                                            }
+                                            if (!empty($street3)){
+                                                echo "  <dt class=\"col-sm-2\">
+                                                             Street 3
+                                                        </dt>
+                                                        <dd class=\"col-sm-10\">
+                                                            $street3
+                                                        </dd>";
+                                            }
+                                    echo "  <dt class=\"col-sm-2\">
                                                 City
                                             </dt>
                                             <dd class=\"col-sm-10\">
@@ -209,8 +213,6 @@
                             <a href=\"/members\">Back to List</a>
                         </div>";
                 }
-                var_dump($memberPhoneNumbers).'<br>';
-                var_dump($memberAddresses).'<br>';
             }  ?>
 
                 
