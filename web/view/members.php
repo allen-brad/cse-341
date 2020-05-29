@@ -61,8 +61,10 @@
                 </tr>
             </tbody>
         </table>
+        <?php var_dump( $memberDirectory); ?>
     </main>
 </div>
+
 
 <footer class="border-top footer text-muted">
     <div class="container">

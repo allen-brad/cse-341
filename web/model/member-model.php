@@ -3,27 +3,18 @@
  * Member model
  */
 
-function getMemberDirectory(){
-    $db = acmeConnect();
-    $sql = 'SELECT * FROM inventory WHERE categoryId IN (SELECT categoryId FROM categories WHERE categoryName = :catType)';
+ function getMemberDirectory(){
+    $db = dbConnection();
+    $sql = 'SELECT * FROM Scriptures WHERE id = :id';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':catType', $type, PDO::PARAM_STR);
+    $stmt->bindValue(':id', $scriptureId, PDO::PARAM_INT);
     $stmt->execute();
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $scripture = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-    return $products;
-   }
+    return $scripture;
+  }
 
-
-
-
-
-
-
-
-
-
-//check for existing client first
+/* //check for existing client first
 function checkExistingEmail($clientEmail){
   $db = acmeConnect();
   $sql = 'SELECT clientEmail FROM clients WHERE clientEmail = :email';
@@ -159,5 +150,5 @@ function getClientList(){
       }
     }
   $clientList .= '</ul>';
-  return $clientList;
-}
+  return $clientList; 
+}*/
