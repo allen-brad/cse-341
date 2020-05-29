@@ -29,80 +29,79 @@
            if (isset($message)) {
                echo $message;
             }else{
-                var_dump ($memberDetail);
+                //var_dump ($memberDetail);
+                if (!empty($memberDetail)) {
+                    echo  "<div><h4>Member ID:$memberId</h4><hr /><dl class=\"row\">";
+                    $firstName = $memberDetail['firstName'];
+                    $middleName = $memberDetail['middleName'];
+                    $lastName = $memberDetail['lastName'];
+                    $preferredName = $memberDetail['preferredName'];
+                    $callSign = $memberDetail['callsign'];
+                    $memberDOB = $memberDetail['dob'];
+                    $sarEmail = $memberDetail['saremail'];
+                    $personalEmail = $memberDetail['personalemail'];
+                    $dlNumber = $memberDetail['dlNumber'];
+                    $ssnLastFour = $memberDetail['ssnLastFour'];
+                    $memberStatus = $memberDetail['memberstatustype'];
+                    $eContactName = $memberDetail['contactFullName'];
+                    $eContactCell = format_phone_us($memberDetail['contactcellphone']);
+                    $eContactHome = format_phone_us($memberDetail['contacthomephone']);
 
-                //if (isset($memberId)) {
-                    // echo  "<div><h4>Member ID:$memberId</h4><hr /><dl class=\"row\">";}
-
-                    // foreach($memberDetail as $detail){
-                    //     $firstName = $detail['firstName'];
-                    //     $middleName = $detail['middleName'];
-                    //     $lastName = $detail['lastName'];
-                    //     $preferredName = $detail['preferredName'];
-                    //     $callSign = $detail['callsign'];
-                    //     $memberDOB = $detail['dob'];
-                    //     $sarEmail = $detail['saremail'];
-                    //     $personalEmail = $detail['personalemail'];
-                    //     $dlNumber = $detail['dlNumber'];
-                    //     $ssnLastFour = $detail['ssnLastFour'];
-                    //     $memberStatus = $detail['memberstatustype'];
-                    //     $eContactName = $detail['contactFullName'];
-                    //     $eContactCell = format_phone_us($detail['contactcellphone']);
-                    //     $eContactHome = format_phone_us($detail['contacthomephone']);
-                    //     echo "  <dt class=\"col-sm-2\">
-                    //                 First Name
-                    //             </dt>
-                    //             <dd class=\"col-sm-10\">
-                    //                 $firstName
-                    //             </dd>
-                    //             <dt class=\"col-sm-2\">
-                    //                 Middle Name
-                    //             </dt>
-                    //             <dd class=\"col-sm-10\">
-                    //                 $middleName
-                    //             </dd>
-                    //             <dt class=\"col-sm-2\">
-                    //                 Last Name
-                    //             </dt>
-                    //             <dd class=\"col-sm-10\">
-                    //                 $lastName
-                    //             </dd>
-                    //             <dt class=\"col-sm-2\">
-                    //                 Preferred Name
-                    //             </dt>
-                    //             <dd class=\"col-sm-10\">
-                    //                 $preferredName
-                    //             </dd>
-                    //             <dt class=\"col-sm-2\">
-                    //                 Call Sign
-                    //             </dt>
-                    //             <dd class=\"col-sm-10\">
-                    //                 $callSign
-                    //             </dd>
-                    //             <dt class=\"col-sm-2\">
-                    //                 DOB
-                    //             </dt>
-                    //             <dd class=\"col-sm-10\">
-                    //                 $memberDOB
-                    //             </dd>
-                    //             <dt class=\"col-sm-2\">
-                    //                 SAR eMail
-                    //             </dt>
-                    //             <dd class=\"col-sm-10\">
-                    //                 $sarEmail
-                    //             </dd>
-                    //             <dt class=\"col-sm-2\">
-                    //                 Personal eMail
-                    //             </dt>
-                    //             <dd class=\"col-sm-10\">
-                    //                 $personalEmail
-                    //             </dd>
-                    //     ";
-                    // }
-                    // echo "</dl></div><div>
-                    //         <a href=\"/members/?action=edit&id=$memberID\">Edit</a> |
-                    //         <a href=\"/members\">Back to List</a>
-                    //     </div>";
+                    echo "  <dt class=\"col-sm-2\">
+                                First Name
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $firstName
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Middle Name
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $middleName
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Last Name
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $lastName
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Preferred Name
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $preferredName
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Call Sign
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $callSign
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                DOB
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $memberDOB
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                SAR eMail
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $sarEmail
+                            </dd>
+                            <dt class=\"col-sm-2\">
+                                Personal eMail
+                            </dt>
+                            <dd class=\"col-sm-10\">
+                                $personalEmail
+                            </dd>
+                        ";
+                    
+                    echo "</dl></div><div>
+                            <a href=\"/members/?action=edit&id=$memberID\">Edit</a> |
+                            <a href=\"/members\">Back to List</a>
+                        </div>";
+                }
 
             }  ?>
 
