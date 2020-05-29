@@ -61,9 +61,9 @@
                 </tr>
             </tbody>
         </table>
-        <?php
-                foreach($memberDirectory as $member){
-                    echo $member.['fullname'].'<br>';
+        <?php var_dump($memberDirectory);
+                //foreach($memberDirectory as $member){
+                    //echo $member.['fullname'].'<br>';
                     // $fullName = $member.['fullname'];
                     // $callSign = $member.['callsign'];
                     // $phoneNumber = $member.['phonenumber'];
