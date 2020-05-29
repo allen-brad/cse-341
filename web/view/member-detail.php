@@ -32,18 +32,18 @@
                 //var_dump ($memberDetail);
                 if (!empty($memberDetail)) {
                     echo  "<div><h4>Member ID:$memberId</h4><hr /><dl class=\"row\">";
-                    $firstName = $memberDetail['firstName'];
-                    $middleName = $memberDetail['middleName'];
-                    $lastName = $memberDetail['lastName'];
-                    $preferredName = $memberDetail['preferredName'];
+                    $firstName = $memberDetail['firstname'];
+                    $middleName = $memberDetail['middlename'];
+                    $lastName = $memberDetail['lastname'];
+                    $preferredName = $memberDetail['preferredname'];
                     $callSign = $memberDetail['callsign'];
                     $memberDOB = $memberDetail['dob'];
                     $sarEmail = $memberDetail['saremail'];
                     $personalEmail = $memberDetail['personalemail'];
-                    $dlNumber = $memberDetail['dlNumber'];
-                    $ssnLastFour = $memberDetail['ssnLastFour'];
+                    $dlNumber = $memberDetail['dlnumber'];
+                    $ssnLastFour = $memberDetail['ssnlastfour'];
                     $memberStatus = $memberDetail['memberstatustype'];
-                    $eContactName = $memberDetail['contactFullName'];
+                    $eContactName = $memberDetail['contactfullname'];
                     $eContactCell = format_phone_us($memberDetail['contactcellphone']);
                     $eContactHome = format_phone_us($memberDetail['contacthomephone']);
 
