@@ -59,27 +59,28 @@
                         <a href="/Members/?action=delete&id=2">Delete</a>
                     </td>
                 </tr>
+                <?php var_dump($memberDirectory);
+                foreach($memberDirectory as $member){
+                    //echo $member['memberid'].'<br>';
+                    $fullName = $member['fullname'];
+                    $callSign = $member['callsign'];
+                    $phoneNumber = $member['phonenumber'];
+                    $memberID = $member['memberid'];
+                    echo "<tr>
+                    <td>$fullName</td>
+                    <td>$callSign</td>
+                    <td>$phoneNumber</td>
+                    <td>
+                    <a href=\"/Members/?action=create&id=$memberID\">Edit</a> |
+                    <a href=\"/Members/?action=details&id=$memberID\">Details</a> |
+                    <a href=\"/Members/?action=delete&id=$memberID\">Delete</a>
+                    </td>
+                    </tr>";
+                }
+            ?>
             </tbody>
         </table>
-        <?php var_dump($memberDirectory);
-                //foreach($memberDirectory as $member){
-                    //echo $member.['fullname'].'<br>';
-                    // $fullName = $member.['fullname'];
-                    // $callSign = $member.['callsign'];
-                    // $phoneNumber = $member.['phonenumber'];
-                    // $memberID = $member.['memberid'];
-                    // echo "<tr>
-                    // <td>$fullName</td>
-                    // <td>$callSign</td>
-                    // <td>$phoneNumber</td>
-                    // <td>
-                    // <a href=\"/Members/?action=create&id=$memberID\">Edit</a> |
-                    // <a href=\"/Members/?action=details&id=$memberID\">Details</a> |
-                    // <a href=\"/Members/?action=delete&id=$memberID\">Delete</a>
-                    // </td>
-                    // </tr>";
-                //}
-            ?>
+
     </main>
 </div>
 
