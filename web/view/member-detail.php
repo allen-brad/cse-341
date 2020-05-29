@@ -31,7 +31,6 @@
             }else{
                 //var_dump ($memberDetail);
                 if (!empty($memberDetail)) {
-                    echo  "<div><h4>Member ID: $memberID</h4><hr />";
                     $firstName = $memberDetail['firstname'];
                     $middleName = $memberDetail['middlename'];
                     $lastName = $memberDetail['lastname'];
@@ -48,6 +47,7 @@
                     $eContactCell = format_phone_us($memberDetail['contactcellphone']);
                     $eContactHome = format_phone_us($memberDetail['contacthomephone']);
 
+                    echo  "<div><h4>Member ID: $memberID</h4><hr />";
                     echo "  <dl class=\"row\">
                             <dt class=\"col-sm-2\">
                                 First Name
@@ -119,19 +119,19 @@
                             <h4 class=\"text-muted\">Emergency Contact</h4>
                             <dl class=\"row\">
                             <dt class=\"col-sm-2\">
-                                Emergency Contact
+                                Name
                             </dt>
                             <dd class=\"col-sm-10\">
                                 $eContactName
                             </dd>
                             <dt class=\"col-sm-2\">
-                                Emergency Cell #
+                                Cell Phone
                             </dt>
                             <dd class=\"col-sm-10\">
                                 $eContactCell
                             </dd>
                             <dt class=\"col-sm-2\">
-                                Emergency Home #
+                                Home Phone
                             </dt>
                             <dd class=\"col-sm-10\">
                                 $eContactHome
@@ -144,7 +144,8 @@
                             <a href=\"/members\">Back to List</a>
                         </div>";
                 }
-
+                var_dump($memberPhoneNumbers).'<br>';
+                var_dump($memberAddresses).'<br>';
             }  ?>
 
                 
