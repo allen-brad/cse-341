@@ -53,8 +53,8 @@ function getMemberDirectory(){
             FROM MemberAddress a 
             JOIN Member m ON a.memberid = m.memberid
             WHERE m.memberid = :memberID;";
-    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt = $db->prepare($sql);
+    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt->execute();
     $memberAddressData = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
