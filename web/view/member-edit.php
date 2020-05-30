@@ -29,7 +29,7 @@
         <?php echo "<h4>Member ID: $memberID</h4>";?>
         <hr />
         <?php if (isset($message)) { echo $message;}?>
-        <!-- <div class="row">
+        <div class="row">
             <div class="col-md-4">
                 <form method="post">
                     <input type="hidden" data-val="true" data-val-required="The ID field is required." id="Movie_ID" name="Movie.ID" value="2" />
@@ -59,7 +59,7 @@
                 <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ij_CcvMZaxChWQ7xxy43_rJ7E3ZwhN44GRc1FptRRCIHSi-5Mg_dOtFWUxvWOi61zgH3NUEzlyAhe7gtEZJmzYOA10Yt9a8WJbztNo21Zjd1I6Mf-4Nt_SU7FhHmxrdmJh-AfHi2fRAViZufCYHiVA" /></form>
             </div>
         </div>
-        <div>-->
+        <div>
             <a href="/members">Back to List</a>
         </div> 
     </main>

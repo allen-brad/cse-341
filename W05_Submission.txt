@@ -1,0 +1,32 @@
+1. Copy and paste the URL for your web application:
+https://salty-ravine-95199.herokuapp.com/members/
+
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://github.com/allen-brad/cse-341
+
+
+3. Briefly list and describe the elements of the application that are functioning. Include any special instructions about how to login and/or use your application.
+No login necessary. User may view directory of members. Member details link is working and retrieve related data via join queries. Update and Delete are scaffolded but not working yet.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+None
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+I enjoyed the practice writing the SQL queries.
+
+6. Why should you create a separate user account for your application to access the database?
+As a security measure to limit the attack vector.
+
+
+7. Please select the category you feel best describes your assignment:
+        1 - Some attempt was made
+        2 - Developing, but significantly deficient
+        3 - Slightly deficient, but still mostly adequate
+        4 - Meets requirements
+    5 - Shows creativity and excels above and beyond requirements
+
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+My database schema is written with real world application in mind and my submission demonstrates proper database access with a professional looking UI.
+Change the user ID in the detail URL to see good error/fraud trapping.
