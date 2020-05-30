@@ -25,41 +25,119 @@
 </header>
 <div class="container">
     <main role="main" class="pb-3">
+    <?php
+        if (isset($message)) {
+            echo $message;
+        }else{
+        };
+    
+    ?>
         <h1>Edit Member</h1>
         <?php echo "<h4>Member ID: $memberID</h4>";?>
         <hr />
         <?php if (isset($message)) { echo $message;}?>
-        <div class="row">
-            <div class="col-md-4">
-                <form method="post">
-                    <input type="hidden" data-val="true" data-val-required="The ID field is required." id="Movie_ID" name="Movie.ID" value="2" />
-                    <div class="form-group">
-                        <label class="control-label" for="Movie_Title">Title</label>
-                        <input class="form-control" type="text" id="Movie_Title" name="Movie.Title" value="Test Movie" />
-                        <span class="text-danger field-validation-valid" data-valmsg-for="Movie.Title" data-valmsg-replace="true"></span>
+        <div class="col-md-12 order-md-1">
+            <h4 class="mb-3">Billing address</h4>
+            <form action="/members/?action=update&id=$memberID"  class="needs-validation" method="post" novalidate>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="firstName">First name</label>
+                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="$firstName" required>
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label" for="Movie_ReleaseDate">ReleaseDate</label>
-                        <input class="form-control" type="date" data-val="true" data-val-required="The ReleaseDate field is required." id="Movie_ReleaseDate" name="Movie.ReleaseDate" value="2020-01-21" />
-                        <span class="text-danger field-validation-valid" data-valmsg-for="Movie.ReleaseDate" data-valmsg-replace="true"></span>
+                    <div class="col-md-3 mb-3">
+                        <label for="middleName">Middle name</label>
+                        <input type="text" class="form-control" name="middleName" id="middleName" placeholder="" value="$middleName" required>
+                        <div class="invalid-feedback">
+                            Valid middel name is required.
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label" for="Movie_Genre">Genre</label>
-                        <input class="form-control" type="text" id="Movie_Genre" name="Movie.Genre" value="Drama" />
-                        <span class="text-danger field-validation-valid" data-valmsg-for="Movie.Genre" data-valmsg-replace="true"></span>
+                    <div class="col-md-3 mb-3">
+                        <label for="lastName">Last name</label>
+                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label" for="Movie_Price">Price</label>
-                        <input class="form-control" type="text" data-val="true" data-val-number="The field Price must be a number." data-val-required="The Price field is required." id="Movie_Price" name="Movie.Price" value="2.99" />
-                        <span class="text-danger field-validation-valid" data-valmsg-for="Movie.Price" data-valmsg-replace="true"></span>
+                    <div class="col-md-3 mb-3">
+                        <label for="preferredName">Last name</label>
+                        <input type="text" class="form-control" name="preferredName" id="preferredName" placeholder="" value="$preferredName" required>
+                        <div class="invalid-feedback">
+                            Valid preferred name is required.
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="personalEmail">Personal email <span class="text-muted">(Optional)</span></label>
+                    <input type="email" class="form-control" name="personalEmail" id="personalEmail" placeholder="you@example.com" value="$personalEmail">
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
                     </div>
-                <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ij_CcvMZaxChWQ7xxy43_rJ7E3ZwhN44GRc1FptRRCIHSi-5Mg_dOtFWUxvWOi61zgH3NUEzlyAhe7gtEZJmzYOA10Yt9a8WJbztNo21Zjd1I6Mf-4Nt_SU7FhHmxrdmJh-AfHi2fRAViZufCYHiVA" /></form>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address1">Address</label>
+                    <input type="text" class="form-control" name="address1" id="address1" placeholder="1234 Main St" required>
+                    <div class="invalid-feedback">
+                        Please enter your shipping address.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                    <input type="text" class="form-control" name="address2" id="address2" placeholder="Apartment or suite">
+                </div>
+
+                <div class="mb-3">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" name="city" id="city" placeholder="City" required>
+                    <div class="invalid-feedback">
+                        Please enter your shipping city.
+                    </div>
+                </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="country">Country</label>
+                <select class="custom-select d-block w-100" name="country" id="country" required>
+                  <option value="">Choose...</option>
+                  <option>United States</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="state">State</label>
+                <select class="custom-select d-block w-100" name="state" id="state" required>
+                  <option value="">Choose...</option>
+                  <option>California</option>
+                  <option>Utah</option>
+                  <option>Idaho</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="zip">Zip</label>
+                <input type="text" class="form-control" name="zip" id="zip" placeholder="" required>
+                <div class="invalid-feedback">
+                  Zip code required.
+                </div>
+              </div>
             </div>
+            <hr class="mb-4">
+            <input type="hidden" name="action" value="completeOrder">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Complete Order</button>
+            <a class="btn btn-secondary btn-lg btn-block" href="/assignmentW03.php">Coontinue Shopping</a>
+          </form>
+          <hr class="mb-4">
         </div>
-        <div>
+
             <a href="/members">Back to List</a>
         </div> 
     </main>

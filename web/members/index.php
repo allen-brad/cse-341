@@ -47,7 +47,7 @@ switch ($action) {
         $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
         $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-                  <strong>Editing Not Allowed!</strong>$memberID can not be edited at this time!
+                  <strong>Editing Not Allowed!</strong> Member ID $memberID can not be edited at this time!
                     <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                     <span aria-hidden=\"true\">&times;</span>
                     </button>
@@ -61,7 +61,7 @@ switch ($action) {
         $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
         $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-                  <strong>Delete Not Allowed!</strong>$memberID can not be deleted at this time!
+                  <strong>Delete Not Allowed!</strong> Member ID $memberID can not be deleted at this time!
                     <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                     <span aria-hidden=\"true\">&times;</span>
                     </button>
