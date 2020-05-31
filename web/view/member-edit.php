@@ -114,11 +114,12 @@
                             <label for="dlState">Drivers license state</label>
                             <select class="form-control" id="dlState" required>
                                 <?php $usStates = getUsStates();
+                                    $selectedState ='';
                                     foreach ($usStates as $state){
                                         if ($state['abbreviation']==$dlState){
-                                            $selected = 'selected="selected"';
+                                            $selectedState = 'selected="selected"';
                                         }
-                                        echo '"<option value="'.$state['abbreviation'].'" '.$selected.'>'.$state['state'].'</option>"';
+                                        echo '"<option value="'.$state['abbreviation'].'" '.$selectedState.'>'.$state['state'].'</option>"';
                                     }
                                 ?>
                             </select>
@@ -130,11 +131,12 @@
                             <label for="memberStatus">Member status</label>
                             <select class="form-control" id="memberStatus" required>
                                 <?php $memberStatusType = getMemberStatusData();
+                                    $selectedStatus ='';
                                     foreach ($memberStatusType as $type){
                                         if ($type['memberstatusType']==$memberStatusType){
-                                            $selected = 'selected="selected"';
+                                            $selectedStatus = 'selected="selected"';
                                         }
-                                        echo '"<option value="'.$type['memberstatusid'].'" '.$selected.'>'.$type['memberstatustype'].'</option>"';
+                                        echo '"<option value="'.$type['memberstatusid'].'" '.$selectedStatus.'>'.$type['memberstatustype'].'</option>"';
                                     }
                                 ?>
                             </select>
