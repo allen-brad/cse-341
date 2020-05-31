@@ -30,62 +30,62 @@
         <hr />
         <?php if (isset($message)) { echo $message;}?>
         <div class="col-md-12 order-md-1">
-            <form action="/members/?action=update&id=$memberID"  class="needs-validation" method="post" novalidate>
+            <form action="/members/"  class="needs-validation" method="post" novalidate>
                 <fieldset class="form-group">
                     <h4 class="mb-3">Personal Information</h4>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName">First name</label>
-                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="$firstName" required>
+                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Valid first name is required.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="preferredName">Preferred name</label>
-                            <input type="text" class="form-control" name="preferredName" id="preferredName" placeholder="" value="$preferredName" required>
+                            <input type="text" class="form-control" name="preferredName" id="preferredName" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Valid preferred name is required.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="middleName">Middle name</label>
-                            <input type="text" class="form-control" name="middleName" id="middleName" placeholder="" value="$middleName" required>
+                            <input type="text" class="form-control" name="middleName" id="middleName" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Valid middel name is required.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="lastName">Last name</label>
-                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="$lastName" required>
+                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Valid last name is required.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="callSign">Call sign</label>
-                            <input type="text" class="form-control" name="callSign" id="callSign" placeholder="" value="$callSign" required>
+                            <input type="text" class="form-control" name="callSign" id="callSign" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Valid Call Sign name is required.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="dob">Date of birth</label>
-                            <input type="date" class="form-control" name="dob" id="dob" placeholder="" value="$dob" required>
+                            <input type="date" class="form-control" name="dob" id="dob" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Valid DOB is required.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="ssnLastFour">SSN last four</label>
-                            <input type="text" class="form-control" name="ssnLastFour" id="ssnLastFour" placeholder="" value="$ssnLastFour" required>
+                            <input type="text" class="form-control" name="ssnLastFour" id="ssnLastFour" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Valid SSN last four is required.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="dlNumber">Drivers license #</label>
-                            <input type="text" class="form-control" name="dlNumber" id="dlNumber" placeholder="" value="$dlNumber" required>
+                            <input type="text" class="form-control" name="dlNumber" id="dlNumber" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Valid drivers license number is required.
                             </div>
@@ -118,7 +118,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="personalEmail">Personal email <span class="text-muted">(Optional)</span></label>
-                            <input type="email" class="form-control" name="personalEmail" id="personalEmail" placeholder="" value="$personalEmail" required>
+                            <input type="email" class="form-control" name="personalEmail" id="personalEmail" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Please enter a valid email address.
                             </div>
@@ -179,9 +179,10 @@
               </div>
             </div>
             <hr class="mb-4">
-            <input type="hidden" name="action" value="completeOrder">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Complete Order</button>
-            <a class="btn btn-secondary btn-lg btn-block" href="/assignmentW03.php">Coontinue Shopping</a>
+            <input type="hidden" name="action" value"updateMember">
+            <input type="hidden" name="memberID" value"$memberID">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Update Member Details</button>
+            <a class="btn btn-secondary btn-lg btn-block" href="/members">Back to List</a>
           </form>
           <hr class="mb-4">
         </div>
