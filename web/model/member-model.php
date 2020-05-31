@@ -79,8 +79,8 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
     //create connection object
     $db = dbConnection();
     //sql statement
-    $sql = 'INSERT INTO MemberPhone (memberID, phoneTypeID, phoneNumber, isPrimary
-            createdBy, lastUpdateBy) VALUES (:memberID, :phoneTypeID, :phoneNumber, :isPrimary, :createdBy, :lastUpdateBy)';
+    $sql = 'INSERT INTO MemberPhone (memberID, phoneTypeID, phoneNumber, isPrimary, createdBy, lastUpdateBy)
+                             VALUES (:memberID, :phoneTypeID, :phoneNumber, :isPrimary, :createdBy, :lastUpdateBy)';
     
    //creates prepared statement
    $stmt = $db->prepare($sql);

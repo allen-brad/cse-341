@@ -1,9 +1,8 @@
---Set up status types (like an enum)
+--Set up status types enum
+INSERT INTO memberstatus (memberStatusType) VALUES ('Active'),('Probation'),('Retired'),('Retired');
 
-INSERT INTO memberstatus (memberStatusType) VALUES ('Active');
-INSERT INTO MemberStatus (memberStatusType) VALUES ('Probation');
-INSERT INTO MemberStatus (memberStatusType) VALUES ('Retired');
-INSERT INTO MemberStatus (memberStatusType) VALUES ('Training');
+--Set up status types enum
+INSERT INTO PhoneType (phoneType) VALUES ('Mobile'),('Home'),('Work');
 
 --Seed member
 INSERT INTO member (lastname, firstname, middlename, preferredname, callsign, dob, saremail, personalemail, dlnumber, dlstate, ssnlastfour, lastUpdate, memberStatusID )
