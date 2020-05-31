@@ -320,7 +320,7 @@
                                 <input type="hidden" name="memberID" value="'.$memberID.'">
                                 <input type="hidden" name="addressID" value="'.$memberAddressID.'">
                             <button class="btn btn-primary btn-lg float-left" type="submit">Update Address</button>
-                            <a class="btn btn-outline-danger btn-lg float-right" href="/members/?action=\'deleteAddress\'&id=\''.$memberID.'\'&addressID=\''.$addressID.'\'">Delete Address</a>
+                            <a class="btn btn-outline-danger btn-lg float-right" href="/members/?action=\'deleteAddress\'&id=\''.$memberID.'\'&addressID=\''.$memberAddressID.'\'">Delete Address</a>
                             </form>';
                         }
                     ?>
