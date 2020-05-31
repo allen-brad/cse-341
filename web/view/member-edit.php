@@ -132,7 +132,6 @@
             </form>
             <fieldset class="form-group">
                 <h4 class="mb-3">Phone Information</h4>
-                <div class="row">
                     <form action="/members/"  class="needs-validation" method="post" novalidate>
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -160,7 +159,6 @@
                         <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
                     </div>
                     </form>
-                </div>
                 <div class="row">
                     <form action="/members/"  class="needs-validation" method="post" novalidate>
                         <div class="col-md-6 mb-3">
