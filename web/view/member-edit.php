@@ -24,7 +24,7 @@
   <?php include $_SERVER['DOCUMENT_ROOT'].'/common/nav.php'; ?>
 </header>
 <div class="container">
-    <main role="main" class="pb-3">
+    <main class="pb-3">
         <h1>Edit Member</h1>
         <?php echo "<h4>Member ID: $memberID</h4>";?>
         <hr />
@@ -165,6 +165,7 @@
                 
                 <?php
                 $phoneType = getPhoneType();
+                $i=0;
                     foreach($memberPhoneNumbers as $phone){
                         $memberPhoneID = $phone['memberphoneid'];
                         $memberPhoneType = $phone['phonetype'];
@@ -179,8 +180,8 @@
                         echo '<form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                                 <div class="row">
                                 <div class="col-md-4 mb-3">
-                                <label for="phoneType">Phone type</label>
-                                <select class="form-control" id="phoneType" required>';
+                                <label for="phoneType'.$i.'">Phone type</label>
+                                <select class="form-control" id="phoneType'.$i.'" required>';
                         foreach ($phoneType as $type){
                             if ($type['phonetype'] == $memberPhoneType){
                                 $selectedStatus = 'selected="selected"';
@@ -196,21 +197,21 @@
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="phone">Phone</label>
-                                <input type="tel" class="form-control" name="phone" id="phone" value="'.$memberPhoneNumber.'" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                                <label for="phone'.$i.'">Phone</label>
+                                <input type="tel" class="form-control" name="phone'.$i.'" id="phone'.$i.'" value="'.$memberPhoneNumber.'" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
                                 <div class="invalid-feedback">
                                     Please enter a valid phone number.
                                 </div>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="isPrimary" value="primary" '.$checked.'>
-                                <label class="form-check-label" for="isPrimary">Primary</label>
+                                <input class="form-check-input" type="checkbox" id="isPrimary'.$i.'" value="primary" '.$checked.'>
+                                <label class="form-check-label" for="isPrimary'.$i.'">Primary</label>
                             </div>
                             <input type="hidden" name="action" value="updatePhone">
                             <input type="hidden" name="memberID" value="'.$memberID.'">
                             <input type="hidden" name="phoneID" value="'.$memberPhoneID.'">
                         </div>
-                        <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
+                        <button class="btn btn-primary btn-sm mr-2" type="submit">Update Phone</button>
                         <a class="btn btn-outline-danger btn-sm" href="/members/?action=\'deletePhone\'&id=\''.$memberID.'\'&phoneID=\''.$memberPhoneID.'\'">Delete Phone</a>
                         </form>';
                     }
