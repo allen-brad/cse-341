@@ -61,6 +61,43 @@ function getMemberDirectory(){
     return $memberAddressData; 
   }
 
+  function getMemberStatusData(){
+    $db = dbConnection();
+    $sql = "SELECT s.memberstatusid, s.memberstatustype
+            FROM MemberStatus s";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $memberStatusData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $memberStatusData; 
+  }
+
+
+  // Update member info
+function updateMemberDetails($lastName, $firstName, $middleName, $preferredName, $callSign, $dob, $personalEmail, $dlNumber, $dlState, $ssnLastFour, $memberStatusID){
+  //create connection object
+$db = acmeConnect();
+//sql statement
+$sql = 'UPDATE clients SET clientFirstname = :clientFirstname, clientLastname = :clientLastname, clientEmail = :clientEmail WHERE clientId = :clientId';
+//creates prepared statement
+$stmt = $db->prepare($sql);
+// swap out varialbes for actual values
+//tell database the type of data
+$stmt->bindValue(':clientFirstname', $clientFirstname, PDO::PARAM_STR);
+$stmt->bindValue(':clientLastname', $clientLastname, PDO::PARAM_STR);
+$stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
+$stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+
+//use the prepared statement to insert data
+$stmt->execute();
+//check to see if it worked
+$rowsChanged = $stmt->rowCount();
+//close connection
+$stmt->closeCursor();
+// Return the indication of success (rows changed)
+return $rowsChanged;
+}
+
 
 /* //check for existing client first
 function checkExistingEmail($clientEmail){

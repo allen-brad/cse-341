@@ -28,7 +28,25 @@
         <h1>Edit Member</h1>
         <?php echo "<h4>Member ID: $memberID</h4>";?>
         <hr />
-        <?php if (isset($message)) { echo $message;}?>
+        <?php if (isset($message)) { echo $message;}
+        
+        if (!empty($memberDetail)) {
+            $firstName = $memberDetail['firstname'];
+            $middleName = $memberDetail['middlename'];
+            $lastName = $memberDetail['lastname'];
+            $preferredName = $memberDetail['preferredname'];
+            $callSign = $memberDetail['callsign'];
+            $memberDOB = $memberDetail['dob'];
+            $sarEmail = $memberDetail['saremail'];
+            $personalEmail = $memberDetail['personalemail'];
+            $dlNumber = $memberDetail['dlnumber'];
+            $dlState = $memberDetail['dlstate'];
+            $ssnLastFour = $memberDetail['ssnlastfour'];
+            $memberStatus = $memberDetail['memberstatustype'];
+            $eContactName = $memberDetail['contactfullname'];
+        }
+        
+        ?>
         <div class="col-md-12 order-md-1">
             <form action="/members/"  class="needs-validation" method="post" novalidate>
                 <fieldset class="form-group">
@@ -36,56 +54,56 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName">First name</label>
-                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="" required>
+                            <input type="text" class="form-control" name="firstName" id="firstName" value="<?php echo $firstName; ?>" required>
                             <div class="invalid-feedback">
                                 Valid first name is required.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="preferredName">Preferred name</label>
-                            <input type="text" class="form-control" name="preferredName" id="preferredName" placeholder="" value="" required>
+                            <input type="text" class="form-control" name="preferredName" id="preferredName" value="<?php echo $preferredName; ?>" required>
                             <div class="invalid-feedback">
                                 Valid preferred name is required.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="middleName">Middle name</label>
-                            <input type="text" class="form-control" name="middleName" id="middleName" placeholder="" value="" required>
+                            <input type="text" class="form-control" name="middleName" id="middleName" value="<?php echo $middleName; ?>" required>
                             <div class="invalid-feedback">
                                 Valid middel name is required.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="lastName">Last name</label>
-                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="" required>
+                            <input type="text" class="form-control" name="lastName" id="lastName" value="<?php echo $lastName; ?>" required>
                             <div class="invalid-feedback">
                                 Valid last name is required.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="callSign">Call sign</label>
-                            <input type="text" class="form-control" name="callSign" id="callSign" placeholder="" value="" required>
+                            <input type="text" class="form-control" name="callSign" id="callSign" value="<?php echo $callSign; ?>" required>
                             <div class="invalid-feedback">
                                 Valid Call Sign name is required.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="dob">Date of birth</label>
-                            <input type="date" class="form-control" name="dob" id="dob" placeholder="" value="" required>
+                            <input type="date" class="form-control" name="dob" id="dob" value="<?php echo $memberDOB; ?>" required>
                             <div class="invalid-feedback">
                                 Valid DOB is required.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="ssnLastFour">SSN last four</label>
-                            <input type="text" class="form-control" name="ssnLastFour" id="ssnLastFour" placeholder="" value="" required>
+                            <input type="text" class="form-control" name="ssnLastFour" id="ssnLastFour" value="<?php echo $ssnLastFour; ?>" required>
                             <div class="invalid-feedback">
                                 Valid SSN last four is required.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="dlNumber">Drivers license #</label>
-                            <input type="text" class="form-control" name="dlNumber" id="dlNumber" placeholder="" value="" required>
+                            <input type="text" class="form-control" name="dlNumber" id="dlNumber" placeholder="" value="<?php echo $dlNumber; ?>" required>
                             <div class="invalid-feedback">
                                 Valid drivers license number is required.
                             </div>
@@ -106,7 +124,15 @@
                         <div class="col-md-4 mb-3">
                             <label for="memberStatus">Member status</label>
                             <select class="form-control" id="memberStatus" required>
-                                <option selected="selected">Active</option>
+                                <?php $memberStatusType = getMemberStatusData();
+                                    foreach ($memberStatusType as $type){
+                                        if ($type['memberstatusType']==$me){
+
+                                        }
+                                        echo ""
+                                    }
+                                ?>
+                                <option value="1" selected="selected">Active</option>
                                 <option>Probation</option>
                                 <option>Retired</option>
                                 <option>Training</option>
@@ -124,15 +150,15 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="action" value"updateMember">
-                    <input type="hidden" name="memberID" value"$memberID">
+                    <input type="hidden" name="action" value="updateMember">
+                    <input type="hidden" name="memberID" value="$memberID">
                     <button class="btn btn-primary btn-lg float-left" type="submit">Update Member Details</button>
                     <a class="btn btn-secondary btn-lg float-right" href="/members">Back to List</a>
                 </fieldset>
             </form>
             <fieldset class="form-group">
                 <h4 class="mb-3">Phone Information</h4>
-                    <form action="/members/"  class="needs-validation mb-6" method="post" novalidate>
+                    <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="phoneType">Phone type</label>
@@ -159,7 +185,7 @@
                         <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
                         <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
                     </form>
-                    <form action="/members/"  class="needs-validation mb-6" method="post" novalidate>
+                    <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="phoneType">Phone type</label>

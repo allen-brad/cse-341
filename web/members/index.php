@@ -45,13 +45,19 @@ switch ($action) {
 
     case 'edit':
         $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $memberDetail = getMemberDetail($memberID);
 
-        $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-                  <strong>Editing Not Allowed!</strong> Member ID $memberID can not be edited at this time!
-                    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-                    <span aria-hidden=\"true\">&times;</span>
-                    </button>
-                    </div>";
+        if(empty($memberDetail)){
+            $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+                        <strong>Editing Not Allowed!</strong> Member ID $memberID can not be edited at this time!
+                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                        <span aria-hidden=\"true\">&times;</span>
+                        </button>
+                        </div>";
+            } else {
+            $memberPhoneNumbers = getMemberPhone($memberID);
+            $memberAddresses = getMemberAddress($memberID);
+        }
 
         include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
         
