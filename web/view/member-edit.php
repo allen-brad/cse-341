@@ -282,7 +282,7 @@
                                         <label for="address3_'.$a.'">Address 3 <span class="text-muted">(Optional)</span></label>
                                         <input type="text" class="form-control" name="address3_'.$a.'" id="address3_'.$a.'" value="'.$memberStreet3.'">
                                     </div>
-                                    
+                                    <div class="row">
                                         <div class="col-md-5 mb-3">
                                             <label for="city'.$a.'">City</label>
                                             <input type="text" class="form-control" name="city'.$a.'" id="city'.$a.'" value="'.$memberCity.'" required>
@@ -315,7 +315,7 @@
                                                 Zip code required.
                                             </div>
                                         </div>
-                                    
+                                    </div>
                                 <input type="hidden" name="action" value="updateAddress">
                                 <input type="hidden" name="memberID" value="'.$memberID.'">
                                 <input type="hidden" name="addressID" value="'.$memberAddressID.'">
@@ -325,7 +325,6 @@
                         }
                     ?>
                     <form action="/members/"  class="needs-validation" method="post" novalidate>
-                    <div class="row">
                         <div class="mb-3">
                             <label for="address1">Address</label>
                             <input type="text" class="form-control" name="address1" id="address1" placeholder="1234 Main St" required>
@@ -368,7 +367,6 @@
                         </div>
                         <input type="hidden" name="action" value="addAddress">
                         <input type="hidden" name="memberID" value="$memberID">
-                    </div>
                     <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Add Address</button>
                     <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
                     </form>
