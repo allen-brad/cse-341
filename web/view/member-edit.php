@@ -126,16 +126,11 @@
                             <select class="form-control" id="memberStatus" required>
                                 <?php $memberStatusType = getMemberStatusData();
                                     foreach ($memberStatusType as $type){
-                                        if ($type['memberstatusType']==$me){
-
+                                        if ($type['memberstatusType']==$memberStatusType){
+                                            $selected = 'selected="selected"';
                                         }
-                                        echo ""
-                                    }
+                                        echo '"<option value="'.$type['memberstatuid'].'" '.$selected.'>'.$type['memberstatustype'].'</option>"';
                                 ?>
-                                <option value="1" selected="selected">Active</option>
-                                <option>Probation</option>
-                                <option>Retired</option>
-                                <option>Training</option>
                             </select>
                             <div class="invalid-feedback">
                                 Valid status is required.
@@ -178,9 +173,9 @@
                                 Please enter a valid phone number.
                             </div>
                         </div>
-                        <input type="hidden" name="action" value"updatePhone">
-                        <input type="hidden" name="memberID" value"$memberID">
-                        <input type="hidden" name="phoneID" value"$phoneID">
+                        <input type="hidden" name="action" value="updatePhone">
+                        <input type="hidden" name="memberID" value="$memberID">
+                        <input type="hidden" name="phoneID" value="$phoneID">
                         </div>
                         <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
                         <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
@@ -206,9 +201,9 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="action" value"updatePhone">
-                        <input type="hidden" name="memberID" value"$memberID">
-                        <input type="hidden" name="phoneID" value"$phoneID">
+                        <input type="hidden" name="action" value="updatePhone">
+                        <input type="hidden" name="memberID" value="$memberID">
+                        <input type="hidden" name="phoneID" value="$phoneID">
                         <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
                         <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
                     </form>
@@ -258,8 +253,8 @@
                                 </div>
                             </div>
                         </div>
-                    <input type="hidden" name="action" value"updateAddress">
-                    <input type="hidden" name="memberID" value"$memberID">
+                    <input type="hidden" name="action" value="updateAddress">
+                    <input type="hidden" name="memberID" value="$memberID">
                     <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Update Address</button>
                     <a class="btn btn-danger btn-lg float-right" href="/members/?action='deleteAddress'&id='$memberID'&addressID='$addressID'">Delete Address</a>
                     <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
