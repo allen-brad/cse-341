@@ -166,6 +166,7 @@
                 <?php
                 $phoneType = getPhoneType();
                     foreach($memberPhoneNumbers as $phone){
+                        $memberPhoneID = $phone['memberphoneid'];
                         $memberPhoneType = $phone['phonetype'];
                         $memberPhoneTypeID = $phone['phonetypeid'];
                         $memberPhoneNumber = $phone['phonenumber'];
@@ -181,12 +182,12 @@
                                 <label for="phoneType">Phone type</label>
                                 <select class="form-control" id="phoneType" required>';
                         foreach ($phoneType as $type){
-                            if ($type['phonetype']==$memberPhoneType){
+                            if ($type['phonetype'] == $memberPhoneType){
                                 $selectedStatus = 'selected="selected"';
                             } else{
                                 $selectedStatus =null;
                             }
-                            echo '<option value="'.$type['phonetypeid'].'">'.$type['phonetype'].'</option>';
+                            echo '<option value="'.$type['phonetypeid'].'"'.$selectedStatus.'>'.$type['phonetype'].'</option>';
                         }
 
                         echo '  </select>

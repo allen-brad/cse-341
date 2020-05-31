@@ -34,7 +34,7 @@ function getMemberDirectory(){
 
   function getMemberPhone($memberID){
     $db = dbConnection();
-    $sql = "SELECT t.phonetype, p.phonenumber, p.isprimary, p.phonetypeid
+    $sql = "SELECT t.phonetype, p.memberphoneid, p.phonenumber, p.isprimary, p.phonetypeid
             FROM MemberPhone p
             JOIN Member m ON p.memberid = m.memberid
             JOIN PhoneType t ON p.phonetypeid = t.phonetypeid
