@@ -28,24 +28,26 @@
         <h1>Edit Member</h1>
         <?php echo "<h4>Member ID: $memberID</h4>";?>
         <hr />
-        <?php if (isset($message)) { echo $message;}
+        <?php
+            if (isset($message)) {
+                 echo $message;
+            }
         
-        if (!empty($memberDetail)) {
-            $firstName = $memberDetail['firstname'];
-            $middleName = $memberDetail['middlename'];
-            $lastName = $memberDetail['lastname'];
-            $preferredName = $memberDetail['preferredname'];
-            $callSign = $memberDetail['callsign'];
-            $memberDOB = $memberDetail['dob'];
-            $sarEmail = $memberDetail['saremail'];
-            $personalEmail = $memberDetail['personalemail'];
-            $dlNumber = $memberDetail['dlnumber'];
-            $dlState = $memberDetail['dlstate'];
-            $ssnLastFour = $memberDetail['ssnlastfour'];
-            $memberStatus = $memberDetail['memberstatustype'];
-            $eContactName = $memberDetail['contactfullname'];
-        }
-        
+            if (!empty($memberDetail)) {
+                $firstName = $memberDetail['firstname'];
+                $middleName = $memberDetail['middlename'];
+                $lastName = $memberDetail['lastname'];
+                $preferredName = $memberDetail['preferredname'];
+                $callSign = $memberDetail['callsign'];
+                $memberDOB = $memberDetail['dob'];
+                $sarEmail = $memberDetail['saremail'];
+                $personalEmail = $memberDetail['personalemail'];
+                $dlNumber = $memberDetail['dlnumber'];
+                $dlState = $memberDetail['dlstate'];
+                $ssnLastFour = $memberDetail['ssnlastfour'];
+                $memberStatus = $memberDetail['memberstatustype'];
+                $eContactName = $memberDetail['contactfullname'];
+            }        
         ?>
         <div class="col-md-12 order-md-1">
             <form action="/members/"  class="needs-validation" method="post" novalidate>
@@ -129,7 +131,8 @@
                                         if ($type['memberstatusType']==$memberStatusType){
                                             $selected = 'selected="selected"';
                                         }
-                                        echo '"<option value="'.$type['memberstatuid'].'" '.$selected.'>'.$type['memberstatustype'].'</option>"';
+                                        echo '"<option value="'.$type['memberstatusid'].'" '.$selected.'>'.$type['memberstatustype'].'</option>"';
+                                    }
                                 ?>
                             </select>
                             <div class="invalid-feedback">
