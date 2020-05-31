@@ -256,6 +256,7 @@
             <fieldset class="form-group">
                 <h4 class="mb-3">Address Information</h4>
                 <?php
+                    $usStates = getUsStates();
                     $a=0;
                     foreach($memberAddresses as $address){
                         $memberAddressID = $address['memberaddressid'];
@@ -294,7 +295,6 @@
                                             <label for="state'.$a.'">State</label>
                                             <select class="custom-select d-block w-100" name="state'.$a.'" id="state'.$a.'" required>
                                             <option value="">Choose...</option>';
-                                            $usStates = getUsStates();
                                             foreach ($usStates as $state){
                                             if ($state['state'] == $memberState){
                                                     $selectedState = 'selected="selected"';
@@ -324,35 +324,35 @@
                             </form>';
                         }
                     ?>
+
                     <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                         <div class="mb-3">
-                            <label for="address1">Address</label>
-                            <input type="text" class="form-control" name="address1" id="address1" placeholder="1234 Main St" required>
+                            <label for="addressNew">Address</label>
+                            <input type="text" class="form-control" name="addressNew" id="addressNew" placeholder="1234 Main St" required>
                             <div class="invalid-feedback">
                                 Please enter your street address.
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                            <input type="text" class="form-control" name="address2" id="address2" placeholder="Apartment or suite">
+                            <label for="address2New">Address 2 <span class="text-muted">(Optional)</span></label>
+                            <input type="text" class="form-control" name="address2New" id="address2New" placeholder="Apartment or suite">
                         </div>
                         <div class="mb-3">
-                            <label for="address3">Address 3 <span class="text-muted">(Optional)</span></label>
-                            <input type="text" class="form-control" name="address3" id="address3" placeholder="Apartment or suite">
+                            <label for="address3New">Address 3 <span class="text-muted">(Optional)</span></label>
+                            <input type="text" class="form-control" name="address3New" id="address3New" placeholder="Apartment or suite">
                         </div>
                         <div class="row">
                             <div class="col-md-5 mb-3">
-                                <label for="city">City</label>
-                                <input type="text" class="form-control" name="city" id="city" placeholder="City" required>
+                                <label for="cityNew">City</label>
+                                <input type="text" class="form-control" name="cityNew" id="cityNew" placeholder="City" required>
                                 <div class="invalid-feedback">
                                     Please enter your city.
                                 </div>
                             </div>
                             <div class="col-md-5 mb-3">
-                                <label for="state">State</label>
-                                <select class="custom-select d-block w-100" name="state" id="state" required>
+                                <label for="stateNew">State</label>
+                                <select class="custom-select d-block w-100" name="stateNew" id="stateNew" required>
                                 <option value="">Choose...</option>
-                                <option value="AL" >Alabama</option><option value="AK" >Alaska</option><option value="AS" >American Samoa</option><option value="AZ" >Arizona</option><option value="AR" >Arkansas</option><option value="CA" >California</option><option value="CO" >Colorado</option><option value="CT" >Connecticut</option><option value="DE" >Delaware</option><option value="DC" >District of Columbia</option><option value="FM" >Federated States of Micronesia</option><option value="FL" >Florida</option><option value="GA" >Georgia</option><option value="GU" >Guam</option><option value="HI" >Hawaii</option><option value="ID" >Idaho</option><option value="IL" >Illinois</option><option value="IN" >Indiana</option><option value="IA" >Iowa</option><option value="KS" >Kansas</option><option value="KY" >Kentucky</option><option value="LA" >Louisiana</option><option value="ME" >Maine</option><option value="MH" >Marshall Islands</option><option value="MD" >Maryland</option><option value="MA" >Massachusetts</option><option value="MI" >Michigan</option><option value="MN" >Minnesota</option><option value="MS" >Mississippi</option><option value="MO" >Missouri</option><option value="MT" >Montana</option><option value="NE" >Nebraska</option><option value="NV" >Nevada</option><option value="NH" >New Hampshire</option><option value="NJ" >New Jersey</option><option value="NM" >New Mexico</option><option value="NY" >New York</option><option value="NC" >North Carolina</option><option value="ND" >North Dakota</option><option value="MP" >Northern Mariana Islands</option><option value="OH" >Ohio</option><option value="OK" >Oklahoma</option><option value="OR" >Oregon</option><option value="PW" >Palau</option><option value="PA" >Pennsylvania</option><option value="PR" >Puerto Rico</option><option value="RI" >Rhode Island</option><option value="SC" >South Carolina</option><option value="SD" >South Dakota</option><option value="TN" >Tennessee</option><option value="TX" >Texas</option><option value="UT" >Utah</option><option value="VT" >Vermont</option><option value="VI" >Virgin Islands</option><option value="VA" >Virginia</option><option value="WA" >Washington</option><option value="WV" >West Virginia</option><option value="WI" >Wisconsin</option><option value="WY" >Wyoming</option>                                </select>
                                 <div class="invalid-feedback">
                                     Please provide a valid state.
                                 </div>
