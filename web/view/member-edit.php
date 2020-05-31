@@ -165,13 +165,13 @@
                 
                 <?php
                 $phoneType = getPhoneType();
-                $i=0;
+                var_dump ($phoneType);
                     foreach($memberPhoneNumbers as $phone){
                         $memberPhoneType = $phone['phonetype'];
                         $memberPhoneTypeID = $phone['phonetypeid'];
                         $memberPhoneNumber = $phone['phonenumber'];
                         $memberPhoneIsPrimary = $phone['isprimary'];
-                        if ($phoneIsPrimary==true){
+                        if ($memberPhoneIsPrimary == true){
                             $checked = 'checked';
                         }else{
                             $checked = null;
@@ -291,8 +291,8 @@
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="phone1">Phone 1</label>
-                            <input type="tel" class="form-control" name="phone1" id="phone1" placeholder="" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                            <label for="phoneNew">Phone</label>
+                            <input type="tel" class="form-control" name="phoneNew" id="phoneNew" placeholder="" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
                             <div class="invalid-feedback">
                                 Please enter a valid phone number.
                             </div>
@@ -302,10 +302,9 @@
                             <label class="form-check-label" for="isPrimary">Primary</label>
                         </div>
                         <input type="hidden" name="action" value="addPhone">
-                        <input type="hidden" name="memberID" value="$memberID">
-                        <input type="hidden" name="phoneID" value="$phoneID">
+                        <input type="hidden" name="memberID" value="<?php $memberID ?>">
                         </div>
-                        <button class="btn btn-primary btn-sm mr-2" type="submit" value="add">Add Phone</button>
+                        <button class="btn btn-primary btn-sm mr-2" type="submit">Add Phone</button>
                     </form>
             </fieldset>
             <form action="/members/"  class="needs-validation" method="post" novalidate>
