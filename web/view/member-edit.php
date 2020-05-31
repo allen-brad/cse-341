@@ -164,7 +164,6 @@
             </form>
             <fieldset class="form-group">
                 <h4 class="mb-3">Phone Information</h4>
-                
                 <?php
                 $phoneType = getPhoneType();
                 $i=0;
@@ -253,14 +252,77 @@
                         <button class="btn btn-primary btn-sm mr-2" type="submit">Add Phone</button>
                     </form>
             </fieldset>
-            <form action="/members/"  class="needs-validation" method="post" novalidate>
-                <fieldset class="form-group">
-                    <h4 class="mb-3">Address Information</h4>
+            <fieldset class="form-group">
+                <h4 class="mb-3">Address Information</h4>
+                <?php
+                    $a=0;
+                    foreach($memberAddresses as $address){
+                        $memberAddressID = $address['memberaddressid'];
+                        $memberStreet1 = $address['street1'];
+                        $memberStreet2 = $address['street2'];
+                        $memberStreet3 = $address['street3'];
+                        $memberCity = $address['city'];
+                        $memberState = $address['state'];
+                        $memberZip = $address['zip'];
+                        $memberPhoneIsPrimary = $phone['isprimary'];
+                        echo '  <form action="/members/"  class="needs-validation" method="post" novalidate>
+                                    <div class="mb-3">
+                                        <label for="address1_'.$a.'">Address 1</label>
+                                        <input type="text" class="form-control" name="address'.$a.'" id="address1'.$a.'" value="'.$memberStreet1.'" required>
+                                        <div class="invalid-feedback">
+                                            Please enter your street address.
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address2_'.$a.'">Address 2 <span class="text-muted">(Optional)</span></label>
+                                        <input type="text" class="form-control" name="address2_'.$a.'" id="address2_'.$a.'" value="'.$memberStreet2.'">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address3_'.$a.'">Address 3 <span class="text-muted">(Optional)</span></label>
+                                        <input type="text" class="form-control" name="address3_'.$a.'" id="address3_'.$a.'" value="'.$memberStreet3.'">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5 mb-3">
+                                            <label for="city'.$a.'">City</label>
+                                            <input type="text" class="form-control" name="city'.$a.'" id="city'.$a.'" value="'.$memberCity.'" required>
+                                            <div class="invalid-feedback">
+                                                Please enter your city.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 mb-3">
+                                            <label for="state'.$a.'">State</label>
+                                            <select class="custom-select d-block w-100" name="state'.$a.'" id="state'.$a.'" required>
+                                            <option value="">Choose...</option>';
+                                            $usStates = getUsStates();
+                                            foreach ($usStates as $state){
+                                                echo '<option value="'.$state['abbreviation'].'" '.$selectedState.'>'.$state['state'].'</option>';
+                                            }
+                                            echo '</select>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid state.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label for="zip'.$a.'">Zip</label>
+                                            <input type="text" class="form-control" name="zip'.$a.'" id="zip'.$a.'" value="'.$memberZip.'" required>
+                                            <div class="invalid-feedback">
+                                                Zip code required.
+                                            </div>
+                                        </div>
+                                    </div>
+                                <input type="hidden" name="action" value="updateAddress">
+                                <input type="hidden" name="memberID" value="'.$memberID.'">
+                                <input type="hidden" name="addressID" value="'.$memberAddressID.'">
+                                <button class="btn btn-primary btn-lg float-left" type="submit">Update Address</button>
+                                <a class="btn btn-outline-danger btn-lg float-right" href="/members/?action=\'deleteAddress\'&id=\''.$memberID.'\'&addressID=\''.$addressID.'\'">Delete Address</a>
+                            </form>';
+                        ?>
+                    <form action="/members/"  class="needs-validation" method="post" novalidate>
                         <div class="mb-3">
                             <label for="address1">Address</label>
                             <input type="text" class="form-control" name="address1" id="address1" placeholder="1234 Main St" required>
                             <div class="invalid-feedback">
-                                Please enter your shipping address.
+                                Please enter your street address.
                             </div>
                         </div>
                         <div class="mb-3">
@@ -276,19 +338,14 @@
                                 <label for="city">City</label>
                                 <input type="text" class="form-control" name="city" id="city" placeholder="City" required>
                                 <div class="invalid-feedback">
-                                    Please enter your shipping city.
+                                    Please enter your city.
                                 </div>
                             </div>
                             <div class="col-md-5 mb-3">
                                 <label for="state">State</label>
                                 <select class="custom-select d-block w-100" name="state" id="state" required>
                                 <option value="">Choose...</option>
-                                <?php $usStates = getUsStates();
-                                    foreach ($usStates as $state){
-                                        echo '<option value="'.$state['abbreviation'].'" '.$selectedState.'>'.$state['state'].'</option>';
-                                    }
-                                ?>
-                                </select>
+                                <option value="AL" >Alabama</option><option value="AK" >Alaska</option><option value="AS" >American Samoa</option><option value="AZ" >Arizona</option><option value="AR" >Arkansas</option><option value="CA" >California</option><option value="CO" >Colorado</option><option value="CT" >Connecticut</option><option value="DE" >Delaware</option><option value="DC" >District of Columbia</option><option value="FM" >Federated States of Micronesia</option><option value="FL" >Florida</option><option value="GA" >Georgia</option><option value="GU" >Guam</option><option value="HI" >Hawaii</option><option value="ID" >Idaho</option><option value="IL" >Illinois</option><option value="IN" >Indiana</option><option value="IA" >Iowa</option><option value="KS" >Kansas</option><option value="KY" >Kentucky</option><option value="LA" >Louisiana</option><option value="ME" >Maine</option><option value="MH" >Marshall Islands</option><option value="MD" >Maryland</option><option value="MA" >Massachusetts</option><option value="MI" >Michigan</option><option value="MN" >Minnesota</option><option value="MS" >Mississippi</option><option value="MO" >Missouri</option><option value="MT" >Montana</option><option value="NE" >Nebraska</option><option value="NV" >Nevada</option><option value="NH" >New Hampshire</option><option value="NJ" >New Jersey</option><option value="NM" >New Mexico</option><option value="NY" >New York</option><option value="NC" >North Carolina</option><option value="ND" >North Dakota</option><option value="MP" >Northern Mariana Islands</option><option value="OH" >Ohio</option><option value="OK" >Oklahoma</option><option value="OR" >Oregon</option><option value="PW" >Palau</option><option value="PA" >Pennsylvania</option><option value="PR" >Puerto Rico</option><option value="RI" >Rhode Island</option><option value="SC" >South Carolina</option><option value="SD" >South Dakota</option><option value="TN" >Tennessee</option><option value="TX" >Texas</option><option value="UT" >Utah</option><option value="VT" >Vermont</option><option value="VI" >Virgin Islands</option><option value="VA" >Virginia</option><option value="WA" >Washington</option><option value="WV" >West Virginia</option><option value="WI" >Wisconsin</option><option value="WY" >Wyoming</option>                                </select>
                                 <div class="invalid-feedback">
                                     Please provide a valid state.
                                 </div>
@@ -301,13 +358,13 @@
                                 </div>
                             </div>
                         </div>
-                    <input type="hidden" name="action" value="updateAddress">
-                    <input type="hidden" name="memberID" value="$memberID">
-                    <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Update Address</button>
-                    <a class="btn btn-danger btn-lg float-right" href="/members/?action='deleteAddress'&id='$memberID'&addressID='$addressID'">Delete Address</a>
-                    <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
-                </fieldset>
-            </form>
+                        <input type="hidden" name="action" value="addAddress">
+                        <input type="hidden" name="memberID" value="$memberID">
+                        <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Add Address</button>
+                        <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
+                    </form>
+            </fieldset>
+            
             <hr class="mb-4">
         </div>
         <a href="/members">Back to List</a>

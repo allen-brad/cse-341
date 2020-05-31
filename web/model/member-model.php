@@ -50,7 +50,7 @@ function getMemberDirectory(){
 
   function getMemberAddress($memberID){
     $db = dbConnection();
-    $sql = "SELECT a.street1, a.street2, a.street3, a.city, a.state, a.zip
+    $sql = "SELECT a.memberaddressid, a.street1, a.street2, a.street3, a.city, a.state, a.zip
             FROM MemberAddress a 
             JOIN Member m ON a.memberid = m.memberid
             WHERE m.memberid = :memberID;";
