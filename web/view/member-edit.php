@@ -130,7 +130,7 @@
                     <a class="btn btn-secondary btn-lg float-right" href="/members">Back to List</a>
                 </fieldset>
             </form>
-            <fieldset class="form-group">
+            <fieldset class="container form-group">
                 <h4 class="mb-3">Phone Information</h4>
                     <form action="/members/"  class="needs-validation" method="post" novalidate>
                     <div class="row">
@@ -182,8 +182,8 @@
                         <input type="hidden" name="action" value"updatePhone">
                         <input type="hidden" name="memberID" value"$memberID">
                         <input type="hidden" name="phoneID" value"$phoneID">
-                        <button class="btn btn-primary btn-sm mr-2 float-left" type="submit" value="update">Update Phone</button>
-                        <a class="btn btn-danger btn-sm float-left" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
+                        <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
+                        <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
                     </form>
                 </div>
             </fieldset>
