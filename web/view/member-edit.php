@@ -113,6 +113,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="dlState">Drivers license state</label>
                             <select class="form-control" id="dlState" required>
+                            <option value="">Choose...</option>
                                 <?php $usStates = getUsStates();
                                     foreach ($usStates as $state){
                                         $selectedState =null;
@@ -130,6 +131,7 @@
                         <div class="col-md-4 mb-3">
                             <label for="memberStatus">Member status</label>
                             <select class="form-control" id="memberStatus" required>
+                            <option value="">Choose...</option>
                                 <?php $memberStatusType = getMemberStatusData();
                                     foreach ($memberStatusType as $type){
                                         if ($type['memberstatustype']==$memberStatus){
@@ -280,9 +282,12 @@
                             <div class="col-md-5 mb-3">
                                 <label for="state">State</label>
                                 <select class="custom-select d-block w-100" name="state" id="state" required>
-                                <option>California</option>
-                                <option selected="selected">Utah</option>
-                                <option>Idaho</option>
+                                <option value="">Choose...</option>
+                                <?php $usStates = getUsStates();
+                                    foreach ($usStates as $state){
+                                        echo '<option value="'.$state['abbreviation'].'" '.$selectedState.'>'.$state['state'].'</option>';
+                                    }
+                                ?>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please provide a valid state.
