@@ -181,7 +181,8 @@
                                 <div class="row">
                                 <div class="col-md-4 mb-3">
                                 <label for="phoneType'.$i.'">Phone type</label>
-                                <select class="form-control" id="phoneType'.$i.'" required>';
+                                <select class="form-control" id="phoneType'.$i.'" required>
+                                <option value="">Choose...</option>';
                         foreach ($phoneType as $type){
                             if ($type['phonetype'] == $memberPhoneType){
                                 $selectedStatus = 'selected="selected"';
