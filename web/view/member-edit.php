@@ -116,11 +116,11 @@
                             <option value="">Choose...</option>
                                 <?php $usStates = getUsStates();
                                     foreach ($usStates as $state){
-                                        $selectedState =null;
+                                        $selectedDlState =null;
                                         if ($state['abbreviation']==$dlState){
-                                            $selectedState = 'selected="selected"';
+                                            $selectedDlState = 'selected="selected"';
                                         }
-                                        echo '<option value="'.$state['abbreviation'].'" '.$selectedState.'>'.$state['state'].'</option>';
+                                        echo '<option value="'.$state['abbreviation'].'" '.$selectedDlState.'>'.$state['state'].'</option>';
                                     }
                                 ?>
                             </select>
@@ -266,6 +266,7 @@
                         $memberZip = $address['zip'];
                         $memberPhoneIsPrimary = $phone['isprimary'];
                         echo '  <form action="/members/"  class="needs-validation" method="post" novalidate>
+                                <div class="row">
                                     <div class="mb-3">
                                         <label for="address1_'.$a.'">Address 1</label>
                                         <input type="text" class="form-control" name="address'.$a.'" id="address1'.$a.'" value="'.$memberStreet1.'" required>
@@ -295,6 +296,11 @@
                                             <option value="">Choose...</option>';
                                             $usStates = getUsStates();
                                             foreach ($usStates as $state){
+                                            if ($state['state'] == $memberState){
+                                                    $selectedState = 'selected="selected"';
+                                                } else{
+                                                    $selectedState =null;
+                                                }
                                                 echo '<option value="'.$state['abbreviation'].'" '.$selectedState.'>'.$state['state'].'</option>';
                                             }
                                             echo '</select>
@@ -315,10 +321,12 @@
                                 <input type="hidden" name="addressID" value="'.$memberAddressID.'">
                                 <button class="btn btn-primary btn-lg float-left" type="submit">Update Address</button>
                                 <a class="btn btn-outline-danger btn-lg float-right" href="/members/?action=\'deleteAddress\'&id=\''.$memberID.'\'&addressID=\''.$addressID.'\'">Delete Address</a>
+                            </div>
                             </form>';
                         }
                     ?>
                     <form action="/members/"  class="needs-validation" method="post" novalidate>
+                    <div class="row">
                         <div class="mb-3">
                             <label for="address1">Address</label>
                             <input type="text" class="form-control" name="address1" id="address1" placeholder="1234 Main St" required>
@@ -363,6 +371,7 @@
                         <input type="hidden" name="memberID" value="$memberID">
                         <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Add Address</button>
                         <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
+                    </div>
                     </form>
             </fieldset>
             
