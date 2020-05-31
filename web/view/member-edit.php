@@ -182,8 +182,8 @@
                             </div>
                         </div>
                         <div class="form-check form-check-inline">
-                            <label class="form-check-label" for="isPrimary">Primary</label>
                             <input class="form-check-input" type="checkbox" id="isPrimary" value="primary">
+                            <label class="form-check-label" for="isPrimary">Primary</label>
                         </div>
                         <input type="hidden" name="action" value="updatePhone">
                         <input type="hidden" name="memberID" value="$memberID">
@@ -217,7 +217,39 @@
                         <input type="hidden" name="memberID" value="$memberID">
                         <input type="hidden" name="phoneID" value="$phoneID">
                         <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
-                        <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
+                        <a class="btn btn-outline-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
+                    </form>
+                    <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="phoneType">Phone type</label>
+                            <select class="form-control" id="phoneType" required>
+                                <?php $phoneType = getPhoneType();
+                                    foreach ($phoneType as $type){
+                                        echo '<option value="'.$type['phonetypeid'].'">'.$type['phonetype'].'</option>';
+                                    }
+                                ?>
+                            </select>
+                            <div class="invalid-feedback">
+                                Valid phone type is required.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="phone1">Phone 1</label>
+                            <input type="tel" class="form-control" name="phone1" id="phone1" placeholder="" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid phone number.
+                            </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="isPrimary" value="primary">
+                            <label class="form-check-label" for="isPrimary">Primary</label>
+                        </div>
+                        <input type="hidden" name="action" value="addPhone">
+                        <input type="hidden" name="memberID" value="$memberID">
+                        <input type="hidden" name="phoneID" value="$phoneID">
+                        </div>
+                        <button class="btn btn-primary btn-sm mr-2" type="submit" value="add">Add Phone</button>
                     </form>
             </fieldset>
             <form action="/members/"  class="needs-validation" method="post" novalidate>

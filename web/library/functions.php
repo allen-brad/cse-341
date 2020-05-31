@@ -35,3 +35,14 @@ function getUsStates() {
   $stmt->closeCursor();
   return $usStateData;
 }
+
+function getPhoneType() {
+  $db = dbConnection();
+  $sql = "SELECT t.phonetypeid, t.phonetype
+          FROM PhoneType t;";
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  $phoneTypeData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $stmt->closeCursor();
+  return $phoneTypeData;
+}
