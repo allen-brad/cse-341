@@ -24,3 +24,14 @@ function format_phone_us($phone) {
       break;
   }
 }
+
+function getUsStates() {
+  $db = dbConnection();
+  $sql = "SELECT s.stateid, s.state, s.abbreviation
+          FROM usStates s;";
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  $usStateData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $stmt->closeCursor();
+  return $usStateData;
+}

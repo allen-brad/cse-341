@@ -71,6 +71,7 @@ function getMemberDirectory(){
     $stmt->closeCursor();
     return $memberStatusData; 
   }
+  
 
 
   // Update member info

@@ -113,11 +113,14 @@
                         <div class="col-md-4 mb-3">
                             <label for="dlState">Drivers license state</label>
                             <select class="form-control" id="dlState" required>
-                                <option>1</option>
-                                <option>2</option>
-                                <option selected="selected">UT</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <?php $usStates = getUsStates();
+                                    foreach ($usStates as $state){
+                                        if ($state['abbreviation']==$dlState){
+                                            $selected = 'selected="selected"';
+                                        }
+                                        echo '"<option value="'.$state['abbreviation'].'" '.$selected.'>'.$state['state'].'</option>"';
+                                    }
+                                ?>
                             </select>
                             <div class="invalid-feedback">
                                 Valid drivers license state is required.
@@ -142,7 +145,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="personalEmail">Personal email</label>
-                            <input type="email" class="form-control" name="personalEmail" id="personalEmail" placeholder="" value="" required>
+                            <input type="email" class="form-control" name="personalEmail" id="personalEmail" placeholder="" value="<?php echo $personalEmail; ?>" required>
                             <div class="invalid-feedback">
                                 Please enter a valid email address.
                             </div>
