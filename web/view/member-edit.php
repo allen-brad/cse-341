@@ -316,7 +316,8 @@
                                 <button class="btn btn-primary btn-lg float-left" type="submit">Update Address</button>
                                 <a class="btn btn-outline-danger btn-lg float-right" href="/members/?action=\'deleteAddress\'&id=\''.$memberID.'\'&addressID=\''.$addressID.'\'">Delete Address</a>
                             </form>';
-                        ?>
+                        }
+                    ?>
                     <form action="/members/"  class="needs-validation" method="post" novalidate>
                         <div class="mb-3">
                             <label for="address1">Address</label>
