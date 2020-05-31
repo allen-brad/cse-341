@@ -74,6 +74,36 @@ function getMemberDirectory(){
   }
 
 
+//Insert member phone
+function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
+    //create connection object
+    $db = dbConnection();
+    //sql statement
+    $sql = 'INSERT INTO MemberPhone (memberID, phoneTypeID, phoneNumber, isPrimary
+            createdBy, lastUpdateBy) VALUES (:memberID, :phoneTypeID, :phoneNumber, :isPrimary, :createdBy, lastUpdateBy)';
+    
+   //creates prepared statement
+   $stmt = $db->prepare($sql);
+
+   // swap out varialbes for actual values
+    //tell database the type of data
+    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
+    $stmt->bindValue(':phoneTypeID', $phoneTypeID, PDO::PARAM_INT);
+    $stmt->bindValue(':phoneNumber', $phoneNumber, PDO::PARAM_INT);
+    $stmt->bindValue(':isPrimary', $clientLastName, PDO::PARAM_STR);
+    $stmt->bindValue(':createdBy', $memberID, PDO::PARAM_INT);
+    $stmt->bindValue(':lastUpdateBy', $phoneTypeID, PDO::PARAM_INT); 
+    //use the prepared statement to insert data
+    $stmt->execute();
+    //check to see if it worked
+    $rowsChanged = $stmt->rowCount();
+    //close connection
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+}
+
+
 
   // Update member info
 function updateMemberDetails($lastName, $firstName, $middleName, $preferredName, $callSign, $dob, $personalEmail, $dlNumber, $dlState, $ssnLastFour, $memberStatusID){
@@ -99,6 +129,8 @@ $stmt->closeCursor();
 // Return the indication of success (rows changed)
 return $rowsChanged;
 }
+
+
 
 
 /* //check for existing client first

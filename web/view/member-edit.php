@@ -29,6 +29,9 @@
         <?php echo "<h4>Member ID: $memberID</h4>";?>
         <hr />
         <?php
+            if (isset($successMessage)) {
+                echo $successMessage;
+            }
             if (isset($message)) {
                  echo $message;
             }
@@ -112,7 +115,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="dlState">Drivers license state</label>
-                            <select class="form-control" id="dlState" required>
+                            <select class="form-control" id="dlState" name="dlState" required>
                             <option value="">Choose...</option>
                                 <?php $usStates = getUsStates();
                                     foreach ($usStates as $state){
@@ -130,7 +133,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="memberStatus">Member status</label>
-                            <select class="form-control" id="memberStatus" required>
+                            <select class="form-control" id="memberStatus" name="memberStatus" required>
                             <option value="">Choose...</option>
                                 <?php $memberStatusType = getMemberStatusData();
                                     foreach ($memberStatusType as $type){
@@ -181,8 +184,8 @@
                         echo '<form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                                 <div class="row">
                                 <div class="col-md-4 mb-3">
-                                <label for="phoneType'.$i.'">Phone type</label>
-                                <select class="form-control" id="phoneType'.$i.'" required>
+                                <label for="phoneTypeID_'.$i.'">Phone type</label>
+                                <select class="form-control" id="phoneTypeID_'.$i.'" name="phoneTypeID" required>
                                 <option value="">Choose...</option>';
                         foreach ($phoneType as $type){
                             if ($type['phonetype'] == $memberPhoneType){
@@ -222,8 +225,8 @@
                     <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                     <div class="row">
                         <div class="col-md-4 mb-3">
-                            <label for="phoneType">Phone type</label>
-                            <select class="form-control" id="phoneType" required>
+                            <label for="phoneTypeID">Phone type</label>
+                            <select class="form-control" id="phoneTypeID" name="phoneTypeID" required>
                                 <option value="">Choose...</option>
                                 <?php
                                     foreach ($phoneType as $type){
@@ -243,7 +246,7 @@
                             </div>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="isPrimary" value="primary">
+                            <input class="form-check-input" type="checkbox" id="isPrimary" name="isPrimary" value="primary">
                             <label class="form-check-label" for="isPrimary">Primary</label>
                         </div>
                         <input type="hidden" name="action" value="addPhone">
@@ -328,7 +331,7 @@
                 
                 <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                     <div class="mb-3">
-                        <label for="addressNew">Address</label>
+                        <label for="addressNew">Address 1</label>
                         <input type="text" class="form-control" name="addressNew" id="addressNew" placeholder="1234 Main St" required>
                         <div class="invalid-feedback">
                             Please enter your street address.
