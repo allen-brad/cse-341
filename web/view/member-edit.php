@@ -133,7 +133,6 @@
             <form action="/members/"  class="needs-validation" method="post" novalidate>
                 <fieldset class="form-group">
                     <h4 class="mb-3">Address Information</h4>
-                    <div class="row">
                         <div class="mb-3">
                             <label for="address1">Address</label>
                             <input type="text" class="form-control" name="address1" id="address1" placeholder="1234 Main St" required>
@@ -174,7 +173,6 @@
                                 Zip code required.
                             </div>
                         </div>
-                    </div>
                     <input type="hidden" name="action" value"updateAddress">
                     <input type="hidden" name="memberID" value"$memberID">
                     <button class="btn btn-primary btn-lg float-left" type="submit">Update Member Address</button>
