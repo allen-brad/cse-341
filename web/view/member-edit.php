@@ -132,9 +132,10 @@
                             <select class="form-control" id="memberStatus" required>
                                 <?php $memberStatusType = getMemberStatusData();
                                     foreach ($memberStatusType as $type){
-                                        $selectedStatus =null;
-                                        if ($type['memberstatusType']==$memberStatus){
+                                        if ($type['memberstatustype']==$memberStatus){
                                             $selectedStatus = 'selected="selected"';
+                                        }else{
+                                            $selectedStatus =null;
                                         }
                                         echo '<option value="'.$type['memberstatusid'].'" '.$selectedStatus.'>'.$type['memberstatustype'].'</option>';
                                     }
@@ -166,10 +167,10 @@
                 $phoneType = getPhoneType();
                 $i=0;
                     foreach($memberPhoneNumbers as $phone){
-                        $phoneType = $phone['phonetype'];
-                        $phoneTypeID = $phone['phonetypeid'];
-                        $phoneNumber = $phone['phonenumber'];
-                        $phoneIsPrimary = $phone['isprimary'];
+                        $memberPhoneType = $phone['phonetype'];
+                        $memberPhoneTypeID = $phone['phonetypeid'];
+                        $memberPhoneNumber = $phone['phonenumber'];
+                        $memberPhoneIsPrimary = $phone['isprimary'];
                         if ($phoneIsPrimary==true){
                             $checked = 'checked';
                         }else{
@@ -181,7 +182,7 @@
                                 <label for="phoneType">Phone type</label>
                                 <select class="form-control" id="phoneType" required>';
                         foreach ($phoneType as $type){
-                            if ($type['phonetype']==$phonetype){
+                            if ($type['phonetype']==$memberPhonetype){
                                 $selectedStatus = 'selected="selected"';
                             } else{
                                 $selectedStatus =null;
@@ -196,7 +197,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="phone">Phone</label>
-                                <input type="tel" class="form-control" name="phone" id="phone" value="'.$phoneNumber.'" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                                <input type="tel" class="form-control" name="phone" id="phone" value="'.$memberPhoneNumber.'" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
                                 <div class="invalid-feedback">
                                     Please enter a valid phone number.
                                 </div>
@@ -207,10 +208,10 @@
                             </div>
                             <input type="hidden" name="action" value="updatePhone">
                             <input type="hidden" name="memberID" value="'.$memberID.'">
-                            <input type="hidden" name="phoneID" value="'.$phoneID.'">
+                            <input type="hidden" name="phoneID" value="'.$memberPhoneID.'">
                         </div>
                         <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
-                        <a class="btn btn-outline-danger btn-sm" href="/members/?action=\'deletePhone\'&id=\''.$memberID.'\'&phoneID=\''.$phoneID.'\'">Delete Phone</a>
+                        <a class="btn btn-outline-danger btn-sm" href="/members/?action=\'deletePhone\'&id=\''.$memberID.'\'&phoneID=\''.$memberPhoneID.'\'">Delete Phone</a>
                         </form>';
                     }
                 ?>
