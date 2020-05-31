@@ -34,9 +34,10 @@ function getMemberDirectory(){
 
   function getMemberPhone($memberID){
     $db = dbConnection();
-    $sql = "SELECT p.phonetype, p.phonenumber, p.isprimary
+    $sql = "SELECT t.phonetype, p.phonenumber, p.isprimary, p.phonetypeid
             FROM MemberPhone p
             JOIN Member m ON p.memberid = m.memberid
+            JOIN PhoneType t ON p.phonetypeid = t.phonetypeid
             WHERE m.memberid = :memberID
             ORDER BY p.isprimary DESC;";
     $stmt = $db->prepare($sql);
@@ -71,7 +72,7 @@ function getMemberDirectory(){
     $stmt->closeCursor();
     return $memberStatusData; 
   }
-  
+
 
 
   // Update member info

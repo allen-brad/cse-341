@@ -16,6 +16,15 @@ CREATE TABLE MemberStatus
  CONSTRAINT PK_MemberStatus PRIMARY KEY ( memberStatusID )
 );
 
+-- ************************************** Phone Type enum
+
+CREATE TABLE PhoneType
+(
+ phoneTypeID  integer NOT NULL GENERATED ALWAYS AS IDENTITY,
+ phoneType varchar(50) NOT NULL,
+ CONSTRAINT PK_PhoneType PRIMARY KEY ( phoneTypeID )
+);
+
 
 -- ************************************** Member
 
@@ -159,7 +168,7 @@ CREATE TABLE MemberPhone
  start 1000
  ),
  memberID      integer NOT NULL,
- phoneType     varchar(50) NOT NULL,
+ phoneTypeID   integer NOT NULL,
  phoneNumber   varchar(50) NOT NULL,
  isPrimary     boolean NOT NULL,
  createdBy     integer NOT NULL,
@@ -170,6 +179,7 @@ CREATE TABLE MemberPhone
  CONSTRAINT FK_MemberPhone_Member_1 FOREIGN KEY ( memberID ) REFERENCES Member ( memberID ),
  CONSTRAINT FK_MemberPhone_Member_2 FOREIGN KEY ( createdBy ) REFERENCES Member ( memberID ),
  CONSTRAINT FK_MemberPhone_Member_3 FOREIGN KEY ( lastUpdateBy ) REFERENCES Member ( memberID ),
+ CONSTRAINT FK_PhoneTypeID FOREIGN KEY ( phoneTypeID ) REFERENCES PhoneType ( phoneTypeID ),
  CONSTRAINT UK_PrimaryPhone UNIQUE (memberID, isPrimary)
 );
 
@@ -187,3 +197,4 @@ CREATE INDEX  ON MemberPhone
 (
  lastUpdateBy
 );
+
