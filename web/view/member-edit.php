@@ -177,8 +177,9 @@
                         </div>
                     <input type="hidden" name="action" value"updateAddress">
                     <input type="hidden" name="memberID" value"$memberID">
-                    <button class="btn btn-primary btn-lg float-left" type="submit">Update Member Address</button>
+                    <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Update Member Address</button>
                     <a class="btn btn-secondary btn-lg float-right" href="/members">Back to List</a>
+                    <button class="btn btn-danger btn-lg float-left" type="submit" value="delete">Delete Member Address</button>
                 </fieldset>
             </form>
             <hr class="mb-4">
