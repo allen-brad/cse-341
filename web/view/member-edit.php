@@ -166,7 +166,7 @@
                 <?php
                 $phoneType = getPhoneType();
                 $i=0;
-                $phoneSelectSize = count(memberPhoneNumbers);
+                $phoneSelectSize = sizeof(memberPhoneNumbers);
                     foreach($memberPhoneNumbers as $phone){
                         $memberPhoneID = $phone['memberphoneid'];
                         $memberPhoneType = $phone['phonetype'];
