@@ -152,12 +152,13 @@
                                 Please enter a valid phone number.
                             </div>
                         </div>
-                    </div>
+                    
                         <input type="hidden" name="action" value"updatePhone">
                         <input type="hidden" name="memberID" value"$memberID">
                         <input type="hidden" name="phoneID" value"$phoneID">
                         <button class="btn btn-primary btn-sm mr-2 float-left" type="submit" value="update">Update Phone</button>
                         <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
+                        </div>
                     </form>
                 <div class="row">
                     <form action="/members/"  class="needs-validation" method="post" novalidate>
