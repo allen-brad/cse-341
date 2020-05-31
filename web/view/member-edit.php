@@ -25,58 +25,87 @@
 </header>
 <div class="container">
     <main role="main" class="pb-3">
-    <?php
-        if (isset($message)) {
-            echo $message;
-        }else{
-        };
-    
-    ?>
         <h1>Edit Member</h1>
         <?php echo "<h4>Member ID: $memberID</h4>";?>
         <hr />
         <?php if (isset($message)) { echo $message;}?>
         <div class="col-md-12 order-md-1">
-            <h4 class="mb-3">Billing address</h4>
+            <h4 class="mb-3">Personal Infor</h4>
             <form action="/members/?action=update&id=$memberID"  class="needs-validation" method="post" novalidate>
-                <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <label for="firstName">First name</label>
-                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="$firstName" required>
-                        <div class="invalid-feedback">
-                            Valid first name is required.
+                <fieldset class="form-group">
+                    <h4 class="mb-3">Personal Information</h4>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="firstName">First name</label>
+                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="$firstName" required>
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="middleName">Middle name</label>
+                            <input type="text" class="form-control" name="middleName" id="middleName" placeholder="" value="$middleName" required>
+                            <div class="invalid-feedback">
+                                Valid middel name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="lastName">Last name</label>
+                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Valid last name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="preferredName">Preferred name</label>
+                            <input type="text" class="form-control" name="preferredName" id="preferredName" placeholder="" value="$preferredName" required>
+                            <div class="invalid-feedback">
+                                Valid preferred name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="callSign">Call sign</label>
+                            <input type="text" class="form-control" name="callSign" id="callSign" placeholder="" value="$callSign" required>
+                            <div class="invalid-feedback">
+                                Valid Call Sign name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="dob">Date of birth</label>
+                            <input type="date" class="form-control" name="dob" id="dob" placeholder="" value="$dob" required>
+                            <div class="invalid-feedback">
+                                Valid DOB is required.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="dlNumber">Drivers license #</label>
+                            <input type="text" class="form-control" name="dlNumber" id="dlNumber" placeholder="" value="$dlNumber" required>
+                            <div class="invalid-feedback">
+                                Valid drivers license number is required.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="dlState">Drivers license state</label>
+                            <select class="form-control" id="dlState" required>
+                                <option>1</option>
+                                <option>2</option>
+                                <option selected="selected">UT</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Valid drivers license state is required.
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="personalEmail">Personal email <span class="text-muted">(Optional)</span></label>
+                            <input type="email" class="form-control" name="personalEmail" id="personalEmail" placeholder="you@example.com" value="$personalEmail">
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="middleName">Middle name</label>
-                        <input type="text" class="form-control" name="middleName" id="middleName" placeholder="" value="$middleName" required>
-                        <div class="invalid-feedback">
-                            Valid middel name is required.
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="lastName">Last name</label>
-                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            Valid last name is required.
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="preferredName">Last name</label>
-                        <input type="text" class="form-control" name="preferredName" id="preferredName" placeholder="" value="$preferredName" required>
-                        <div class="invalid-feedback">
-                            Valid preferred name is required.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="personalEmail">Personal email <span class="text-muted">(Optional)</span></label>
-                    <input type="email" class="form-control" name="personalEmail" id="personalEmail" placeholder="you@example.com" value="$personalEmail">
-                    <div class="invalid-feedback">
-                        Please enter a valid email address for shipping updates.
-                    </div>
-                </div>
+                </fieldset><!-- end fieldset -->
 
                 <div class="mb-3">
                     <label for="address1">Address</label>
