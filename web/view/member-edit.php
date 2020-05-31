@@ -112,7 +112,7 @@
                                 <option>Training</option>
                             </select>
                             <div class="invalid-feedback">
-                                Valid status license state is required.
+                                Valid status is required.
                             </div>
                         </div>
 
@@ -130,6 +130,63 @@
                     <a class="btn btn-secondary btn-lg float-right" href="/members">Back to List</a>
                 </fieldset>
             </form>
+            <fieldset class="form-group">
+                <h4 class="mb-3">Phone Information</h4>
+                <div class="row">
+                    <form action="/members/"  class="needs-validation" method="post" novalidate>
+                        <div class="col-md-6 mb-3">
+                            <label for="phoneType">Phone type</label>
+                            <select class="form-control" id="phoneType" required>
+                                <option selected="selected">Mobile</option>
+                                <option>Home</option>
+                                <option>Work</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Valid phone type is required.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone1">Phone 1</label>
+                            <input type="tel" class="form-control" name="phone1" id="phone1" placeholder="" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid phone number.
+                            </div>
+                        </div>
+                        <input type="hidden" name="action" value"updatePhone">
+                        <input type="hidden" name="memberID" value"$memberID">
+                        <input type="hidden" name="phoneID" value"$phoneID">
+                        <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
+                        <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
+                    </form>
+                </div>
+                <div class="row">
+                    <form action="/members/"  class="needs-validation" method="post" novalidate>
+                        <div class="col-md-6 mb-3">
+                            <label for="phoneType">Phone type</label>
+                            <select class="form-control" id="phoneType" required>
+                                <option>Mobile</option>
+                                <option selected="selected">Home</option>
+                                <option>Work</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Valid phone type is required.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone1">Phone 2</label>
+                            <input type="tel" class="form-control" name="phone2" id="phone2" placeholder="" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid phone number.
+                            </div>
+                        </div>
+                        <input type="hidden" name="action" value"updatePhone">
+                        <input type="hidden" name="memberID" value"$memberID">
+                        <input type="hidden" name="phoneID" value"$phoneID">
+                        <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
+                        <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
+                    </form>
+                </div>
+            </fieldset>
             <form action="/members/"  class="needs-validation" method="post" novalidate>
                 <fieldset class="form-group">
                     <h4 class="mb-3">Address Information</h4>
@@ -177,8 +234,8 @@
                         </div>
                     <input type="hidden" name="action" value"updateAddress">
                     <input type="hidden" name="memberID" value"$memberID">
-                    <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Update Member Address</button>
-                    <a class="btn btn-danger btn-lg float-right" href="/members/?action='deleteAddress'&id='$memberID'&addressID='$addressID'">Back to List</a>
+                    <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Update Address</button>
+                    <a class="btn btn-danger btn-lg float-right" href="/members/?action='deleteAddress'&id='$memberID'&addressID='$addressID'">Delete Address</a>
                     <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
                 </fieldset>
             </form>
