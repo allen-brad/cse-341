@@ -149,31 +149,29 @@
                             <label for="address3">Address 3 <span class="text-muted">(Optional)</span></label>
                             <input type="text" class="form-control" name="address3" id="address3" placeholder="Apartment or suite">
                         </div>
-                        <div class="row">
-                            <div class="col-md-5 mb-3">
-                                <label for="city">City</label>
-                                <input type="text" class="form-control" name="city" id="city" placeholder="City" required>
-                                <div class="invalid-feedback">
-                                    Please enter your shipping city.
-                                </div>
+                        <div class="col-md-5 mb-3">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" name="city" id="city" placeholder="City" required>
+                            <div class="invalid-feedback">
+                                Please enter your shipping city.
                             </div>
-                            <div class="col-md-5 mb-3">
-                                <label for="state">State</label>
-                                <select class="custom-select d-block w-100" name="state" id="state" required>
-                                <option>California</option>
-                                <option selected="selected">Utah</option>
-                                <option>Idaho</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please provide a valid state.
-                                </div>
+                        </div>
+                        <div class="col-md-5 mb-3">
+                            <label for="state">State</label>
+                            <select class="custom-select d-block w-100" name="state" id="state" required>
+                            <option>California</option>
+                            <option selected="selected">Utah</option>
+                            <option>Idaho</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
                             </div>
-                            <div class="col-md-2 mb-3">
-                                <label for="zip">Zip</label>
-                                <input type="text" class="form-control" name="zip" id="zip" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Zip code required.
-                                </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="zip">Zip</label>
+                            <input type="text" class="form-control" name="zip" id="zip" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Zip code required.
                             </div>
                         </div>
                     </div>
