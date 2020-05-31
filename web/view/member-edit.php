@@ -30,37 +30,36 @@
         <hr />
         <?php if (isset($message)) { echo $message;}?>
         <div class="col-md-12 order-md-1">
-            <h4 class="mb-3">Personal Infor</h4>
             <form action="/members/?action=update&id=$memberID"  class="needs-validation" method="post" novalidate>
                 <fieldset class="form-group">
                     <h4 class="mb-3">Personal Information</h4>
                     <div class="row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="firstName">First name</label>
                             <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="$firstName" required>
                             <div class="invalid-feedback">
                                 Valid first name is required.
                             </div>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
+                            <label for="preferredName">Preferred name</label>
+                            <input type="text" class="form-control" name="preferredName" id="preferredName" placeholder="" value="$preferredName" required>
+                            <div class="invalid-feedback">
+                                Valid preferred name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
                             <label for="middleName">Middle name</label>
                             <input type="text" class="form-control" name="middleName" id="middleName" placeholder="" value="$middleName" required>
                             <div class="invalid-feedback">
                                 Valid middel name is required.
                             </div>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="lastName">Last name</label>
-                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="" required>
+                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="$lastName" required>
                             <div class="invalid-feedback">
                                 Valid last name is required.
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="preferredName">Preferred name</label>
-                            <input type="text" class="form-control" name="preferredName" id="preferredName" placeholder="" value="$preferredName" required>
-                            <div class="invalid-feedback">
-                                Valid preferred name is required.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
@@ -75,6 +74,13 @@
                             <input type="date" class="form-control" name="dob" id="dob" placeholder="" value="$dob" required>
                             <div class="invalid-feedback">
                                 Valid DOB is required.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="ssnLastFour">SSN last four</label>
+                            <input type="text" class="form-control" name="ssnLastFour" id="ssnLastFour" placeholder="" value="$ssnLastFour" required>
+                            <div class="invalid-feedback">
+                                Valid SSN last four is required.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
@@ -97,11 +103,11 @@
                                 Valid drivers license state is required.
                             </div>
                         </div>
-                        <div class="mb-6">
+                        <div class="col-md-6 mb-3">
                             <label for="personalEmail">Personal email <span class="text-muted">(Optional)</span></label>
-                            <input type="email" class="form-control" name="personalEmail" id="personalEmail" placeholder="you@example.com" value="$personalEmail">
+                            <input type="email" class="form-control" name="personalEmail" id="personalEmail" placeholder="" value="$personalEmail" required>
                             <div class="invalid-feedback">
-                                Please enter a valid email address for shipping updates.
+                                Please enter a valid email address.
                             </div>
                         </div>
                     </div>
