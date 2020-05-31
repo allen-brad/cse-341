@@ -283,7 +283,7 @@
                                         <label for="address3_'.$a.'">Address 3 <span class="text-muted">(Optional)</span></label>
                                         <input type="text" class="form-control" name="address3_'.$a.'" id="address3_'.$a.'" value="'.$memberStreet3.'">
                                     </div>
-                                    <div class="row">
+                                    
                                         <div class="col-md-5 mb-3">
                                             <label for="city'.$a.'">City</label>
                                             <input type="text" class="form-control" name="city'.$a.'" id="city'.$a.'" value="'.$memberCity.'" required>
@@ -316,7 +316,7 @@
                                                 Zip code required.
                                             </div>
                                         </div>
-                                    </div>
+                                    
                                 <input type="hidden" name="action" value="updateAddress">
                                 <input type="hidden" name="memberID" value="'.$memberID.'">
                                 <input type="hidden" name="addressID" value="'.$memberAddressID.'">
