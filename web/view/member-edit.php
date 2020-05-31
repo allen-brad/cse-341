@@ -117,78 +117,75 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="personalEmail">Personal email <span class="text-muted">(Optional)</span></label>
+                            <label for="personalEmail">Personal email</label>
                             <input type="email" class="form-control" name="personalEmail" id="personalEmail" placeholder="" value="" required>
                             <div class="invalid-feedback">
                                 Please enter a valid email address.
                             </div>
                         </div>
                     </div>
-                </fieldset><!-- end fieldset -->
-
-                <div class="mb-3">
-                    <label for="address1">Address</label>
-                    <input type="text" class="form-control" name="address1" id="address1" placeholder="1234 Main St" required>
-                    <div class="invalid-feedback">
-                        Please enter your shipping address.
+                    <input type="hidden" name="action" value"updateMember">
+                    <input type="hidden" name="memberID" value"$memberID">
+                    <button class="btn btn-primary btn-lg float-left" type="submit">Update Member Details</button>
+                    <a class="btn btn-secondary btn-lg float-right" href="/members">Back to List</a>
+                </fieldset>
+            </form>
+            <form action="/members/"  class="needs-validation" method="post" novalidate>
+                <fieldset class="form-group">
+                    <h4 class="mb-3">Address Information</h4>
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="address1">Address</label>
+                            <input type="text" class="form-control" name="address1" id="address1" placeholder="1234 Main St" required>
+                            <div class="invalid-feedback">
+                                Please enter your shipping address.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                            <input type="text" class="form-control" name="address2" id="address2" placeholder="Apartment or suite">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address3">Address 3 <span class="text-muted">(Optional)</span></label>
+                            <input type="text" class="form-control" name="address3" id="address3" placeholder="Apartment or suite">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" name="city" id="city" placeholder="City" required>
+                                <div class="invalid-feedback">
+                                    Please enter your shipping city.
+                                </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="state">State</label>
+                                <select class="custom-select d-block w-100" name="state" id="state" required>
+                                <option>California</option>
+                                <option selected="selected">Utah</option>
+                                <option>Idaho</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="zip">Zip</label>
+                                <input type="text" class="form-control" name="zip" id="zip" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Zip code required.
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" name="address2" id="address2" placeholder="Apartment or suite">
-                </div>
-
-                <div class="mb-3">
-                    <label for="city">City</label>
-                    <input type="text" class="form-control" name="city" id="city" placeholder="City" required>
-                    <div class="invalid-feedback">
-                        Please enter your shipping city.
-                    </div>
-                </div>
-
-            <div class="row">
-              <div class="col-md-5 mb-3">
-                <label for="country">Country</label>
-                <select class="custom-select d-block w-100" name="country" id="country" required>
-                  <option value="">Choose...</option>
-                  <option>United States</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please select a valid country.
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="state">State</label>
-                <select class="custom-select d-block w-100" name="state" id="state" required>
-                  <option value="">Choose...</option>
-                  <option>California</option>
-                  <option>Utah</option>
-                  <option>Idaho</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please provide a valid state.
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <label for="zip">Zip</label>
-                <input type="text" class="form-control" name="zip" id="zip" placeholder="" required>
-                <div class="invalid-feedback">
-                  Zip code required.
-                </div>
-              </div>
-            </div>
+                    <input type="hidden" name="action" value"updateAddress">
+                    <input type="hidden" name="memberID" value"$memberID">
+                    <button class="btn btn-primary btn-lg float-left" type="submit">Update Member Address</button>
+                    <a class="btn btn-secondary btn-lg float-right" href="/members">Back to List</a>
+                </fieldset>
+            </form>
             <hr class="mb-4">
-            <input type="hidden" name="action" value"updateMember">
-            <input type="hidden" name="memberID" value"$memberID">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Update Member Details</button>
-            <a class="btn btn-secondary btn-lg btn-block" href="/members">Back to List</a>
-          </form>
-          <hr class="mb-4">
         </div>
-
-            <a href="/members">Back to List</a>
-        </div> 
+        <a href="/members">Back to List</a>
     </main>
 </div>
 
