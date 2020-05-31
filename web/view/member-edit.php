@@ -2,11 +2,11 @@
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="WCSAR Members">
+  <meta name="description" content="WCSAR Edit Member">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fafafa"><!-- this alters the google chrome toolbar color -->
 
-  <title>WCSAR | Members</title>
+  <title>WCSAR | Edit Member</title>
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="apple-touch-icon" href="/cropped-ba-192x192.png">
@@ -165,7 +165,6 @@
                 
                 <?php
                 $phoneType = getPhoneType();
-                var_dump ($phoneType);
                     foreach($memberPhoneNumbers as $phone){
                         $memberPhoneType = $phone['phonetype'];
                         $memberPhoneTypeID = $phone['phonetypeid'];
@@ -182,7 +181,7 @@
                                 <label for="phoneType">Phone type</label>
                                 <select class="form-control" id="phoneType" required>';
                         foreach ($phoneType as $type){
-                            if ($type['phonetype']==$memberPhonetype){
+                            if ($type['phonetype']==$memberPhoneType){
                                 $selectedStatus = 'selected="selected"';
                             } else{
                                 $selectedStatus =null;
