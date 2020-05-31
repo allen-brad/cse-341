@@ -248,8 +248,9 @@
                         </div>
                         <input type="hidden" name="action" value="addPhone">
                         <input type="hidden" name="memberID" value="<?php $memberID ?>">
-                        </div>
-                        <button class="btn btn-primary btn-sm mr-2" type="submit">Add Phone</button>
+                    </div>
+                    <button class="btn btn-primary btn-sm mr-2" type="submit">Add Phone</button>
+                    <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
                     </form>
             </fieldset>
             <fieldset class="form-group">
@@ -319,9 +320,9 @@
                                 <input type="hidden" name="action" value="updateAddress">
                                 <input type="hidden" name="memberID" value="'.$memberID.'">
                                 <input type="hidden" name="addressID" value="'.$memberAddressID.'">
-                                <button class="btn btn-primary btn-lg float-left" type="submit">Update Address</button>
-                                <a class="btn btn-outline-danger btn-lg float-right" href="/members/?action=\'deleteAddress\'&id=\''.$memberID.'\'&addressID=\''.$addressID.'\'">Delete Address</a>
                             </div>
+                            <button class="btn btn-primary btn-lg float-left" type="submit">Update Address</button>
+                            <a class="btn btn-outline-danger btn-lg float-right" href="/members/?action=\'deleteAddress\'&id=\''.$memberID.'\'&addressID=\''.$addressID.'\'">Delete Address</a>
                             </form>';
                         }
                     ?>
@@ -369,9 +370,9 @@
                         </div>
                         <input type="hidden" name="action" value="addAddress">
                         <input type="hidden" name="memberID" value="$memberID">
-                        <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Add Address</button>
-                        <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
                     </div>
+                    <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Add Address</button>
+                    <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
                     </form>
             </fieldset>
             
