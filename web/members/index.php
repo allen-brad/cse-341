@@ -67,7 +67,7 @@ switch ($action) {
         $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
         $phoneTypeID = filter_input(INPUT_POST, 'phoneTypeID', FILTER_SANITIZE_NUMBER_INT);
         $phoneNew = filter_input(INPUT_POST, 'phoneNew', FILTER_SANITIZE_STRING);
-        $isPrimary = filter_input(INPUT_POST, 'phoneNew', FILTER_SANITIZE_STRING);
+        $isPrimary = filter_input(INPUT_POST, 'phoneNew', FILTER_SANITIZE_NUMBER_INT);
 
         $outcome = addMemberPhone($memberID, $phoneTypeID, $phoneNew, $isPrimary);
         // Check and report the result

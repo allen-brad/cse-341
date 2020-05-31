@@ -80,7 +80,7 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
     $db = dbConnection();
     //sql statement
     $sql = 'INSERT INTO MemberPhone (memberID, phoneTypeID, phoneNumber, isPrimary
-            createdBy, lastUpdateBy) VALUES (:memberID, :phoneTypeID, :phoneNumber, :isPrimary, :createdBy, lastUpdateBy)';
+            createdBy, lastUpdateBy) VALUES (:memberID, :phoneTypeID, :phoneNumber, :isPrimary, :createdBy, :lastUpdateBy)';
     
    //creates prepared statement
    $stmt = $db->prepare($sql);
@@ -90,7 +90,7 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
     $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt->bindValue(':phoneTypeID', $phoneTypeID, PDO::PARAM_INT);
     $stmt->bindValue(':phoneNumber', $phoneNumber, PDO::PARAM_INT);
-    $stmt->bindValue(':isPrimary', $isPrimary, PDO::PARAM_STR);
+    $stmt->bindValue(':isPrimary', $isPrimary, PDO::PARAM_BOOL);
     $stmt->bindValue(':createdBy', $memberID, PDO::PARAM_INT);
     $stmt->bindValue(':lastUpdateBy', $memberID, PDO::PARAM_INT); 
     //use the prepared statement to insert data

@@ -246,7 +246,7 @@
                             </div>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="isPrimary" name="isPrimary" value="primary">
+                            <input class="form-check-input" type="checkbox" id="isPrimary" name="isPrimary" value="1">
                             <label class="form-check-label" for="isPrimary">Primary</label>
                         </div>
                         <input type="hidden" name="action" value="addPhone">
