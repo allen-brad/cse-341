@@ -267,7 +267,6 @@
                         $memberZip = $address['zip'];
                         $memberPhoneIsPrimary = $phone['isprimary'];
                         echo '  <form action="/members/"  class="needs-validation" method="post" novalidate>
-                                <div class="row">
                                     <div class="mb-3">
                                         <label for="address1_'.$a.'">Address 1</label>
                                         <input type="text" class="form-control" name="address'.$a.'" id="address1'.$a.'" value="'.$memberStreet1.'" required>
@@ -320,7 +319,6 @@
                                 <input type="hidden" name="action" value="updateAddress">
                                 <input type="hidden" name="memberID" value="'.$memberID.'">
                                 <input type="hidden" name="addressID" value="'.$memberAddressID.'">
-                            </div>
                             <button class="btn btn-primary btn-lg float-left" type="submit">Update Address</button>
                             <a class="btn btn-outline-danger btn-lg float-right" href="/members/?action=\'deleteAddress\'&id=\''.$memberID.'\'&addressID=\''.$addressID.'\'">Delete Address</a>
                             </form>';
