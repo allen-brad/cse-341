@@ -103,6 +103,19 @@
                                 Valid drivers license state is required.
                             </div>
                         </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="memberStatus">Member status</label>
+                            <select class="form-control" id="memberStatus" required>
+                                <option selected="selected">Active</option>
+                                <option>Probation</option>
+                                <option>Retired</option>
+                                <option>Training</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Valid status license state is required.
+                            </div>
+                        </div>
+
                         <div class="col-md-6 mb-3">
                             <label for="personalEmail">Personal email <span class="text-muted">(Optional)</span></label>
                             <input type="email" class="form-control" name="personalEmail" id="personalEmail" placeholder="" value="$personalEmail" required>
