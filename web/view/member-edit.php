@@ -30,7 +30,7 @@
         <hr />
         <?php if (isset($message)) { echo $message;}?>
         <div class="col-md-12 order-md-1">
-            <form action="/members/?action=update&id=$memberID"  class="needs-validation" method="post" validate>
+            <form action="/members/?action=update&id=$memberID"  class="needs-validation" method="post" novalidate>
                 <fieldset class="form-group">
                     <h4 class="mb-3">Personal Information</h4>
                     <div class="row">
