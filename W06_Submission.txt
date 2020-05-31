@@ -1,0 +1,29 @@
+1. Copy and paste the URL for your web application:
+http://salty-ravine-95199.herokuapp.com/members/
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://github.com/allen-brad/cse-341
+
+3. Briefly list and describe the elements of the application that are functioning. Include any special instructions about how to login and/or use your application.
+Update Members Page, Deleting members is not allowed because they will have an audit trail, however, deleting demonstrated by deleteing member phone numbers or member addressess.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+Updating/deleting member emergency contact information
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+Getting to know bootstrap better. Spent a lot of time polishing the forms.
+
+6. What is a benefit of having a foreign key constraint?
+Data integrity.
+
+
+7. Please select the category you feel best describes your assignment:
+        1 - Some attempt was made
+        2 - Developing, but significantly deficient
+        3 - Slightly deficient, but still mostly adequate
+        4 - Meets requirements
+5 - Shows creativity and excels above and beyond requirements
+
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+The site is looking pretty good. Form elements are created dynamically. Excellent form validation.

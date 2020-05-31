@@ -114,8 +114,8 @@
                             <label for="dlState">Drivers license state</label>
                             <select class="form-control" id="dlState" required>
                                 <?php $usStates = getUsStates();
-                                    $selectedState ='';
                                     foreach ($usStates as $state){
+                                        $selectedState =null;
                                         if ($state['abbreviation']==$dlState){
                                             $selectedState = 'selected="selected"';
                                         }
@@ -131,8 +131,8 @@
                             <label for="memberStatus">Member status</label>
                             <select class="form-control" id="memberStatus" required>
                                 <?php $memberStatusType = getMemberStatusData();
-                                    $selectedStatus ='';
                                     foreach ($memberStatusType as $type){
+                                        $selectedStatus =null;
                                         if ($type['memberstatusType']==$memberStatus){
                                             $selectedStatus = 'selected="selected"';
                                         }
