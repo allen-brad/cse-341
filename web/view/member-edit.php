@@ -250,7 +250,7 @@
                             <label class="form-check-label" for="isPrimary">Primary</label>
                         </div>
                         <input type="hidden" name="action" value="addPhone">
-                        <input type="hidden" name="memberID" value="<?php $memberID ?>">
+                        <input type="hidden" name="memberID" value="<?php echo $memberID; ?>">
                     </div>
                     <button class="btn btn-primary btn-sm mr-2" type="submit">Add Phone</button>
                     <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>

@@ -90,9 +90,9 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
     $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt->bindValue(':phoneTypeID', $phoneTypeID, PDO::PARAM_INT);
     $stmt->bindValue(':phoneNumber', $phoneNumber, PDO::PARAM_INT);
-    $stmt->bindValue(':isPrimary', $clientLastName, PDO::PARAM_STR);
+    $stmt->bindValue(':isPrimary', $isPrimary, PDO::PARAM_STR);
     $stmt->bindValue(':createdBy', $memberID, PDO::PARAM_INT);
-    $stmt->bindValue(':lastUpdateBy', $phoneTypeID, PDO::PARAM_INT); 
+    $stmt->bindValue(':lastUpdateBy', $memberID, PDO::PARAM_INT); 
     //use the prepared statement to insert data
     $stmt->execute();
     //check to see if it worked
