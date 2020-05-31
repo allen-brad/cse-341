@@ -133,6 +133,7 @@
             <fieldset class="form-group">
                 <h4 class="mb-3">Phone Information</h4>
                     <form action="/members/"  class="needs-validation" method="post" novalidate>
+                    <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="phoneType">Phone type</label>
                             <select class="form-control" id="phoneType" required>
@@ -151,6 +152,7 @@
                                 Please enter a valid phone number.
                             </div>
                         </div>
+                    </div>
                         <input type="hidden" name="action" value"updatePhone">
                         <input type="hidden" name="memberID" value"$memberID">
                         <input type="hidden" name="phoneID" value"$phoneID">
