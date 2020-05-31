@@ -166,6 +166,7 @@
                 <?php
                 $phoneType = getPhoneType();
                 $i=0;
+                $phoneSelectSize = count(memberPhoneNumbers);
                     foreach($memberPhoneNumbers as $phone){
                         $memberPhoneID = $phone['memberphoneid'];
                         $memberPhoneType = $phone['phonetype'];
@@ -181,7 +182,7 @@
                                 <div class="row">
                                 <div class="col-md-4 mb-3">
                                 <label for="phoneType'.$i.'">Phone type</label>
-                                <select class="form-control" id="phoneType'.$i.'" required>';
+                                <select class="form-control" id="phoneType'.$i.'" size="'.phoneSelectSize.'" required>';
                         foreach ($phoneType as $type){
                             if ($type['phonetype'] == $memberPhoneType){
                                 $selectedStatus = 'selected="selected"';
@@ -214,6 +215,7 @@
                         <button class="btn btn-primary btn-sm mr-2" type="submit">Update Phone</button>
                         <a class="btn btn-outline-danger btn-sm" href="/members/?action=\'deletePhone\'&id=\''.$memberID.'\'&phoneID=\''.$memberPhoneID.'\'">Delete Phone</a>
                         </form>';
+                        $i += 1;
                     }
                 ?>
                     <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
