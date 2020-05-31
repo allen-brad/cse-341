@@ -187,7 +187,7 @@
                             } else{
                                 $selectedStatus =null;
                             }
-                            echo '<option value="'.$type['phonetypeid'].'"'.$selectedStatus.'>'.$type['phonetype'].'</option>';
+                            echo '<option value="'.$type['phonetypeid'].'" '.$selectedStatus.'>'.$type['phonetype'].'</option>';
                         }
 
                         echo '  </select>
