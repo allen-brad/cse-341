@@ -266,7 +266,7 @@
                         $memberState = $address['state'];
                         $memberZip = $address['zip'];
                         $memberPhoneIsPrimary = $phone['isprimary'];
-                        echo '  <form action="/members/"  class="needs-validation" method="post" novalidate>
+                        echo '  <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                                     <div class="mb-3">
                                         <label for="address1_'.$a.'">Address 1</label>
                                         <input type="text" class="form-control" name="address'.$a.'" id="address1'.$a.'" value="'.$memberStreet1.'" required>
@@ -324,7 +324,7 @@
                             </form>';
                         }
                     ?>
-                    <form action="/members/"  class="needs-validation" method="post" novalidate>
+                    <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                         <div class="mb-3">
                             <label for="address1">Address</label>
                             <input type="text" class="form-control" name="address1" id="address1" placeholder="1234 Main St" required>
