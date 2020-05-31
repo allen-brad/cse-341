@@ -325,57 +325,57 @@
                         }
                     ?>
 
-                    <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
-                        <div class="mb-3">
-                            <label for="addressNew">Address</label>
-                            <input type="text" class="form-control" name="addressNew" id="addressNew" placeholder="1234 Main St" required>
+                <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
+                    <div class="mb-3">
+                        <label for="addressNew">Address</label>
+                        <input type="text" class="form-control" name="addressNew" id="addressNew" placeholder="1234 Main St" required>
+                        <div class="invalid-feedback">
+                            Please enter your street address.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address2New">Address 2 <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" name="address2New" id="address2New" placeholder="Apartment or suite">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address3New">Address 3 <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" name="address3New" id="address3New" placeholder="Apartment or suite">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label for="cityNew">City</label>
+                            <input type="text" class="form-control" name="cityNew" id="cityNew" placeholder="City" required>
                             <div class="invalid-feedback">
-                                Please enter your street address.
+                                Please enter your city.
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="address2New">Address 2 <span class="text-muted">(Optional)</span></label>
-                            <input type="text" class="form-control" name="address2New" id="address2New" placeholder="Apartment or suite">
-                        </div>
-                        <div class="mb-3">
-                            <label for="address3New">Address 3 <span class="text-muted">(Optional)</span></label>
-                            <input type="text" class="form-control" name="address3New" id="address3New" placeholder="Apartment or suite">
-                        </div>
-                        <div class="row">
-                            <div class="col-md-5 mb-3">
-                                <label for="cityNew">City</label>
-                                <input type="text" class="form-control" name="cityNew" id="cityNew" placeholder="City" required>
-                                <div class="invalid-feedback">
-                                    Please enter your city.
-                                </div>
-                            </div>
-                            <div class="col-md-5 mb-3">
-                                <label for="stateNew">State</label>
-                                <select class="custom-select d-block w-100" name="stateNew" id="stateNew" required>
-                                <option value="">Choose...</option>
-                                <?php
+                        <div class="col-md-5 mb-3">
+                            <label for="stateNew">State</label>
+                            <select class="custom-select d-block w-100" name="stateNew" id="stateNew" required>
+                            <option value="">Choose...</option>
+                            <?php
                                 foreach ($usStates as $state){
-                    
                                     echo '<option value="'.$state['abbreviation'].'">'.$state['state'].'</option>';
                                 }
-                                ?>
-                                <div class="invalid-feedback">
+                            ?>
+                            </select>
+                            <div class="invalid-feedback">
                                     Please provide a valid state.
-                                </div>
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <label for="zip">Zip</label>
-                                <input type="text" class="form-control" name="zip" id="zip" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Zip code required.
-                                </div>
                             </div>
                         </div>
-                        <input type="hidden" name="action" value="addAddress">
-                        <input type="hidden" name="memberID" value="$memberID">
+                        <div class="col-md-2 mb-3">
+                            <label for="zip">Zip</label>
+                            <input type="text" class="form-control" name="zip" id="zip" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Zip code required.
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="action" value="addAddress">
+                    <input type="hidden" name="memberID" value="$memberID">
                     <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Add Address</button>
                     <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
-                    </form>
+                </form>
             </fieldset>
             
             <hr class="mb-4">
