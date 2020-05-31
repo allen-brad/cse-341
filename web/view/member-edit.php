@@ -132,7 +132,7 @@
             </form>
             <fieldset class="form-group">
                 <h4 class="mb-3">Phone Information</h4>
-                    <form action="/members/"  class="needs-validation" method="post" novalidate>
+                    <form action="/members/"  class="needs-validation mb-6" method="post" novalidate>
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="phoneType">Phone type</label>
@@ -156,10 +156,10 @@
                         <input type="hidden" name="memberID" value"$memberID">
                         <input type="hidden" name="phoneID" value"$phoneID">
                         </div>
-                        <button class="btn btn-primary btn-sm mr-2 float-left" type="submit" value="update">Update Phone</button>
+                        <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
                         <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
                     </form>
-                    <form action="/members/"  class="needs-validation" method="post" novalidate>
+                    <form action="/members/"  class="needs-validation mb-6" method="post" novalidate>
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="phoneType">Phone type</label>
@@ -183,7 +183,7 @@
                         <input type="hidden" name="action" value"updatePhone">
                         <input type="hidden" name="memberID" value"$memberID">
                         <input type="hidden" name="phoneID" value"$phoneID">
-                        <button class="btn btn-primary btn-sm mr-2 float-left" type="submit" value="update">Update Phone</button>
+                        <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
                         <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
                     </form>
             </fieldset>
