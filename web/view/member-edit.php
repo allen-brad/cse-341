@@ -130,11 +130,10 @@
                     <a class="btn btn-secondary btn-lg float-right" href="/members">Back to List</a>
                 </fieldset>
             </form>
-            <fieldset class="container form-group">
+            <fieldset class="form-group">
                 <h4 class="mb-3">Phone Information</h4>
                     <form action="/members/"  class="needs-validation" method="post" novalidate>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="phoneType">Phone type</label>
                             <select class="form-control" id="phoneType" required>
                                 <option selected="selected">Mobile</option>
@@ -145,7 +144,7 @@
                                 Valid phone type is required.
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="phone1">Phone 1</label>
                             <input type="tel" class="form-control" name="phone1" id="phone1" placeholder="" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
                             <div class="invalid-feedback">
@@ -155,9 +154,8 @@
                         <input type="hidden" name="action" value"updatePhone">
                         <input type="hidden" name="memberID" value"$memberID">
                         <input type="hidden" name="phoneID" value"$phoneID">
-                        <button class="btn btn-primary btn-sm mr-2" type="submit" value="update">Update Phone</button>
+                        <button class="btn btn-primary btn-sm mr-2 float-left" type="submit" value="update">Update Phone</button>
                         <a class="btn btn-danger btn-sm" href="/members/?action='deletePhone'&id='$memberID'&phoneID='$phoneID'">Delete Phone</a>
-                    </div>
                     </form>
                 <div class="row">
                     <form action="/members/"  class="needs-validation" method="post" novalidate>
