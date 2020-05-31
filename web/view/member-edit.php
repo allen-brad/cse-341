@@ -299,7 +299,7 @@
                                             if ($state['state'] == $memberState){
                                                     $selectedState = 'selected="selected"';
                                                 } else{
-                                                    $selectedState =null;
+                                                    $selectedState = null;
                                                 }
                                                 echo '<option value="'.$state['abbreviation'].'" '.$selectedState.'>'.$state['state'].'</option>';
                                             }
@@ -353,6 +353,12 @@
                                 <label for="stateNew">State</label>
                                 <select class="custom-select d-block w-100" name="stateNew" id="stateNew" required>
                                 <option value="">Choose...</option>
+                                <?php
+                                foreach ($usStates as $state){
+                    
+                                    echo '<option value="'.$state['abbreviation'].'">'.$state['state'].'</option>';
+                                }
+                                ?>
                                 <div class="invalid-feedback">
                                     Please provide a valid state.
                                 </div>
