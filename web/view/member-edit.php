@@ -119,7 +119,7 @@
                                         if ($state['abbreviation']==$dlState){
                                             $selectedState = 'selected="selected"';
                                         }
-                                        echo '"<option value="'.$state['abbreviation'].'" '.$selectedState.'>'.$state['state'].'</option>"';
+                                        echo '<option value="'.$state['abbreviation'].'" '.$selectedState.'>'.$state['state'].'</option>';
                                     }
                                 ?>
                             </select>
@@ -133,10 +133,10 @@
                                 <?php $memberStatusType = getMemberStatusData();
                                     $selectedStatus ='';
                                     foreach ($memberStatusType as $type){
-                                        if ($type['memberstatusType']==$memberStatusType){
+                                        if ($type['memberstatusType']==$memberStatus){
                                             $selectedStatus = 'selected="selected"';
                                         }
-                                        echo '"<option value="'.$type['memberstatusid'].'" '.$selectedStatus.'>'.$type['memberstatustype'].'</option>"';
+                                        echo '<option value="'.$type['memberstatusid'].'" '.$selectedStatus.'>'.$type['memberstatustype'].'</option>';
                                     }
                                 ?>
                             </select>
