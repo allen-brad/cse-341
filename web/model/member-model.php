@@ -115,7 +115,8 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
         }
     }else{
       //isPrimary has a not null constraint, so force it to be false.
-      isPrimary = 0;
+      
+      $isPrimary = 0;
     }
 
     //create connection object
