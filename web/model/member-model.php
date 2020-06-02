@@ -160,7 +160,7 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
 }
 
 //update member phone
-function updateMemberPhone($memberphoneID, $phoneTypeID, $phoneNumber, $isPrimary){
+function updateMemberPhone($memberphoneID, $memberID, $phoneTypeID, $phoneNumber, $isPrimary){
 
   //There can be only one Primary number. If updated number is primary, turn off other primary number
   if ($isPrimary==1){
