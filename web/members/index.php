@@ -110,6 +110,8 @@ switch ($action) {
         $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
         $phoneID = filter_input(INPUT_POST, 'phoneID', FILTER_SANITIZE_NUMBER_INT);
 
+        echo "<script type='text/javascript'>alert('In deletePhone');</script>";
+
         $outcome = deleteMemberPhone($memberID, $phoneID);
         // Check and report the result
         if($outcome === 1){
