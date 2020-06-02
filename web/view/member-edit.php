@@ -201,7 +201,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="phone'.$i.'">Phone</label>
-                                <input type="tel" class="form-control" name="phone'.$i.'" id="phone'.$i.'" value="'.$memberPhoneNumber.'" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                                <input type="tel" class="form-control" name="phone'.$i.'" id="phone'.$i.'" value="'.format_phone_us($memberPhoneNumber).'" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                 <div class="invalid-feedback">
                                     Please enter a valid phone number.
                                 </div>

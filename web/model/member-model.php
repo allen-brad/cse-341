@@ -178,7 +178,7 @@ function updateMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
   $db = dbConnection();
   
   $sql = 'UPDATE memberphone
-          SET memberID = :memberID, phoneTypeID = :phoneTypeID, phoneNumber = :phoneNumber, isPrimary = :isPrimary, lastUpdateBy';
+          SET memberID = :memberID, phoneTypeID = :phoneTypeID, phoneNumber = :phoneNumber, isPrimary = :isPrimary, :lastUpdateBy';
   
   $stmt = $db->prepare($sql);
 
