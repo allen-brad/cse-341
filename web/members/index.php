@@ -109,14 +109,14 @@ switch ($action) {
         $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
         $memberPhoneID = filter_input(INPUT_POST, 'phoneID', FILTER_SANITIZE_NUMBER_INT);
         $phoneTypeID = filter_input(INPUT_POST, 'phoneTypeID', FILTER_SANITIZE_NUMBER_INT);
-        $phoneNew = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'phoneNew', FILTER_SANITIZE_STRING)));
+        $phoneNew = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING)));
         $isPrimary = filter_input(INPUT_POST, 'isPrimary', FILTER_SANITIZE_NUMBER_INT);
 
         $outcome = updateMemberPhone($memberPhoneID,$memberID, $phoneTypeID, $phoneNew, $isPrimary);
         // Check and report the result
         if($outcome === 1){
             $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
-                            <strong>Success!</strong> Phone number: ". format_phone_us($phone)." updated.
+                            <strong>Success!</strong> Phone number: ". format_phone_us($phoneNew)." updated.
                             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                             </button>
