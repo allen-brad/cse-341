@@ -112,7 +112,7 @@ switch ($action) {
         $phoneNew = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'phoneNew', FILTER_SANITIZE_STRING)));
         $isPrimary = filter_input(INPUT_POST, 'isPrimary', FILTER_SANITIZE_NUMBER_INT);
 
-        $outcome = updateMemberPhone($memberPhoneID, $phoneTypeID, $phoneNew, $isPrimary);
+        $outcome = updateMemberPhone($memberPhoneID,$memberID, $phoneTypeID, $phoneNew, $isPrimary);
         // Check and report the result
         if($outcome === 1){
             $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
