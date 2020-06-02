@@ -323,7 +323,7 @@
                                 <input type="hidden" name="memberID" value="'.$memberID.'">
                                 <input type="hidden" name="addressID" value="'.$memberAddressID.'">
                             <button class="btn btn-primary btn-lg float-left mr-2" type="submit">Update Address</button>
-                            <a class="btn btn-outline-danger btn-lg" href="/members/?action=deleteAddress&memberID='.$memberID.'&addressID='.$memberAddressID.">Delete Address</a>
+                            <a class="btn btn-outline-danger btn-lg" href="/members/?action=deleteAddress&memberID='.$memberID.'&addressID='.$memberAddressID.'">Delete Address</a>
                             </form>';
                             $a += 1;
                         }
