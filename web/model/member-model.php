@@ -87,11 +87,11 @@ function getMemberDirectory(){
     return $primaryPhoneData; 
   }
 
-  function unSetPrimaryPhoneID($memberphoneID){
+  function unSetPrimaryPhoneID($memberID){
     $db = dbConnection();
-    $sql = 'UPDATE memberphone SET isPrimary = false WHERE memberphoneid = :memberphoneID';
+    $sql = 'UPDATE memberphone SET isPrimary = false WHERE memberid = :memberID';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':memberphoneID', $memberphoneID, PDO::PARAM_INT);
+    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt->execute();
     //check to see if it worked
     $rowsChanged = $stmt->rowCount();
@@ -120,15 +120,10 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
 
     //There can be only one Primary nuber. If new number is primary, turn off other primary number
     if ($isPrimary==1){
-        //get the phone ID from the member's current primary number
-        $primaryPhoneID = getPrimaryPhoneID($memberID);
-        if (!empty($primaryPhoneID)){
-          //turn off primary
-        unSetPrimaryPhoneID($primaryPhoneID);
-        }
+        //turn off primary for all of this member's phone numbers
+        unSetPrimaryPhoneID($memberID);
     }else{
       //isPrimary has a not null constraint, so force it to be false.
-      
       $isPrimary = 0;
     }
 
@@ -164,12 +159,8 @@ function updateMemberPhone($memberphoneID, $memberID, $phoneTypeID, $phoneNumber
 
   //There can be only one Primary number. If updated number is primary, turn off other primary number
   if ($isPrimary==1){
-      //get the phone ID from the member's current primary number
-      $primaryPhoneID = getPrimaryPhoneID($memberID);
-      if (!empty($primaryPhoneID)){
-        //turn off primary
-      unSetPrimaryPhoneID($primaryPhoneID);
-      }
+    //turn off primary for all of this member's phone numbers
+    unSetPrimaryPhoneID($memberID);
   }else{
     //isPrimary has a not null constraint, so force it to be false.
     $isPrimary = 0;
