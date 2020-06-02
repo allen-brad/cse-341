@@ -61,9 +61,9 @@
                     <td>$callSign</td>
                     <td>$phoneNumber</td>
                     <td>
-                    <a href=\"/members/?action=details&id=$memberID\">Details</a> |
-                    <a href=\"/members/?action=edit&id=$memberID\">Edit</a> |
-                    <a href=\"/members/?action=delete&id=$memberID\">Delete</a>
+                    <a href=\"/members/?action=memberDetails&id=$memberID\">Details</a> |
+                    <a href=\"/members/?action=editMember&id=$memberID\">Edit</a> |
+                    <a href=\"/members/?action=deleteMember&id=$memberID\">Delete</a>
                     </td>
                     </tr>";
                 }

@@ -43,27 +43,55 @@ switch ($action) {
 
     break;
 
-    case 'edit':
+    case 'editMember':
         $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         $memberDetail = getMemberDetail($memberID);
 
         if(empty($memberDetail)){
             $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-                        <strong>Editing Not Allowed!</strong> Member ID $memberID can not be edited at this time!
+                        <strong>Editing Not Allowed!</strong> Member ID $memberID can not be found!
                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                         <span aria-hidden=\"true\">&times;</span>
                         </button>
                         </div>";
             //put message in session variable
             $_SESSION["message"] =  $message;
-            
+             //redirect
+            header("Location: " .$_SERVER['PHP_SELF']);
+            exit();
+
             } else {
             $memberPhoneNumbers = getMemberPhone($memberID);
             $memberAddresses = getMemberAddress($memberID);
+            include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
         }
 
-        include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
         
+        
+    break;
+
+    case 'updateMember':
+        $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        $memberDetail = getMemberDetail($memberID);
+
+        if(empty($memberDetail)){
+            $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+                        <strong>Editing Not Allowed!</strong> Member ID $memberID can not be found!
+                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                        <span aria-hidden=\"true\">&times;</span>
+                        </button>
+                        </div>";
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+             //redirect
+            header("Location: " .$_SERVER['PHP_SELF']);
+            exit();
+
+            } else {
+            $memberPhoneNumbers = getMemberPhone($memberID);
+            $memberAddresses = getMemberAddress($memberID);
+            include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
+        }
     break;
 
     case 'addPhone':
@@ -193,7 +221,7 @@ switch ($action) {
         
     break;
 
-    case 'delete':
+    case 'deleteMember':
         $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
         $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
