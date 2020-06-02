@@ -29,13 +29,11 @@
         <?php echo "<h4>Member ID: $memberID</h4>";?>
         <hr />
         <?php
-            if (isset($successMessage)) {
-                echo $successMessage;
+            if (!empty($_SESSION['message'])){
+                echo $_SESSION['message'];
+                unset ($_SESSION['message']);
             }
-            if (isset($message)) {
-                 echo $message;
-            }
-        
+
             if (!empty($memberDetail)) {
                 $firstName = $memberDetail['firstname'];
                 $middleName = $memberDetail['middlename'];

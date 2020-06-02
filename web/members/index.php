@@ -122,22 +122,15 @@ switch ($action) {
                             <span aria-hidden=\"true\">&times;</span>
                             </button>
                             </div>";
+            //put message in session variable
+            $_SESSION["message"] =  $successMessage;
 
-            $memberDetail = getMemberDetail($memberID);
-            if(empty($memberDetail)){
-                $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-                            <strong>Editing Not Allowed!</strong> Member ID $memberID can not be edited at this time!
-                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-                            <span aria-hidden=\"true\">&times;</span>
-                            </button>
-                            </div>";
-                } else {
-                $memberPhoneNumbers = getMemberPhone($memberID);
-                $memberAddresses = getMemberAddress($memberID);
-            }
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            exit();
 
-            include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
         }else{
+
             $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
             <strong>Something Went Wrong!</strong> Phone number was not deleted!
             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
@@ -187,7 +180,7 @@ switch ($action) {
 
     default:
         // future check if logged in and role
-        
+
         $memberDirectory = getMemberDirectory();
    
         include $_SERVER['DOCUMENT_ROOT'].'/view/members.php';
