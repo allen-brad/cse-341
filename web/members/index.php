@@ -213,7 +213,6 @@ switch ($action) {
 
     default:
         // future check if logged in and role
-
         $memberDirectory = getMemberDirectory();
    
         include $_SERVER['DOCUMENT_ROOT'].'/view/members.php';
