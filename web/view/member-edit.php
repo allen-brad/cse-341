@@ -280,7 +280,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="eContactHomePhone_$i">Cell Phone</label>
+                                        <label for="eContactHomePhone_$i">Home Phone</label>
                                         <input type="tel" class="form-control" name="eContactHomePhone" id="eContactHomePhone_$i" value="'.format_phone_us($eConctactHomePhone).'" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                         <div class="invalid-feedback">
                                             Please enter a valid home phone number.
@@ -291,7 +291,6 @@
                                     <input type="hidden" name="eContactID" value="'.$eContactID.'">
                                     <button class="btn btn-primary btn-sm float-left mr-2" type="submit">Update Contact</button>
                                     <a class="btn btn-outline-danger btn-sm" href="/members/?action=deleteEmergencyContact&memberID='.$memberID.'&eContactID='.$eContactID.'">Delete Contact</a>
-            
                             </form>';
                             $i += 1;
                         }
@@ -305,14 +304,14 @@
                                 Please enter a full name.
                             </div>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="eContactCellPhone">Phone</label>
+                        <div class="mb-3">
+                            <label for="eContactCellPhone">Cell Phone</label>
                             <input type="tel" class="form-control" name="eContactCellPhone" id="eContactCellPhone" placeholder="Contact cell phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                             <div class="invalid-feedback">
                                 Please enter a valid cell phone number.
                             </div>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="mb-3">
                             <label for="eContactHomePhone">Phone</label>
                             <input type="tel" class="form-control" name="eContactHomePhone" id="eContactHomePhone" value="Contact home phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                             <div class="invalid-feedback">

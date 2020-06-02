@@ -115,6 +115,65 @@ function getMemberDirectory(){
     return $rowsChanged;
   }
 
+  function deleteEmergencyContact($emergencyContactID){
+    $db = dbConnection();
+    $sql = 'DELETE FROM MemberEmergencyContact WHERE memberEmergencyContactID = :memberEmergencyContactID';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':memberEmergencyContactID', $memberEmergencyContactID, PDO::PARAM_INT);
+    $stmt->execute();
+    //check to see if it worked
+    $rowsChanged = $stmt->rowCount();
+    //close connection
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+  }
+
+  //Insert emergency contact
+function addEmergencyContact($memberID, $fullName, $cellPhone, $homePhone){
+  $db = dbConnection();
+  $sql = 'INSERT INTO MemberEmergencyContact (memberID, contactFullName, contactCellPhone, contactHomePhone, createdBy, lastUpdateBy)
+                         VALUES (:memberID, :contactFullName, :contactCellPhone, :contactHomePhone, :createdBy, :lastUpdateBy)';
+  
+  $stmt = $db->prepare($sql);
+  $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
+  $stmt->bindValue(':contactFullName', $phoneTypeID, PDO::PARAM_STR);
+  $stmt->bindValue(':contactCellPhone', $contactCellPhone, PDO::PARAM_INT);
+  $stmt->bindValue(':contactHomePhone', $contactHomePhone, PDO::PARAM_STR);
+  $stmt->bindValue(':createdBy', $memberID, PDO::PARAM_INT);
+  $stmt->bindValue(':lastUpdateBy', $memberID, PDO::PARAM_INT); 
+  
+  $stmt->execute();
+  $rowsChanged = $stmt->rowCount();
+  $stmt->closeCursor();
+  return $rowsChanged;
+}
+
+//update member e contact
+function updateEmergencyContact($memberEmergencyContactID, $contactFullName, $contactCellPhone, $contactHomePhone){
+  $db = dbConnection();  
+  $sql = 'UPDATE MemberEmergencyContact
+          SET contactFullName = :contactFullName, contactCellPhone = :contactCellPhone, contactHomePhone = :contactHomePhone, lastupdateby = :lastUpdateBy
+          WHERE memberEmergencyContactID = :memberEmergencyContactID';
+  
+  $stmt = $db->prepare($sql);
+
+  $stmt->bindValue(':memberEmergencyContactID', $memberEmergencyContactID, PDO::PARAM_INT);
+  $stmt->bindValue(':contactFullName', $contactFullName, PDO::PARAM_STR);
+  $stmt->bindValue(':contactCellPhone', $contactCellPhone, PDO::PARAM_INT);
+  $stmt->bindValue(':contactHomePhone', $contactHomePhone, PDO::PARAM_INT);
+  $stmt->bindValue(':lastUpdateBy', $memberID, PDO::PARAM_INT);
+
+  $stmt->execute();
+
+  $rowsChanged = $stmt->rowCount();
+
+  $stmt->closeCursor();
+
+  return $rowsChanged;
+}
+
+
 //Insert member phone
 function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
 

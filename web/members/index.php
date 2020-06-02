@@ -136,7 +136,51 @@ switch ($action) {
         }
         
     break;
+    
+    case 'updateEmergencyContact':
+        $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
+        $emergencyContactID = filter_input(INPUT_POST, 'eContactID', FILTER_SANITIZE_NUMBER_INT);
+        $eContactCellPhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactCellPhone', FILTER_SANITIZE_STRING)));
+        $eContactHomePhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactHomePhone', FILTER_SANITIZE_STRING)));
+        $eContactFullName = filter_input(INPUT_POST, 'eContactFullName', FILTER_SANITIZE_STRING);
 
+        
+
+        $outcome = updateEmergencyContact($emergencyContactID,$eContactFullName, $eContactCellPhone, $eContactHomePhone);
+        // Check and report the result
+        if($outcome === 1){
+            $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                            <strong>Success!</strong> Emergency Contact: $emergencyContactID updated.
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                            </div>";
+
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            exit();
+
+        }else{
+            $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+            <strong>Something Went Wrong!</strong> Emergency Contact was not added!
+            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+            </button>
+            </div>";
+
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            exit();
+
+        }
+        
+    break;
     case 'updatePhone':
         $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
         $memberPhoneID = filter_input(INPUT_POST, 'phoneID', FILTER_SANITIZE_NUMBER_INT);
