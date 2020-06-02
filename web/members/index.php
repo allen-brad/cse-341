@@ -100,6 +100,48 @@ switch ($action) {
             <span aria-hidden=\"true\">&times;</span>
             </button>
             </div>";
+
+            include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
+        }
+        
+    break;
+
+    case 'deletePhone':
+        $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
+        $phoneID = filter_input(INPUT_POST, 'phoneID', FILTER_SANITIZE_NUMBER_INT);
+
+        $outcome = deleteMemberPhone($memberID, $phoneID);
+        // Check and report the result
+        if($outcome === 1){
+            $sucessMessage = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                            <strong>Success!</strong> Phone number deleted
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                            </div>";
+
+            $memberDetail = getMemberDetail($memberID);
+            if(empty($memberDetail)){
+                $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+                            <strong>Editing Not Allowed!</strong> Member ID $memberID can not be edited at this time!
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                            </div>";
+                } else {
+                $memberPhoneNumbers = getMemberPhone($memberID);
+                $memberAddresses = getMemberAddress($memberID);
+            }
+
+            include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
+        }else{
+            $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+            <strong>Something Went Wrong!</strong> Phone number was not deleted!
+            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+            </button>
+            </div>";
+            
             include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
         }
         

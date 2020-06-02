@@ -91,7 +91,7 @@ function getMemberDirectory(){
     $db = dbConnection();
     $sql = 'UPDATE memberphone SET isPrimary = false WHERE memberphoneid = :memberphoneID';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
+    $stmt->bindValue(':memberID', $memberphoneID, PDO::PARAM_INT);
     $stmt->execute();
     //check to see if it worked
     $rowsChanged = $stmt->rowCount();
@@ -101,6 +101,19 @@ function getMemberDirectory(){
     return $rowsChanged;
   }
 
+  function deleteMemberPhone($memberphoneID){
+    $db = dbConnection();
+    $sql = 'DELETE FROM memberphone WHERE memberphoneid = :memberphoneID';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':memberID', $memberphoneID, PDO::PARAM_INT);
+    $stmt->execute();
+    //check to see if it worked
+    $rowsChanged = $stmt->rowCount();
+    //close connection
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+  }
 
 //Insert member phone
 function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
@@ -111,7 +124,7 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
         $primaryPhoneID = getPrimaryPhoneID($memberID);
         if (!empty($primaryPhoneID)){
           //turn off primary
-        unSetPrimaryPhoneID($memberphoneID);
+        unSetPrimaryPhoneID($primaryPhoneID);
         }
     }else{
       //isPrimary has a not null constraint, so force it to be false.

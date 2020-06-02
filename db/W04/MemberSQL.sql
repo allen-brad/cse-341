@@ -180,7 +180,6 @@ CREATE TABLE MemberPhone
  CONSTRAINT FK_MemberPhone_Member_2 FOREIGN KEY ( createdBy ) REFERENCES Member ( memberID ),
  CONSTRAINT FK_MemberPhone_Member_3 FOREIGN KEY ( lastUpdateBy ) REFERENCES Member ( memberID ),
  CONSTRAINT FK_PhoneTypeID FOREIGN KEY ( phoneTypeID ) REFERENCES PhoneType ( phoneTypeID ),
- CONSTRAINT UK_PrimaryPhone UNIQUE (memberID, isPrimary)
 );
 
 CREATE INDEX  ON MemberPhone
@@ -197,4 +196,6 @@ CREATE INDEX  ON MemberPhone
 (
  lastUpdateBy
 );
+
+CREATE UNIQUE INDEX ON MemberPhone (memberID) WHERE isPrimary = true;
 
