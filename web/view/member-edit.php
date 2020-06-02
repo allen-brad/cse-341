@@ -217,7 +217,7 @@
                             <input type="hidden" name="phoneID" value="'.$memberPhoneID.'">
                         </div>
                         <button class="btn btn-primary btn-sm mr-2" type="submit">Update Phone</button>
-                        <a class="btn btn-outline-danger btn-sm" href="/members/?action=deletePhone&meberID='.$memberID.'&phoneID='.$memberPhoneID.'">Delete Phone</a>
+                        <a class="btn btn-outline-danger btn-sm" href="/members/?action=deletePhone&memberID='.$memberID.'&phoneID='.$memberPhoneID.'">Delete Phone</a>
                         </form>';
                         $i += 1;
                     }

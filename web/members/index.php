@@ -113,6 +113,7 @@ switch ($action) {
         echo "<script type='text/javascript'>alert('In deletePhone $phoneID $memberID ');</script>";
 
         $outcome = deleteMemberPhone($phoneID);
+        echo "<script type='text/javascript'>alert('deletePhone rows affected: $outcome ');</script>";
         // Check and report the result
         if($outcome === 1){
             $sucessMessage = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">

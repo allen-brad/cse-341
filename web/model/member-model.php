@@ -136,7 +136,7 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
     $db = dbConnection();
     //sql statement
     $sql = 'INSERT INTO MemberPhone (memberID, phoneTypeID, phoneNumber, isPrimary, createdBy, lastUpdateBy)
-                             VALUES (:memberID, :phoneTypeID, :phoneNumber, :isPrimary, :createdBy, :lastUpdateBy)';
+                           VALUES (:memberID, :phoneTypeID, :phoneNumber, :isPrimary, :createdBy, :lastUpdateBy)';
     
    //creates prepared statement
    $stmt = $db->prepare($sql);
@@ -157,6 +157,44 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
     $stmt->closeCursor();
     // Return the indication of success (rows changed)
     return $rowsChanged;
+}
+
+//update member phone
+function updateMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
+
+  //There can be only one Primary number. If updated number is primary, turn off other primary number
+  if ($isPrimary==1){
+      //get the phone ID from the member's current primary number
+      $primaryPhoneID = getPrimaryPhoneID($memberID);
+      if (!empty($primaryPhoneID)){
+        //turn off primary
+      unSetPrimaryPhoneID($primaryPhoneID);
+      }
+  }else{
+    //isPrimary has a not null constraint, so force it to be false.
+    $isPrimary = 0;
+  }
+
+  $db = dbConnection();
+  
+  $sql = 'UPDATE memberphone
+          SET memberID = :memberID, phoneTypeID = :phoneTypeID, phoneNumber = :phoneNumber, isPrimary = :isPrimary, lastUpdateBy';
+  
+  $stmt = $db->prepare($sql);
+
+  $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
+  $stmt->bindValue(':phoneTypeID', $phoneTypeID, PDO::PARAM_INT);
+  $stmt->bindValue(':phoneNumber', $phoneNumber, PDO::PARAM_INT);
+  $stmt->bindValue(':isPrimary', $isPrimary, PDO::PARAM_BOOL);
+  $stmt->bindValue(':lastUpdateBy', $memberID, PDO::PARAM_INT); 
+
+  $stmt->execute();
+
+  $rowsChanged = $stmt->rowCount();
+
+  $stmt->closeCursor();
+
+  return $rowsChanged;
 }
 
 
