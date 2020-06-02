@@ -72,27 +72,20 @@ switch ($action) {
         $outcome = addMemberPhone($memberID, $phoneTypeID, $phoneNew, $isPrimary);
         // Check and report the result
         if($outcome === 1){
-            $successMessage = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
-                            <strong>Success!</strong> Phone number added
+            $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                            <strong>Success!</strong> Phone number: ". format_phone_us($phone)." added.
                             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                             </button>
                             </div>";
 
-            $memberDetail = getMemberDetail($memberID);
-            if(empty($memberDetail)){
-                $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-                            <strong>Editing Not Allowed!</strong> Member ID $memberID can not be edited at this time!
-                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-                            <span aria-hidden=\"true\">&times;</span>
-                            </button>
-                            </div>";
-                } else {
-                $memberPhoneNumbers = getMemberPhone($memberID);
-                $memberAddresses = getMemberAddress($memberID);
-            }
+            //put message in session variable
+            $_SESSION["message"] =  $message;
 
-            include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            exit();
+
         }else{
             $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
             <strong>Something Went Wrong!</strong> Phone number was not added!
@@ -101,7 +94,55 @@ switch ($action) {
             </button>
             </div>";
 
-            include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            exit();
+
+        }
+        
+    break;
+
+    case 'updatePhone':
+        $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
+        $phoneTypeID = filter_input(INPUT_POST, 'phoneTypeID', FILTER_SANITIZE_NUMBER_INT);
+        $phoneNew = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'phoneNew', FILTER_SANITIZE_STRING)));
+        $isPrimary = filter_input(INPUT_POST, 'isPrimary', FILTER_SANITIZE_NUMBER_INT);
+
+        $outcome = updateMemberPhone($memberID, $phoneTypeID, $phoneNew, $isPrimary);
+        // Check and report the result
+        if($outcome === 1){
+            $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                            <strong>Success!</strong> Phone number: ". format_phone_us($phone)." updated.
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                            </div>";
+
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            exit();
+
+        }else{
+            $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+            <strong>Something Went Wrong!</strong> Phone number was not added!
+            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+            </button>
+            </div>";
+
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            exit();
+
         }
         
     break;
@@ -116,14 +157,14 @@ switch ($action) {
         echo "<script type='text/javascript'>alert('deletePhone rows affected: $outcome ');</script>";
         // Check and report the result
         if($outcome === 1){
-            $successMessage = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+            $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
                             <strong>Success!</strong> Phone number deleted
                             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                             </button>
                             </div>";
             //put message in session variable
-            $_SESSION["message"] =  $successMessage;
+            $_SESSION["message"] =  $message;
 
             //redirect
             header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
@@ -138,21 +179,12 @@ switch ($action) {
             </button>
             </div>";
 
-            $memberDetail = getMemberDetail($memberID);
-            if(empty($memberDetail)){
-                $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-                            <strong>Editing Not Allowed!</strong> Member ID $memberID can not be edited at this time!
-                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-                            <span aria-hidden=\"true\">&times;</span>
-                            </button>
-                            </div>";
-                } else {
-                $memberPhoneNumbers = getMemberPhone($memberID);
-                $memberAddresses = getMemberAddress($memberID);
-            }
-            
-            
-            include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            exit();
         }
         
     break;
