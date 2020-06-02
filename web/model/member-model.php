@@ -160,7 +160,7 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
 }
 
 //update member phone
-function updateMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
+function updateMemberPhone($memberphoneID, $phoneTypeID, $phoneNumber, $isPrimary){
 
   //There can be only one Primary number. If updated number is primary, turn off other primary number
   if ($isPrimary==1){
@@ -178,7 +178,7 @@ function updateMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
   $db = dbConnection();
   
   $sql = 'UPDATE memberphone
-          SET memberID = :memberID, phoneTypeID = :phoneTypeID, phoneNumber = :phoneNumber, isPrimary = :isPrimary, lastupdateby = :lastUpdateBy';
+          SET memberphoneID = :memberphoneID, phoneTypeID = :phoneTypeID, phoneNumber = :phoneNumber, isPrimary = :isPrimary, lastupdateby = :lastUpdateBy';
   
   $stmt = $db->prepare($sql);
 
