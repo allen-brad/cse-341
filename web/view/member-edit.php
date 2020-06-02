@@ -207,7 +207,7 @@
                                 </div>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="isPrimary'.$i.'" value="primary" '.$checked.'>
+                                <input class="form-check-input" type="checkbox" id="isPrimary'.$i.'" name="isPrimary" value="1" '.$checked.'>
                                 <label class="form-check-label" for="isPrimary'.$i.'">Primary</label>
                             </div>
                             <input type="hidden" name="action" value="updatePhone">
@@ -271,30 +271,30 @@
                         echo '  <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                                     <div class="mb-3">
                                         <label for="address1_'.$a.'">Address 1</label>
-                                        <input type="text" class="form-control" name="address'.$a.'" id="address1'.$a.'" value="'.$memberStreet1.'" required>
+                                        <input type="text" class="form-control" name="address'.$a.'" id="address1_'.$a.'" value="'.$memberStreet1.'" required>
                                         <div class="invalid-feedback">
                                             Please enter your street address.
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="address2_'.$a.'">Address 2 <span class="text-muted">(Optional)</span></label>
-                                        <input type="text" class="form-control" name="address2_'.$a.'" id="address2_'.$a.'" value="'.$memberStreet2.'">
+                                        <input type="text" class="form-control" name="address2" id="address2_'.$a.'" value="'.$memberStreet2.'">
                                     </div>
                                     <div class="mb-3">
                                         <label for="address3_'.$a.'">Address 3 <span class="text-muted">(Optional)</span></label>
-                                        <input type="text" class="form-control" name="address3_'.$a.'" id="address3_'.$a.'" value="'.$memberStreet3.'">
+                                        <input type="text" class="form-control" name="address3" id="address3_'.$a.'" value="'.$memberStreet3.'">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-5 mb-3">
                                             <label for="city'.$a.'">City</label>
-                                            <input type="text" class="form-control" name="city'.$a.'" id="city'.$a.'" value="'.$memberCity.'" required>
+                                            <input type="text" class="form-control" name="city" id="city'.$a.'" value="'.$memberCity.'" required>
                                             <div class="invalid-feedback">
                                                 Please enter your city.
                                             </div>
                                         </div>
                                         <div class="col-md-5 mb-3">
                                             <label for="state'.$a.'">State</label>
-                                            <select class="custom-select d-block w-100" name="state'.$a.'" id="state'.$a.'" required>
+                                            <select class="custom-select d-block w-100" name="state" id="state'.$a.'" required>
                                             <option value="">Choose...</option>';
                                             foreach ($usStates as $state){
                                             if ($state['state'] == $memberState){
