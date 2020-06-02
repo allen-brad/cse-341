@@ -23,7 +23,13 @@
   <?php include $_SERVER['DOCUMENT_ROOT'].'/common/nav.php'; ?>
 </header>
 <div class="container">
-    <main role="main" class="pb-3">
+    <main class="pb-3">
+        <?php
+            if (!empty($_SESSION['message'])){
+                echo $_SESSION['message'];
+                unset ($_SESSION['message']);
+            }
+        ?>
         <h1>WCSAR Member Directory</h1>
         <p>
             <a href="/members/?action=create">Create New</a>

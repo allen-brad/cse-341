@@ -72,7 +72,7 @@ switch ($action) {
         $outcome = addMemberPhone($memberID, $phoneTypeID, $phoneNew, $isPrimary);
         // Check and report the result
         if($outcome === 1){
-            $sucessMessage = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+            $successMessage = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
                             <strong>Success!</strong> Phone number added
                             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
@@ -116,7 +116,7 @@ switch ($action) {
         echo "<script type='text/javascript'>alert('deletePhone rows affected: $outcome ');</script>";
         // Check and report the result
         if($outcome === 1){
-            $sucessMessage = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+            $successMessage = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
                             <strong>Success!</strong> Phone number deleted
                             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
@@ -174,12 +174,20 @@ switch ($action) {
                     </button>
                     </div>";
 
-        include $_SERVER['DOCUMENT_ROOT'].'/view/member-delete.php';
+        //put message in session variable
+        $_SESSION["message"] =  $message;
+
+        //redirect
+        header("Location: " .$_SERVER['PHP_SELF']);
+        exit();
+        
+        //include $_SERVER['DOCUMENT_ROOT'].'/view/member-delete.php';
         
     break;
 
     default:
         // future check if logged in and role
+        
         $memberDirectory = getMemberDirectory();
    
         include $_SERVER['DOCUMENT_ROOT'].'/view/members.php';
