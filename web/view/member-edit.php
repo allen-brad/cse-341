@@ -240,7 +240,7 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="phoneNew">Phone</label>
-                            <input type="tel" class="form-control" name="phoneNew" id="phoneNew" placeholder="" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                            <input type="tel" class="form-control" name="phoneNew" id="phoneNew" placeholder="123-123-1234" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                             <div class="invalid-feedback">
                                 Please enter a valid phone number.
                             </div>

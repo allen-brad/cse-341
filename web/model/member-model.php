@@ -8,7 +8,7 @@ function getMemberDirectory(){
   $sql = "SELECT m.memberid , m.preferredname || ' ' || m.lastname AS fullname, m.callsign, p.phonenumber
           FROM Member m JOIN MemberPhone p ON m.memberid = p.memberid
           WHERE p.isprimary = true
-          ORDER BY m.lastname, m.firstname DESC;";
+          ORDER BY m.lastname, m.firstname DESC";
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $memberData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -23,7 +23,7 @@ function getMemberDirectory(){
             FROM Member m
             JOIN MemberStatus s ON m.memberstatusid = s.memberstatusid
             JOIN MemberEmergencyContact e ON m.memberid = e.memberid
-            WHERE m.memberid = :memberID;";
+            WHERE m.memberid = :memberID";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt->execute();
@@ -53,7 +53,7 @@ function getMemberDirectory(){
     $sql = "SELECT a.memberaddressid, a.street1, a.street2, a.street3, a.city, a.state, a.zip
             FROM MemberAddress a 
             JOIN Member m ON a.memberid = m.memberid
-            WHERE m.memberid = :memberID;";
+            WHERE m.memberid = :memberID";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt->execute();
@@ -74,8 +74,47 @@ function getMemberDirectory(){
   }
 
 
+  function getPrimaryPhoneID($memberID){
+    $db = dbConnection();
+    $sql = "SELECT p.memberPhoneID
+            FROM MemberPhone p
+            WHERE p.memberid = :memberID AND p.isprimary = true";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
+    $stmt->execute();
+    $primaryPhoneData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $primaryPhoneData; 
+  }
+
+  function unSetPrimaryPhoneID($memberphoneID){
+    $db = dbConnection();
+    $sql = 'UPDATE memberphone SET isPrimary = false WHERE memberphoneid = :memberphoneID';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
+    $stmt->execute();
+    //check to see if it worked
+    $rowsChanged = $stmt->rowCount();
+    //close connection
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+  }
+
+
 //Insert member phone
 function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
+
+    //There can be only one Primary nuber. If new number is primary, turn off other primary number
+    if ($isPrimary==1){
+        //get the phone ID from the member's current primary number
+        $primaryPhoneID = getPrimaryPhoneID($memberID);
+        if (!empty($primaryPhoneID)){
+          //turn off primary
+        unSetPrimaryPhoneID($memberphoneID);
+        }
+    }
+    
     //create connection object
     $db = dbConnection();
     //sql statement
