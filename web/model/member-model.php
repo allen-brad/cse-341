@@ -178,11 +178,12 @@ function updateMemberPhone($memberphoneID, $memberID, $phoneTypeID, $phoneNumber
   $db = dbConnection();
   
   $sql = 'UPDATE memberphone
-          SET memberphoneID = :memberphoneID, phoneTypeID = :phoneTypeID, phoneNumber = :phoneNumber, isPrimary = :isPrimary, lastupdateby = :lastUpdateBy';
+          SET phoneTypeID = :phoneTypeID, phoneNumber = :phoneNumber, isPrimary = :isPrimary, lastupdateby = :lastUpdateBy
+          WHERE memberphoneID = :memberphoneID';
   
   $stmt = $db->prepare($sql);
 
-  $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
+  $stmt->bindValue(':memberphoneID', $memberphoneID, PDO::PARAM_INT);
   $stmt->bindValue(':phoneTypeID', $phoneTypeID, PDO::PARAM_INT);
   $stmt->bindValue(':phoneNumber', $phoneNumber, PDO::PARAM_INT);
   $stmt->bindValue(':isPrimary', $isPrimary, PDO::PARAM_BOOL);

@@ -29,7 +29,6 @@
                 echo $_SESSION['message'];
                 unset ($_SESSION['message']);
             }
-            echo var_dump($memberDirectory);
         ?>
         <h1>WCSAR Member Directory</h1>
         <p>
