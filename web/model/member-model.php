@@ -74,17 +74,17 @@ function getMemberDirectory(){
   }
 
 
-  function getPrimaryPhoneID($memberID){
+  function getEmergencyContact($memberID){
     $db = dbConnection();
-    $sql = "SELECT p.memberPhoneID
-            FROM MemberPhone p
-            WHERE p.memberid = :memberID AND p.isprimary = true";
+    $sql = "SELECT c.memberEmergencyContactID, c.contactFullName, c. contactCellPhone, c.contactHomePhone
+            FROM MemberEmergencyContact c
+            WHERE c.memberid = :memberID";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt->execute();
-    $primaryPhoneData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $eContactData = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-    return $primaryPhoneData; 
+    return $eContactData; 
   }
 
   function unSetPrimaryPhoneID($memberID){

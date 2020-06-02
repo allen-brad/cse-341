@@ -66,11 +66,9 @@ switch ($action) {
             } else {
             $memberPhoneNumbers = getMemberPhone($memberID);
             $memberAddresses = getMemberAddress($memberID);
+            $memberEmegencyContacts = getEmergencyContact($memberID);
             include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
-        }
-
-        
-        
+        }     
     break;
 
     case 'updateMember':

@@ -255,6 +255,77 @@
                     </form>
             </fieldset>
             <fieldset class="form-group">
+                <h4 class="mb-3">Emergency Contact Information</h4>
+                <?php
+                    $i=0;
+                    foreach($memberEmegencyContacts as $eContact){
+                        $eContactID = $eContact['memberEmergencyContactID'];
+                        $eContactName = $eContact['contactfullname'];
+                        $eContactCellPhone = $eContact['contactcellphone'];
+                        $eConctactHomePhone = $eContact['contacthomephone'];
+                 
+                        echo '  <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
+                                    <div class="mb-3">
+                                        <label for="eContactFullName">Full Name</label>
+                                        <input type="text" class="form-control" name="eContactFullName" id="eContactFullName_$i" value="'.$eContactName.'" required>
+                                        <div class="invalid-feedback">
+                                            Please enter a full name.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="eContactCellPhone_$i">Phone</label>
+                                        <input type="tel" class="form-control" name="eContactCellPhone" id="eContactCellPhone_$i" value="'.format_phone_us($eContactCellPhone).'" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid cell phone number.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="eContactHomePhone_$i">Phone</label>
+                                        <input type="tel" class="form-control" name="eContactHomePhone" id="eContactHomePhone_$i" value="'.format_phone_us($eConctactHomePhone).'" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid home phone number.
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="action" value="updateEmergencyContact">
+                                    <input type="hidden" name="memberID" value="'.$memberID.'">
+                                    <input type="hidden" name="eContactID" value="'.$eContactID.'">
+                            <button class="btn btn-primary btn-lg float-left mr-2" type="submit">Update Contact</button>
+                            <a class="btn btn-outline-danger btn-lg" href="/members/?action=deleteEmergencyContact&memberID='.$memberID.'&eContactID='.$eContactID.'">Delete Contact</a>
+                            </form>';
+                            $i += 1;
+                        }
+                    ?>
+                
+                <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
+                        <div class="mb-3">
+                            <label for="eContactFullName">Full Name</label>
+                            <input type="text" class="form-control" name="eContactFullName" id="eContactFullName" placeholder="Contact full name" required>
+                            <div class="invalid-feedback">
+                                Please enter a full name.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="eContactCellPhone">Phone</label>
+                            <input type="tel" class="form-control" name="eContactCellPhone" id="eContactCellPhone" placeholder="Contact cell phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid cell phone number.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="eContactHomePhone">Phone</label>
+                            <input type="tel" class="form-control" name="eContactHomePhone" id="eContactHomePhone" value="Contact home phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid home phone number.
+                            </div>
+                        </div>
+                        <input type="hidden" name="action" value="updateEmergencyContact">
+                        <input type="hidden" name="memberID" value="'.$memberID.'">
+                        <input type="hidden" name="eContactID" value="'.$eContactID.'">
+                        <button class="btn btn-primary btn-lg float-left mr-2" type="submit">Add Contact</button>
+                        <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
+                </form>
+            </fieldset>
+            <fieldset class="form-group">
                 <h4 class="mb-3">Address Information</h4>
                 <?php
                     $usStates = getUsStates();
