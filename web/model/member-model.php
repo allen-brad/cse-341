@@ -5,7 +5,7 @@
 
 function getMemberDirectory(){
   $db = dbConnection();
-  $sql = "SELECT m.memberid , m.preferredname || ' ' || m.lastname AS fullname, m.callsign, p.phonenumber
+  $sql = "SELECT m.memberid , m.preferredname || ' ' || m.lastname AS fullname, m.callsign, m.saremail, p.phonenumber
           FROM Member m JOIN MemberPhone p ON m.memberid = p.memberid
           WHERE p.isprimary = true
           ORDER BY m.lastname, m.firstname DESC";

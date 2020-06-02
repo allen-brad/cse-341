@@ -46,6 +46,9 @@
                     <th>
                         Phone
                     </th>
+                    <th>
+                        Email
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -55,11 +58,13 @@
                     $fullName = $member['fullname'];
                     $callSign = $member['callsign'];
                     $phoneNumber = format_phone_us($member['phonenumber']);
+                    $sarEmail = $member['saremail'];
                     $memberID = $member['memberid'];
                     echo "<tr>
                     <td>$fullName</td>
                     <td>$callSign</td>
                     <td>$phoneNumber</td>
+                    <td>$sarEmail</td>
                     <td>
                     <a href=\"/members/?action=memberDetails&id=$memberID\">Details</a> |
                     <a href=\"/members/?action=editMember&id=$memberID\">Edit</a> |

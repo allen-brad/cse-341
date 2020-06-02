@@ -23,7 +23,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/library/functions.php';
 
 
 switch ($action) {
-    case 'details':
+    case 'memberDetails':
         $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         $memberDetail = getMemberDetail($memberID);
 
@@ -34,13 +34,16 @@ switch ($action) {
                     <span aria-hidden=\"true\">&times;</span>
                     </button>
                     </div>";
-          } else {
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']);
+            exit();
+        } else {
             $memberPhoneNumbers = getMemberPhone($memberID);
             $memberAddresses = getMemberAddress($memberID);
+            include $_SERVER['DOCUMENT_ROOT'].'/view/member-detail.php';
         }
-
-        include $_SERVER['DOCUMENT_ROOT'].'/view/member-detail.php';
-
     break;
 
     case 'editMember':
