@@ -54,6 +54,9 @@ switch ($action) {
                         <span aria-hidden=\"true\">&times;</span>
                         </button>
                         </div>";
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+            
             } else {
             $memberPhoneNumbers = getMemberPhone($memberID);
             $memberAddresses = getMemberAddress($memberID);
@@ -73,7 +76,7 @@ switch ($action) {
         // Check and report the result
         if($outcome === 1){
             $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
-                            <strong>Success!</strong> Phone number: ". format_phone_us($phone)." added.
+                            <strong>Success!</strong> Phone number: ". format_phone_us($phoneNew)." added.
                             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                             </button>

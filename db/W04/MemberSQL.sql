@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS Member;
 DROP TABLE IF EXISTS MemberStatus;
 
 
--- ************************************** MemberStatus
+-- ************************************** MemberStatus enum
 
 CREATE TABLE MemberStatus
 (
@@ -196,6 +196,6 @@ CREATE INDEX  ON MemberPhone
 (
  lastUpdateBy
 );
-
+--this ensures that a member can only have 1 primary phone
 CREATE UNIQUE INDEX ON MemberPhone (memberID) WHERE isPrimary = true;
 
