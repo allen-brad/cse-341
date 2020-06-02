@@ -107,8 +107,8 @@ switch ($action) {
     break;
 
     case 'deletePhone':
-        $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
-        $phoneID = filter_input(INPUT_POST, 'phoneID', FILTER_SANITIZE_NUMBER_INT);
+        $memberID = filter_input(INPUT_GET, 'memberID', FILTER_SANITIZE_NUMBER_INT);
+        $phoneID = filter_input(INPUT_GET, 'phoneID', FILTER_SANITIZE_NUMBER_INT);
 
         echo "<script type='text/javascript'>alert('In deletePhone $phoneID $memberID ');</script>";
 
@@ -143,7 +143,7 @@ switch ($action) {
             <span aria-hidden=\"true\">&times;</span>
             </button>
             </div>";
-            
+
             $memberDetail = getMemberDetail($memberID);
             if(empty($memberDetail)){
                 $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
