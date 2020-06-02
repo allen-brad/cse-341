@@ -113,8 +113,11 @@ function addMemberPhone($memberID, $phoneTypeID, $phoneNumber, $isPrimary){
           //turn off primary
         unSetPrimaryPhoneID($memberphoneID);
         }
+    }else{
+      //isPrimary has a not null constraint, so force it to be false.
+      isPrimary = 0;
     }
-    
+
     //create connection object
     $db = dbConnection();
     //sql statement
