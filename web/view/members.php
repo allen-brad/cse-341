@@ -64,7 +64,7 @@
                     <td>$fullName</td>
                     <td>$callSign</td>
                     <td>$phoneNumber</td>
-                    <td>$sarEmail</td>
+                    <td><a href=\"mailto:$sarEmail\">$sarEmail</a></td>
                     <td>
                     <a href=\"/members/?action=memberDetails&id=$memberID\">Details</a> |
                     <a href=\"/members/?action=editMember&id=$memberID\">Edit</a> |

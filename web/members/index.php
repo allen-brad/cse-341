@@ -1,13 +1,15 @@
 <?php
 //Member Controller
 
+// Create or access a Session
+session_start();
+
 //error logging
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Create or access a Session
-session_start();
+
 
 $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL){
@@ -39,11 +41,12 @@ switch ($action) {
             //redirect
             header("Location: " .$_SERVER['PHP_SELF']);
             exit();
-        } else {
-            $memberPhoneNumbers = getMemberPhone($memberID);
-            $memberAddresses = getMemberAddress($memberID);
-            include $_SERVER['DOCUMENT_ROOT'].'/view/member-detail.php';
         }
+
+        $memberPhoneNumbers = getMemberPhone($memberID);
+        $memberAddresses = getMemberAddress($memberID);
+        include $_SERVER['DOCUMENT_ROOT'].'/view/member-detail.php';
+        
     break;
 
     case 'editMember':
@@ -62,13 +65,13 @@ switch ($action) {
              //redirect
             header("Location: " .$_SERVER['PHP_SELF']);
             exit();
+        }
 
-            } else {
-            $memberPhoneNumbers = getMemberPhone($memberID);
-            $memberAddresses = getMemberAddress($memberID);
-            $memberEmegencyContacts = getEmergencyContact($memberID);
-            include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
-        }     
+        $memberPhoneNumbers = getMemberPhone($memberID);
+        $memberAddresses = getMemberAddress($memberID);
+        $memberEmegencyContacts = getEmergencyContact($memberID);
+        include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
+            
     break;
 
     case 'updateMember':
@@ -88,11 +91,12 @@ switch ($action) {
             header("Location: " .$_SERVER['PHP_SELF']);
             exit();
 
-            } else {
-            $memberPhoneNumbers = getMemberPhone($memberID);
-            $memberAddresses = getMemberAddress($memberID);
-            include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
         }
+        
+        $memberPhoneNumbers = getMemberPhone($memberID);
+        $memberAddresses = getMemberAddress($memberID);
+        include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
+    
     break;
 
     case 'addPhone':
