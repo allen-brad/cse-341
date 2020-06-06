@@ -91,7 +91,7 @@ function getMemberDirectory(){
     $db = dbConnection();
     $sql = 'UPDATE Member
             Set firstName = :firstName, preferredName = :preferredName, middleName = :middleName, lastName = :lastName, callSign = :callSign, dob = :dob,
-                ssnLastFour = :ssnLastFour, dlNumber = :dlNumber, dlState = :dlState, memberStatus = :memberStatus, personalEmail = :personalEmail
+                ssnLastFour = :ssnLastFour, dlNumber = :dlNumber, dlState = :dlState, memberStatusID = :memberStatus, personalEmail = :personalEmail
             WHERE memberid = :memberID';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
