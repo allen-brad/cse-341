@@ -183,8 +183,8 @@ switch ($action) {
     case 'updateEmergencyContact':
         $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
         $emergencyContactID = filter_input(INPUT_POST, 'eContactID', FILTER_SANITIZE_NUMBER_INT);
-        $eContactCellPhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactCellPhone', FILTER_SANITIZE_INT)));
-        $eContactHomePhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactHomePhone', FILTER_SANITIZE_INT)));
+        $eContactCellPhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactCellPhone', FILTER_SANITIZEN_UMBER_INT)));
+        $eContactHomePhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactHomePhone', FILTER_SANITIZE_NUMBER_INT)));
         $eContactFullName = filter_input(INPUT_POST, 'eContactFullName', FILTER_SANITIZE_STRING);
 
         
@@ -193,7 +193,7 @@ switch ($action) {
         // Check and report the result
         if($outcome === 1){
             $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
-                            <strong>Success!</strong> Emergency Contact: $emergencyContactID updated.
+                            <strong>Success!</strong> Emergency Contact: $emergencyContactID updated. Cell: $eContactCellPhone Home: $eContactHomePhone;
                             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                             </button>
