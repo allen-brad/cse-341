@@ -144,7 +144,7 @@ function getMemberDirectory(){
     //this will be derived by session value in future
     $creator = 1000;
 
-    $sql = 'INSERT INTO Member (lastName, firstName, middleName, preferredName, callSign, dob, sarEmail, personalEmail, dlNumber, dlState, ssnLastFour, createdBy, lastUpdateBy)
+    $sql = 'INSERT INTO Member (lastName, firstName, middleName, preferredName, callSign, dob, sarEmail, personalEmail, dlNumber, dlState, ssnLastFour, memberStatusID, createdBy, lastUpdateBy)
             VALUES (:lastName, :firstName, :middleName, :preferredName, :callSign, :dob, :sarEmail, :personalEmail, :dlNumber, :dlState, :ssnLastFour, :createdBy, :lastUpdateBy)';
 
     $stmt = $db->prepare($sql);
@@ -157,7 +157,7 @@ function getMemberDirectory(){
     $stmt->bindValue(':ssnLastFour', $ssnLastFour, PDO::PARAM_INT);
     $stmt->bindValue(':dlNumber', $dlNumber, PDO::PARAM_STR);
     $stmt->bindValue(':dlState', $dlState, PDO::PARAM_STR);
-    $stmt->bindValue(':memberStatus', $memberStatus, PDO::PARAM_INT);
+    $stmt->bindValue(':memberStatusID', $memberStatus, PDO::PARAM_INT);
     $stmt->bindValue(':sarEmail', $sarEmail, PDO::PARAM_STR);
     $stmt->bindValue(':sarEmail', $sarEmail, PDO::PARAM_STR);
 
