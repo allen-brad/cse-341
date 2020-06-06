@@ -209,44 +209,11 @@
                             ";
                     
                     echo "</div><div>
-                            <a href=\"/members/?action=edit&id=$memberID\">Edit</a> |
+                            <a href=\"/members/?action=editMember&id=$memberID\">Edit</a> |
                             <a href=\"/members\">Back to List</a>
                         </div>";
                 }
             }  ?>
-
-                
-            <!-- <dl class="row">
-                <dt class="col-sm-2">
-                    Title
-                </dt>
-                <dd class="col-sm-10">
-                    Test Movie
-                </dd>
-                <dt class="col-sm-2">
-                    ReleaseDate
-                </dt>
-                <dd class="col-sm-10">
-                    1/21/2020
-                </dd>
-                <dt class="col-sm-2">
-                    Genre
-                </dt>
-                <dd class="col-sm-10">
-                    Drama
-                </dd>
-                <dt class="col-sm-2">
-                    Price
-                </dt>
-                <dd class="col-sm-10">
-                    2.99
-                </dd>
-            </dl>
-            </div>
-            <div>
-            <a href="/members/?action=edit&id=$memberID">Edit</a> |
-            <a href="/members">Back to List</a>
-            </div> -->
     </main>
 </div>
 
