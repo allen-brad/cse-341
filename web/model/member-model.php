@@ -22,8 +22,8 @@ function getMemberDirectory(){
                    m.saremail, m.personalemail, m.dlnumber, m.dlstate, m.ssnlastfour, s.memberstatustype, e.contactfullname, e.contactcellphone, e.contacthomephone
             FROM Member m
             JOIN MemberStatus s ON m.memberstatusid = s.memberstatusid
-            JOIN MemberEmergencyContact e ON m.memberid = e.memberid AND m.memberid = :memberID";
-            
+            LEFT JOIN MemberEmergencyContact e ON m.memberid = e.memberid
+            WHERE m.memberid = :memberID";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
     $stmt->execute();
