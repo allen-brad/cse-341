@@ -145,7 +145,7 @@ function getMemberDirectory(){
     $creator = 1000;
 
     $sql = 'INSERT INTO Member (lastName, firstName, middleName, preferredName, callSign, dob, sarEmail, personalEmail, dlNumber, dlState, ssnLastFour, memberStatusID, createdBy, lastUpdateBy)
-            VALUES (:lastName, :firstName, :middleName, :preferredName, :callSign, :dob, :sarEmail, :personalEmail, :dlNumber, :dlState, :ssnLastFour, :createdBy, :lastUpdateBy)';
+            VALUES (:lastName, :firstName, :middleName, :preferredName, :callSign, :dob, :sarEmail, :personalEmail, :dlNumber, :dlState, :ssnLastFour, :memberStatusID, :createdBy, :lastUpdateBy)';
 
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':lastName', $lastName, PDO::PARAM_STR);
