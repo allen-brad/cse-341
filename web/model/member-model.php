@@ -151,12 +151,12 @@ function getMemberDirectory(){
     $stmt->bindValue(':preferredName', $preferredName, PDO::PARAM_STR);
     $stmt->bindValue(':callSign', $callSign, PDO::PARAM_STR);
     $stmt->bindValue(':dob', $dob, PDO::PARAM_STR);
-    $stmt->bindValue(':ssnLastFour', $ssnLastFour, PDO::PARAM_INT);
+    $stmt->bindValue(':sarEmail', $sarEmail, PDO::PARAM_STR);
+    $stmt->bindValue(':personalEmail', $personalEmail, PDO::PARAM_STR);
     $stmt->bindValue(':dlNumber', $dlNumber, PDO::PARAM_STR);
     $stmt->bindValue(':dlState', $dlState, PDO::PARAM_STR);
+    $stmt->bindValue(':ssnLastFour', $ssnLastFour, PDO::PARAM_INT);
     $stmt->bindValue(':memberStatusID', $memberStatus, PDO::PARAM_INT);
-    $stmt->bindValue(':sarEmail', $sarEmail, PDO::PARAM_STR);
-    $stmt->bindValue(':sarEmail', $sarEmail, PDO::PARAM_STR);
 
     $stmt->execute();
 
