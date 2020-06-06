@@ -58,7 +58,7 @@ function validMemberStatus($memberStatusID) {
   $status = $stmt->fetch(PDO::FETCH_ASSOC);
   $stmt->closeCursor();
   if (!$status){
-    return true;
+    return null;
   }
-  return null;
+  return true;
 }

@@ -91,7 +91,7 @@ switch ($action) {
         $memberStatus = filter_input(INPUT_POST, 'memberStatus', FILTER_SANITIZE_NUMBER_INT);
         if (!validMemberStatus($memberStatus)){
             $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-                        <strong>Invalid Member Status!</strong> Member Status Type $memberStatus can not be found!
+                        <strong>Invalid Member Status!</strong> Result: Member Status Type $memberStatus can not be found!
                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                         <span aria-hidden=\"true\">&times;</span>
                         </button>
