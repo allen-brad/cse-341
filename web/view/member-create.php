@@ -100,7 +100,7 @@
                             <option value="">Choose...</option>
                                 <?php $usStates = getUsStates();
                                     foreach ($usStates as $state){
-                                        echo '<option value="'.$state['abbreviation'].'"</option>';
+                                        echo '<option value="'.$state['abbreviation'].'">'.$state['state'].'</option>';
                                     }
                                 ?>
                             </select>

@@ -32,7 +32,7 @@
         ?>
         <h1>WCSAR Member Directory</h1>
         <p>
-            <a href="/members/?action=create">Create New</a>
+            <a href="/members/?action=createMember">Create New</a>
         </p>
         <table class="table">
             <thead>
