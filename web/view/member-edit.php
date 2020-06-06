@@ -319,9 +319,8 @@
                                 Please enter a valid home phone number.
                             </div>
                         </div>
-                        <input type="hidden" name="action" value="updateEmergencyContact">
-                        <input type="hidden" name="memberID" value="'.$memberID.'">
-                        <input type="hidden" name="eContactID" value="'.$eContactID.'">
+                        <input type="hidden" name="action" value="addEmergencyContact">
+                        <input type="hidden" name="memberID" value="<?php if(isset($memberID)){echo $memberID;}?>">
                         <button class="btn btn-primary btn-lg float-left mr-2" type="submit">Add Contact</button>
                         <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
                 </form>
@@ -445,7 +444,7 @@
                         </div>
                     </div>
                     <input type="hidden" name="action" value="addAddress">
-                    <input type="hidden" name="memberID" value="$memberID">
+                    <input type="hidden" name="memberID" value="<?php if(isset($memberID)){echo $memberID;}?>">
                     <button class="btn btn-primary btn-lg float-left" type="submit" value="update">Add Address</button>
                     <a class="btn btn-secondary btn-lg float-right mr-2" href="/members">Back to List</a>
                 </form>
