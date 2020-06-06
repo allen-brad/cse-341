@@ -181,14 +181,14 @@ function getMemberDirectory(){
   }
 
   //Insert emergency contact
-function addEmergencyContact($memberID, $fullName, $cellPhone, $homePhone){
+function addEmergencyContact($memberID, $contactFullName, $contactCellPhone, $contactHomePhone){
   $db = dbConnection();
   $sql = 'INSERT INTO MemberEmergencyContact (memberID, contactFullName, contactCellPhone, contactHomePhone, createdBy, lastUpdateBy)
                          VALUES (:memberID, :contactFullName, :contactCellPhone, :contactHomePhone, :createdBy, :lastUpdateBy)';
   
   $stmt = $db->prepare($sql);
   $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
-  $stmt->bindValue(':contactFullName', $phoneTypeID, PDO::PARAM_STR);
+  $stmt->bindValue(':contactFullName', $contactFullName, PDO::PARAM_STR);
   $stmt->bindValue(':contactCellPhone', $contactCellPhone, PDO::PARAM_INT);
   $stmt->bindValue(':contactHomePhone', $contactHomePhone, PDO::PARAM_STR);
   $stmt->bindValue(':createdBy', $memberID, PDO::PARAM_INT);
