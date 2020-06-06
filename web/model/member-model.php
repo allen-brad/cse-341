@@ -115,7 +115,28 @@ function getMemberDirectory(){
     // Return the indication of success (rows changed)
     return $rowsChanged;
   }
+  function updateMemberAddress($addressID, $address1, $address2, $address3,$city, $state, $zip){
+    $db = dbConnection();
+    $sql = 'UPDATE MemberAddress
+            Set street1 = :address1, street2 = :address2, street3 = :address3, city = :city, state = :state, zip = :zip
+            WHERE addressID = :addressID';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':addressID', $addressID, PDO::PARAM_INT);
+    $stmt->bindValue(':address1', $address1, PDO::PARAM_STR);
+    $stmt->bindValue(':address2', $address2, PDO::PARAM_STR);
+    $stmt->bindValue(':address3', $address3, PDO::PARAM_STR);
+    $stmt->bindValue(':city', $city, PDO::PARAM_STR);
+    $stmt->bindValue(':state', $state, PDO::PARAM_STR);
+    $stmt->bindValue(':zip', $zip, PDO::PARAM_STR);
 
+    $stmt->execute();
+    //check to see if it worked
+    $rowsChanged = $stmt->rowCount();
+    //close connection
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+  }
 
   function unSetPrimaryPhoneID($memberID){
     $db = dbConnection();

@@ -342,7 +342,7 @@
                         echo '  <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                                     <div class="mb-3">
                                         <label for="address1_'.$a.'">Address 1</label>
-                                        <input type="text" class="form-control" name="address'.$a.'" id="address1_'.$a.'" value="'.$memberStreet1.'" required>
+                                        <input type="text" class="form-control" name="address1" id="address1_'.$a.'" value="'.$memberStreet1.'" required>
                                         <div class="invalid-feedback">
                                             Please enter your street address.
                                         </div>
@@ -368,13 +368,12 @@
                                             <select class="custom-select d-block w-100" name="state" id="state'.$a.'" required>
                                             <option value="">Choose...</option>';
                                             foreach ($usStates as $state){
-                                            if ($state['state'] == $memberState){
-                                                    $selectedState = 'selected="selected"';
-                                                } else{
-                                                    $selectedState = null;
+                                                $selectedState =null;
+                                                    if ($state['abbreviation']==$memberState){
+                                                        $selectedState = 'selected="selected"';
+                                                    }
+                                                    echo '<option value="'.$state['abbreviation'].'" '.$selectedState.'>'.$state['state'].'</option>';
                                                 }
-                                                echo '<option value="'.$state['abbreviation'].'" '.$selectedState.'>'.$state['state'].'</option>';
-                                            }
                                             echo '</select>
                                             <div class="invalid-feedback">
                                                 Please provide a valid state.
@@ -382,7 +381,7 @@
                                         </div>
                                         <div class="col-md-2 mb-3">
                                             <label for="zip'.$a.'">Zip</label>
-                                            <input type="text" class="form-control" name="zip'.$a.'" id="zip'.$a.'" value="'.$memberZip.'" required>
+                                            <input type="text" class="form-control" name="zip" id="zip'.$a.'" value="'.$memberZip.'" required>
                                             <div class="invalid-feedback">
                                                 Zip code required.
                                             </div>

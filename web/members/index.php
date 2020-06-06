@@ -206,13 +206,43 @@ switch ($action) {
             header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
 
-        }else{
-            $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-            <strong>Something Went Wrong!</strong> Emergency Contact was not added!
-            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-            <span aria-hidden=\"true\">&times;</span>
-            </button>
-            </div>";
+        }
+
+        $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+        <strong>Something Went Wrong!</strong> Emergency Contact was not added!
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+        <span aria-hidden=\"true\">&times;</span>
+        </button>
+        </div>";
+
+        //put message in session variable
+        $_SESSION["message"] =  $message;
+
+        //redirect
+        header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+        exit();
+
+    break;
+
+    case 'updateAddress':
+        $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
+        $addressID = filter_input(INPUT_POST, 'addressID', FILTER_SANITIZE_NUMBER_INT);
+        $address1 = filter_input(INPUT_POST, 'address1', FILTER_SANITIZE_STRING);
+        $address2 = filter_input(INPUT_POST, 'address2', FILTER_SANITIZE_STRING);
+        $address3 = filter_input(INPUT_POST, 'address3', FILTER_SANITIZE_STRING);
+        $city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING);
+        $state = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_STRING);
+        $zip = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING);
+
+        $outcome = updateMemberAddress($addressID, $address1, $address2, $address3,$city, $state, $zip);
+        // Check and report the result
+        if($outcome === 1){
+            $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                            <strong>Success!</strong> Address $addressID: updated.
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                            </div>";
 
             //put message in session variable
             $_SESSION["message"] =  $message;
@@ -222,8 +252,23 @@ switch ($action) {
             exit();
 
         }
-        
+
+        $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+        <strong>Something Went Wrong!</strong> Address $addressID: not updated.
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+        <span aria-hidden=\"true\">&times;</span>
+        </button>
+        </div>";
+
+        //put message in session variable
+        $_SESSION["message"] =  $message;
+
+        //redirect
+        header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+        exit();
+
     break;
+
     case 'updatePhone':
         $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
         $memberPhoneID = filter_input(INPUT_POST, 'phoneID', FILTER_SANITIZE_NUMBER_INT);
