@@ -183,8 +183,8 @@ switch ($action) {
     case 'updateEmergencyContact':
         $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
         $emergencyContactID = filter_input(INPUT_POST, 'eContactID', FILTER_SANITIZE_NUMBER_INT);
-        $eContactCellPhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactCellPhone', FILTER_SANITIZE_STRING)));
-        $eContactHomePhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactHomePhone', FILTER_SANITIZE_STRING)));
+        $eContactCellPhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactCellPhone', FILTER_SANITIZE_INT)));
+        $eContactHomePhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactHomePhone', FILTER_SANITIZE_INT)));
         $eContactFullName = filter_input(INPUT_POST, 'eContactFullName', FILTER_SANITIZE_STRING);
 
         
