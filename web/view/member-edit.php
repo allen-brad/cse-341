@@ -220,6 +220,7 @@
                         $i += 1;
                     }
                 ?>
+                <h5 class="mb-3">Add New Phone</h5>
                     <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                     <div class="row">
                         <div class="col-md-4 mb-3">
@@ -295,7 +296,7 @@
                             $i += 1;
                         }
                     ?>
-                
+                <h5 class="mb-3">Add New Emergency Contact</h5>
                 <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                         <div class="mb-3">
                             <label for="eContactFullName">Full Name</label>
@@ -396,7 +397,7 @@
                             $a += 1;
                         }
                     ?>
-                
+                <h5 class="mb-3">Add New Address</h5>
                 <form action="/members/"  class="needs-validation mb-4" method="post" novalidate>
                     <div class="mb-3">
                         <label for="addressNew">Address 1</label>

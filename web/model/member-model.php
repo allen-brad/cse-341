@@ -204,7 +204,7 @@ function addEmergencyContact($memberID, $fullName, $cellPhone, $homePhone){
 function updateEmergencyContact($memberEmergencyContactID, $contactFullName, $contactCellPhone, $contactHomePhone){
   $db = dbConnection();  
   $sql = 'UPDATE MemberEmergencyContact
-          SET contactFullName = :contactFullName, contactCellPhone = :contactCellPhone, contactHomePhone = :contactHomePhone, lastupdateby = :lastUpdateBy
+          SET contactFullName = :contactFullName, contactCellPhone = :contactCellPhone, contactHomePhone = :contactHomePhone
           WHERE memberEmergencyContactID = :memberEmergencyContactID';
   
   $stmt = $db->prepare($sql);
@@ -213,7 +213,6 @@ function updateEmergencyContact($memberEmergencyContactID, $contactFullName, $co
   $stmt->bindValue(':contactFullName', $contactFullName, PDO::PARAM_STR);
   $stmt->bindValue(':contactCellPhone', $contactCellPhone, PDO::PARAM_INT);
   $stmt->bindValue(':contactHomePhone', $contactHomePhone, PDO::PARAM_INT);
-  $stmt->bindValue(':lastUpdateBy', $memberID, PDO::PARAM_INT);
 
   $stmt->execute();
 
