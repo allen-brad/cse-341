@@ -49,6 +49,10 @@ switch ($action) {
         
     break;
 
+    case 'createMember':
+        include $_SERVER['DOCUMENT_ROOT'].'/view/member-create.php';   
+    break;
+
     case 'editMember':
         $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         $memberDetail = getMemberDetail($memberID);
@@ -138,6 +142,72 @@ switch ($action) {
         exit();
     
     break;
+
+    case 'addMember':
+        $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING);
+        $preferredName = filter_input(INPUT_POST, 'preferredName', FILTER_SANITIZE_STRING);
+        $middleName = filter_input(INPUT_POST, 'middleName', FILTER_SANITIZE_STRING);
+        $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
+        $callSign = filter_input(INPUT_POST, 'callSign', FILTER_SANITIZE_STRING);
+        $tempDOB = strtotime($_POST['dob']);
+        if ($tempDOB) {
+            $dob = date('Y-m-d', $tempDOB);
+        }
+        $ssnLastFour = filter_input(INPUT_POST, 'ssnLastFour', FILTER_SANITIZE_NUMBER_INT);
+        $dlNumber = filter_input(INPUT_POST, 'dlNumber', FILTER_SANITIZE_STRING);
+        $dlState = filter_input(INPUT_POST, 'dlState', FILTER_SANITIZE_STRING);
+        $memberStatus = filter_input(INPUT_POST, 'memberStatus', FILTER_SANITIZE_NUMBER_INT);
+        if (!validMemberStatus($memberStatus)){
+            $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+                        <strong>Invalid Member Status!</strong> Result: Member Status Type $memberStatus can not be found!
+                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                        <span aria-hidden=\"true\">&times;</span>
+                        </button>
+                        </div>";
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+             //redirect
+             header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+             exit();
+        }
+        $sarEmail = filter_input(INPUT_POST, "sarEmail", FILTER_VALIDATE_EMAIL);
+        $personalEmail = filter_input(INPUT_POST, "personalEmail", FILTER_VALIDATE_EMAIL);
+
+        $outcome = addMember($firstName,$preferredName,$middleName,$lastName,$callSign,$dob,$ssnLastFour,$dlNumber,$dlState,$memberStatus,$sarEmail, $personalEmail);
+        // Check and report the result, outcome should be ID of the new member
+        if($outcome > 0){
+            $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                            <strong>Success!</strong> Member added.
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                            </div>";
+
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$outcome");
+            exit();
+
+        }
+
+        $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+        <strong>Something Went Wrong!</strong> Member was not added!
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+        <span aria-hidden=\"true\">&times;</span>
+        </button>
+        </div>";
+
+        //put message in session variable
+        $_SESSION["message"] =  $message;
+
+        //redirect
+        header("Location: " .$_SERVER['PHP_SELF']."?action=addMember");
+        exit();
+        
+    break;
+  
 
     case 'addPhone':
         $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);

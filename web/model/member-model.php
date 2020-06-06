@@ -138,6 +138,47 @@ function getMemberDirectory(){
     return $rowsChanged;
   }
 
+  function addMember($firstName,$preferredName,$middleName,$lastName,$callSign,$dob,$ssnLastFour,$dlNumber,$dlState,$memberStatus,$sarEmail, $personalEmail){
+    $db = dbConnection();
+
+    //this will be derived by session value in future
+    $creator = 1000;
+
+    $sql = 'INSERT INTO Member (lastName, firstName, middleName, preferredName, callSign, dob, sarEmail, personalEmail, dlNumber, dlState, ssnLastFour, createdBy, lastUpdateBy)
+            VALUES (:lastName, :firstName, :middleName, :preferredName, :callSign, :dob, :sarEmail, :personalEmail, :dlNumber, :dlState, :ssnLastFour, :createdBy, :lastUpdateBy)';
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':lastName', $lastName, PDO::PARAM_STR);
+    $stmt->bindValue(':firstName', $firstName, PDO::PARAM_STR);
+    $stmt->bindValue(':middleName', $middleName, PDO::PARAM_STR);
+    $stmt->bindValue(':preferredName', $preferredName, PDO::PARAM_STR);
+    $stmt->bindValue(':callSign', $callSign, PDO::PARAM_STR);
+    $stmt->bindValue(':dob', $dob, PDO::PARAM_STR);
+    $stmt->bindValue(':ssnLastFour', $ssnLastFour, PDO::PARAM_INT);
+    $stmt->bindValue(':dlNumber', $dlNumber, PDO::PARAM_STR);
+    $stmt->bindValue(':dlState', $dlState, PDO::PARAM_STR);
+    $stmt->bindValue(':memberStatus', $memberStatus, PDO::PARAM_INT);
+    $stmt->bindValue(':sarEmail', $sarEmail, PDO::PARAM_STR);
+    $stmt->bindValue(':sarEmail', $sarEmail, PDO::PARAM_STR);
+
+ 
+    $stmt->bindValue(':createdBy', $creator, PDO::PARAM_INT);
+    $stmt->bindValue(':lastUpdateBy', $creator, PDO::PARAM_INT); 
+
+    $stmt->execute();
+
+    //check to see if it worked
+    $id = $db->lastInsertId();
+    //close connection
+    $stmt->closeCursor();
+
+    if ($id){
+      return $id;
+    }
+
+  }
+
+
   function addMemberAddress($memberID, $street1, $street2, $street3, $city, $state, $zip){
     $db = dbConnection();
   
@@ -335,31 +376,4 @@ function updateMemberPhone($memberphoneID, $memberID, $phoneTypeID, $phoneNumber
   $stmt->closeCursor();
 
   return $rowsChanged;
-}
-
-
-
-  // Update member info
-function updateMemberDetails($lastName, $firstName, $middleName, $preferredName, $callSign, $dob, $personalEmail, $dlNumber, $dlState, $ssnLastFour, $memberStatusID){
-  //create connection object
-$db = acmeConnect();
-//sql statement
-$sql = 'UPDATE clients SET clientFirstname = :clientFirstname, clientLastname = :clientLastname, clientEmail = :clientEmail WHERE clientId = :clientId';
-//creates prepared statement
-$stmt = $db->prepare($sql);
-// swap out varialbes for actual values
-//tell database the type of data
-$stmt->bindValue(':clientFirstname', $clientFirstname, PDO::PARAM_STR);
-$stmt->bindValue(':clientLastname', $clientLastname, PDO::PARAM_STR);
-$stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
-$stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
-
-//use the prepared statement to insert data
-$stmt->execute();
-//check to see if it worked
-$rowsChanged = $stmt->rowCount();
-//close connection
-$stmt->closeCursor();
-// Return the indication of success (rows changed)
-return $rowsChanged;
 }
