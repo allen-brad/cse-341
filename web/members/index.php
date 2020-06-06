@@ -92,7 +92,7 @@ switch ($action) {
             exit();
 
         }
-        
+
         $memberPhoneNumbers = getMemberPhone($memberID);
         $memberAddresses = getMemberAddress($memberID);
         include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
@@ -119,7 +119,7 @@ switch ($action) {
             $_SESSION["message"] =  $message;
 
             //redirect
-            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
 
         }else{
@@ -134,7 +134,7 @@ switch ($action) {
             $_SESSION["message"] =  $message;
 
             //redirect
-            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
 
         }
@@ -164,7 +164,7 @@ switch ($action) {
             $_SESSION["message"] =  $message;
 
             //redirect
-            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
 
         }else{
@@ -179,7 +179,7 @@ switch ($action) {
             $_SESSION["message"] =  $message;
 
             //redirect
-            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
 
         }
@@ -206,7 +206,7 @@ switch ($action) {
             $_SESSION["message"] =  $message;
 
             //redirect
-            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
 
         }else{
@@ -221,7 +221,7 @@ switch ($action) {
             $_SESSION["message"] =  $message;
 
             //redirect
-            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
 
         }
@@ -248,7 +248,7 @@ switch ($action) {
             $_SESSION["message"] =  $message;
 
             //redirect
-            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
 
         }else{
@@ -264,7 +264,7 @@ switch ($action) {
             $_SESSION["message"] =  $message;
 
             //redirect
-            header("Location: " .$_SERVER['PHP_SELF']."?action=edit&id=$memberID");
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
         }
         
