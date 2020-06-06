@@ -119,7 +119,7 @@ function getMemberDirectory(){
     $db = dbConnection();
     $sql = 'UPDATE MemberAddress
             Set street1 = :address1, street2 = :address2, street3 = :address3, city = :city, state = :state, zip = :zip
-            WHERE addressID = :addressID';
+            WHERE memberAddressID = :addressID';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':addressID', $addressID, PDO::PARAM_INT);
     $stmt->bindValue(':address1', $address1, PDO::PARAM_STR);
