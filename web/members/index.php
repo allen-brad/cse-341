@@ -75,12 +75,23 @@ switch ($action) {
     break;
 
     case 'updateMember':
-        $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-        $memberDetail = getMemberDetail($memberID);
-
-        if(empty($memberDetail)){
+        $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);	
+        $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING);
+        $preferredName = filter_input(INPUT_POST, 'preferredName', FILTER_SANITIZE_STRING);
+        $middleName = filter_input(INPUT_POST, 'middleName', FILTER_SANITIZE_STRING);
+        $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
+        $callSign = filter_input(INPUT_POST, 'callSign', FILTER_SANITIZE_STRING);
+        $tempDOB = strtotime($_POST['dob']);
+        if ($tempDOB) {
+            $dob = date('Y-m-d', $tempDOB);
+        }
+        $ssnLastFour = filter_input(INPUT_POST, 'ssnLastFour', FILTER_SANITIZE_NUMBER_INT);
+        $dlNumber = filter_input(INPUT_POST, 'dlNumber', FILTER_SANITIZE_STRING);
+        $dlState = filter_input(INPUT_POST, 'dlState', FILTER_SANITIZE_STRING);
+        $memberStatus = filter_input(INPUT_POST, 'memberStatus', FILTER_SANITIZE_NUMBER_INT);
+        if (!validMemberStatus($memberStatus)){
             $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-                        <strong>Editing Not Allowed!</strong> Member ID $memberID can not be found!
+                        <strong>Invalid Member Status!</strong> Member Status Type $memberStatus can not be found!
                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                         <span aria-hidden=\"true\">&times;</span>
                         </button>
@@ -88,14 +99,43 @@ switch ($action) {
             //put message in session variable
             $_SESSION["message"] =  $message;
              //redirect
-            header("Location: " .$_SERVER['PHP_SELF']);
+             header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+             exit();
+        }
+        $personalEmail = filter_input(INPUT_GET, "personalEmail", FILTER_VALIDATE_EMAIL);
+
+        $outcome = updateMemberDetail($memberID,$firstName,$preferredName,$middleName,$lastName,$callSign,$dob,$ssnLastFour,$dlNumber,$dlState,$memberStatus,$personalEmail);
+        // Check and report the result
+        if($outcome === 1){
+            $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                            <strong>Success!</strong> Member personal information updated.
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                            </div>";
+
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
 
         }
+        
+        $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+        <strong>Something Went Wrong!</strong> Member personal information not updated!
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+        <span aria-hidden=\"true\">&times;</span>
+        </button>
+        </div>";
 
-        $memberPhoneNumbers = getMemberPhone($memberID);
-        $memberAddresses = getMemberAddress($memberID);
-        include $_SERVER['DOCUMENT_ROOT'].'/view/member-edit.php';
+        //put message in session variable
+        $_SESSION["message"] =  $message;
+
+        //redirect
+        header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+        exit();
     
     break;
 
@@ -122,22 +162,21 @@ switch ($action) {
             header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
 
-        }else{
-            $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-            <strong>Something Went Wrong!</strong> Phone number was not added!
-            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-            <span aria-hidden=\"true\">&times;</span>
-            </button>
-            </div>";
-
-            //put message in session variable
-            $_SESSION["message"] =  $message;
-
-            //redirect
-            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
-            exit();
-
         }
+
+        $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+        <strong>Something Went Wrong!</strong> Phone number was not added!
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+        <span aria-hidden=\"true\">&times;</span>
+        </button>
+        </div>";
+
+        //put message in session variable
+        $_SESSION["message"] =  $message;
+
+        //redirect
+        header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+        exit();
         
     break;
     

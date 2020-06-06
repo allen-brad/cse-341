@@ -158,7 +158,7 @@
                         </div>
                     </div>
                     <input type="hidden" name="action" value="updateMember">
-                    <input type="hidden" name="memberID" value="$memberID">
+                    <input type="hidden" name="memberID" value="<?php if(isset($memberID)){echo $memberID;}?>">
                     <button class="btn btn-primary btn-lg float-left" type="submit">Update Member Details</button>
                     <a class="btn btn-secondary btn-lg float-right" href="/members">Back to List</a>
                 </fieldset>

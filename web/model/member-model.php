@@ -87,6 +87,36 @@ function getMemberDirectory(){
     return $eContactData; 
   }
 
+  function updateMemberDetail($memberID,$firstName,$preferredName,$middleName,$lastName,$callSign,$dob,$ssnLastFour,$dlNumber,$dlState,$memberStatus,$personalEmail){
+    $db = dbConnection();
+    $sql = 'UPDATE Member
+            Set firstName = :firstName, preferredName = :preferredName, middleName = :middleName, lastName = :lastName, callSign = :callSign, dob = :dob,
+                ssnLastFour = :ssnLastFour, dlNumber = :dlNumber, dlState = :dlState, memberStatus = :memberStatus, personalEmail = :personalEmail
+            WHERE memberid = :memberID';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':memberID', $memberID, PDO::PARAM_INT);
+    $stmt->bindValue(':firstName', $firstName, PDO::PARAM_STR);
+    $stmt->bindValue(':preferredName', $preferredName, PDO::PARAM_STR);
+    $stmt->bindValue(':middleName', $middleName, PDO::PARAM_STR);
+    $stmt->bindValue(':lastName', $lastName, PDO::PARAM_STR);
+    $stmt->bindValue(':callSign', $callSign, PDO::PARAM_STR);
+    $stmt->bindValue(':dob', $dob, PDO::PARAM_STR);
+    $stmt->bindValue(':ssnLastFour', $ssnLastFour, PDO::PARAM_INT);
+    $stmt->bindValue(':dlNumber', $dlNumber, PDO::PARAM_STR);
+    $stmt->bindValue(':dlState', $dlState, PDO::PARAM_STR);
+    $stmt->bindValue(':memberStatus', $memberStatus, PDO::PARAM_INT);
+    $stmt->bindValue(':personalEmail', $personalEmail, PDO::PARAM_STR);
+
+    $stmt->execute();
+    //check to see if it worked
+    $rowsChanged = $stmt->rowCount();
+    //close connection
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+  }
+
+
   function unSetPrimaryPhoneID($memberID){
     $db = dbConnection();
     $sql = 'UPDATE memberphone SET isPrimary = false WHERE memberid = :memberID';

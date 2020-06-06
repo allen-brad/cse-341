@@ -46,3 +46,19 @@ function getPhoneType() {
   $stmt->closeCursor();
   return $phoneTypeData;
 }
+
+function validMemberStatus($memberStatusID) {
+  $db = dbConnection();
+  $sql = "SELECT memberStatusID
+          FROM MemberStatus
+          WHERE memberStatusID = :memberStatusID";
+  $stmt = $db->prepare($sql);
+  $stmt->bindValue(':memberStatusID', $memberStatusID, PDO::PARAM_INT);
+  $stmt->execute();
+  $status = $stmt->fetch(PDO::FETCH_ASSOC);
+  $stmt->closeCursor();
+  if (!$status){
+    return true;
+  }
+  return null;
+}
