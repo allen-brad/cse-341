@@ -205,6 +205,19 @@ function getMemberDirectory(){
     // Return the indication of success (rows changed)
     return $rowsChanged;
   }
+  function deleteAddress($memberAddressID){
+    $db = dbConnection();
+    $sql = 'DELETE FROM MemberAddress WHERE memberAddressID = :memberAddressID';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':memberAddressID', $memberAddressID, PDO::PARAM_INT);
+    $stmt->execute();
+    //check to see if it worked
+    $rowsChanged = $stmt->rowCount();
+    //close connection
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+  }
 
   //Insert emergency contact
 function addEmergencyContact($memberID, $contactFullName, $contactCellPhone, $contactHomePhone){

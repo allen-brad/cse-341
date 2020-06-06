@@ -305,6 +305,44 @@ switch ($action) {
         
     break;
 
+    case 'deleteAddress':
+        $memberID = filter_input(INPUT_GET, 'memberID', FILTER_SANITIZE_NUMBER_INT);
+        $memberAddressID = filter_input(INPUT_GET, 'addressID', FILTER_SANITIZE_NUMBER_INT);
+
+        $outcome = deleteAddress($memberAddressID);
+        // Check and report the result
+        if($outcome === 1){
+            $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                            <strong>Success!</strong> Address deleted
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                            </div>";
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+            exit();
+
+        }
+
+        $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+        <strong>Something Went Wrong!</strong> Address was not deleted!
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+        <span aria-hidden=\"true\">&times;</span>
+        </button>
+        </div>";
+
+        //put message in session variable
+        $_SESSION["message"] =  $message;
+
+        //redirect
+        header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+        exit();
+        
+    break;
+
     case 'updateAddress':
         $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
         $addressID = filter_input(INPUT_POST, 'addressID', FILTER_SANITIZE_NUMBER_INT);
