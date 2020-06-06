@@ -193,7 +193,50 @@ switch ($action) {
         // Check and report the result
         if($outcome === 1){
             $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
-                            <strong>Success!</strong> Emergency Contact: $emergencyContactID updated. Cell: $eContactCellPhone Home: $eContactHomePhone;
+                            <strong>Success!</strong> Emergency Contact: $emergencyContactID updated.
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                            </div>";
+
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+            exit();
+
+        }
+
+        $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+        <strong>Something Went Wrong!</strong> Emergency Contact was not updated!
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+        <span aria-hidden=\"true\">&times;</span>
+        </button>
+        </div>";
+
+        //put message in session variable
+        $_SESSION["message"] =  $message;
+
+        //redirect
+        header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+        exit();
+
+    break;
+
+    case 'addEmergencyContact':
+        $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
+        $eContactCellPhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactCellPhone', FILTER_SANITIZE_NUMBER_INT)));
+        $eContactHomePhone = preg_replace("/[^0-9]/","",(filter_input(INPUT_POST, 'eContactHomePhone', FILTER_SANITIZE_NUMBER_INT)));
+        $eContactFullName = filter_input(INPUT_POST, 'eContactFullName', FILTER_SANITIZE_STRING);
+
+        
+
+        $outcome = addEmergencyContact($memberID,$eContactFullName, $eContactCellPhone, $eContactHomePhone);
+        // Check and report the result
+        if($outcome === 1){
+            $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                            <strong>Success!</strong> Emergency Contact Added.
                             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                             </button>
