@@ -55,6 +55,7 @@ switch ($action) {
 
     case 'editMember':
         $memberID = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+        
         $memberDetail = getMemberDetail($memberID);
 
         if(empty($memberDetail)){
