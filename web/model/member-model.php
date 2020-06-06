@@ -170,7 +170,7 @@ function getMemberDirectory(){
     $db = dbConnection();
     $sql = 'DELETE FROM MemberEmergencyContact WHERE memberEmergencyContactID = :memberEmergencyContactID';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':memberEmergencyContactID', $memberEmergencyContactID, PDO::PARAM_INT);
+    $stmt->bindValue(':memberEmergencyContactID', $emergencyContactID, PDO::PARAM_INT);
     $stmt->execute();
     //check to see if it worked
     $rowsChanged = $stmt->rowCount();

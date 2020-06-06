@@ -267,6 +267,44 @@ switch ($action) {
 
     break;
 
+    case 'deleteEmergencyContact':
+        $memberID = filter_input(INPUT_GET, 'memberID', FILTER_SANITIZE_NUMBER_INT);
+        $emergencyContactID = filter_input(INPUT_GET, 'eContactID', FILTER_SANITIZE_NUMBER_INT);
+
+        $outcome = deleteEmergencyContact($emergencyContactID);
+        // Check and report the result
+        if($outcome === 1){
+            $message = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                            <strong>Success!</strong> Emergency Contact deleted
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                            </div>";
+            //put message in session variable
+            $_SESSION["message"] =  $message;
+
+            //redirect
+            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+            exit();
+
+        }
+
+        $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+        <strong>Something Went Wrong!</strong> Emergency Contact  was not deleted!
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+        <span aria-hidden=\"true\">&times;</span>
+        </button>
+        </div>";
+
+        //put message in session variable
+        $_SESSION["message"] =  $message;
+
+        //redirect
+        header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+        exit();
+        
+    break;
+
     case 'updateAddress':
         $memberID = filter_input(INPUT_POST, 'memberID', FILTER_SANITIZE_NUMBER_INT);
         $addressID = filter_input(INPUT_POST, 'addressID', FILTER_SANITIZE_NUMBER_INT);
@@ -378,22 +416,21 @@ switch ($action) {
             header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
             exit();
 
-        }else{
-
-            $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-            <strong>Something Went Wrong!</strong> Phone number was not deleted!
-            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-            <span aria-hidden=\"true\">&times;</span>
-            </button>
-            </div>";
-
-            //put message in session variable
-            $_SESSION["message"] =  $message;
-
-            //redirect
-            header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
-            exit();
         }
+
+        $message = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
+        <strong>Something Went Wrong!</strong> Phone number was not deleted!
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+        <span aria-hidden=\"true\">&times;</span>
+        </button>
+        </div>";
+
+        //put message in session variable
+        $_SESSION["message"] =  $message;
+
+        //redirect
+        header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
+        exit();
         
     break;
 
