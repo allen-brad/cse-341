@@ -102,7 +102,7 @@ switch ($action) {
              header("Location: " .$_SERVER['PHP_SELF']."?action=editMember&id=$memberID");
              exit();
         }
-        $personalEmail = filter_input(INPUT_GET, "personalEmail", FILTER_VALIDATE_EMAIL);
+        $personalEmail = filter_input(INPUT_POST, "personalEmail", FILTER_VALIDATE_EMAIL);
 
         $outcome = updateMemberDetail($memberID,$firstName,$preferredName,$middleName,$lastName,$callSign,$dob,$ssnLastFour,$dlNumber,$dlState,$memberStatus,$personalEmail);
         // Check and report the result
